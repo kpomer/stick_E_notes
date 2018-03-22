@@ -32,5 +32,4 @@ public class addCardTest {
     Card testCard8 = new Card("testCard8Title", "", 1);
     assertEquals("", testCard8.getDescription());
 
-
 }
