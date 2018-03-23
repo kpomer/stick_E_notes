@@ -1,0 +1,26 @@
+package edu.ithaca.group2;
+import java.util.ArrayList;
+
+public class Workspace {
+
+    ArrayList<Card> cardList;
+    int cardCount;
+
+    public void Workspace(){
+        cardList = new ArrayList<Card>();
+        cardCount = 0;
+    }
+
+    public int addCard(Card toAdd){
+        int priority = toAdd.getPriority();
+
+        if (priority>cardCount || priority<0){
+            return -1;
+        }
+        else{
+            cardList.add(priority, toAdd);
+            this.cardCount++;
+            return 0;
+        }
+    }
+}
