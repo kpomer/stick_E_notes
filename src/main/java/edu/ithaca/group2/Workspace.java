@@ -15,6 +15,7 @@ public class Workspace {
         int priority = toAdd.getPriority();
 
         if (priority>cardCount || priority<0){
+            System.out.println("Sorry, priority number out of bounds.  Try again.");
             return -1;
         }
         else{
