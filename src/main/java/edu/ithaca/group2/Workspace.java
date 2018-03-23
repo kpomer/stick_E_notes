@@ -18,10 +18,20 @@ public class Workspace {
             System.out.println("Sorry, priority number out of bounds.  Try again.");
             return -1;
         }
+        else if (toAdd.getTitle() == ""){
+            System.out.println("Sorry, card must have a title.  Try again.");
+            return -1;
+        }
+
         else{
             cardList.add(priority, toAdd);
             this.cardCount++;
             return 0;
         }
     }
+
+    public Card getCard(int priority){
+        return cardList.get(priority);
+    }
+
 }
