@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 public class addCardTest {
-    //Cards contain the fields String title, String description, and int priority (which decides the order of the list)
+    //Cards contain the fields String title, String description, and int priority (which decides the order of the list), String deadline
 
     @Test
     public void fieldsCorrectTest(){
@@ -43,8 +43,11 @@ public class addCardTest {
         //If there are n cards within the workspace, and a priority of <0 or >(n+1) is entered when creating a new card, print error message
         Card testCard4 = new Card("testCard4Title", 5, "testCard4Description", "1/1/2020");
         Card testCard5 = new Card("testCard5Title", -1, "testCard5Description", "1/1/2020");
+        Card myCard = new Card("myCard", 0, "testCard5Description", "1/1/2020");
+
         assertEquals(-1, testWorkspace.addCard(testCard4));
         assertEquals(-1, testWorkspace.addCard(testCard5));
+        assertEquals(0, testWorkspace.addCard(myCard));
 
     }
 
