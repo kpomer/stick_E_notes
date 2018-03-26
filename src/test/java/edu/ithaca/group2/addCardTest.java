@@ -2,6 +2,8 @@ package edu.ithaca.group2;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.NoSuchElementException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class addCardTest {
@@ -50,6 +52,17 @@ class addCardTest {
         assertEquals("", testWorkspace.getCard(2).getDescription());
         assertEquals(2, testWorkspace.getCard(2).getPriority());
         assertEquals("", testWorkspace.getCard(2).getDeadline());
+
+        //Test Exception
+        boolean thrown = false;
+
+        try {
+            testWorkspace.getCard(10);
+        } catch (IndexOutOfBoundsException e) {
+            thrown = true;
+        }
+
+        assertTrue(thrown);
     }
 
     @Test
@@ -83,11 +96,22 @@ class addCardTest {
         testWorkspace.addCard(testCard11);
         //Order should be 11, 8, 10, 9
 
-        assertEquals(0, testWorkspace.getCard("testCard11").getPriority());
-        assertEquals(1, testWorkspace.getCard("testCard8").getPriority());
-        assertEquals(2, testWorkspace.getCard("testCard10").getPriority());
-        assertEquals(3, testWorkspace.getCard("testCard9").getPriority());
+        assertEquals(0, testWorkspace.getCard("testCard11Title").getPriority());
+        assertEquals(1, testWorkspace.getCard("testCard8Title").getPriority());
+        assertEquals(2, testWorkspace.getCard("testCard10Title").getPriority());
+        assertEquals(3, testWorkspace.getCard("testCard9Title").getPriority());
 
+        //Test Exception
+        boolean thrown = false;
+
+        try {
+            testWorkspace.getCard("fakeCard");
+        } catch (NoSuchElementException e) {
+            thrown = true;
+        }
+
+        assertTrue(thrown);
     }
+
 
 }

@@ -1,5 +1,6 @@
 package edu.ithaca.group2;
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
 
 public class Workspace {
 
@@ -35,8 +36,24 @@ public class Workspace {
         }
     }
 
-    public Card getCard(int priority){
+    public Card getCard(int priority) throws IndexOutOfBoundsException{
+        if ((0<= priority) && (priority < cardCount))
         return cardList.get(priority);
+        else
+        {
+            throw new IndexOutOfBoundsException("Priority number " + priority + " is out of bounds");
+        }
+    }
+
+    public Card getCard(String title) throws NoSuchElementException{
+        for(int p = 0; p<cardCount; p++)
+        {
+            if (cardList.get(p).getTitle() == title)
+            {
+                return cardList.get(p);
+            }
+        }
+        throw new NoSuchElementException("Could not find Title: " + title);
     }
 
 
