@@ -12,11 +12,11 @@ public class Card {
     //default constructor
     public Card(){
         //A card only needs a title and a priority, however, it can also have a description and a deadline.
-        title = "";
-        priority = 0;
+        this.title = "Untitled Card";
+        this.priority = 0;
 
-        description = "";
-        deadline = "";
+        this.description = "no description yet";
+        this.deadline = "no deadline yet";
     }
 
     //constructor if only title and priority are given
@@ -24,8 +24,8 @@ public class Card {
         this.title = title;
         this.priority = priority;
 
-        this.description = "";
-        this.deadline = "";
+        this.description = "no description yet";
+        this.deadline = "no deadline yet";
     }
 
     //constructor if all data members are given
@@ -67,5 +67,9 @@ public class Card {
 
     public String getDeadline() {
         return deadline;
+    }
+
+    public String viewCard(){
+        return title+"\nID: "+priority+"\n\t"+description+"\nDeadline: "+deadline;
     }
 }
