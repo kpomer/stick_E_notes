@@ -15,8 +15,8 @@ public class Card {
         this.title = "Untitled Card";
         this.priority = 0;
 
-        this.description = "no description yet";
-        this.deadline = "no deadline yet";
+        this.description = "";
+        this.deadline = "";
     }
 
     //constructor if only title and priority are given
@@ -24,8 +24,10 @@ public class Card {
         this.title = title;
         this.priority = priority;
 
-        this.description = "no description yet";
-        this.deadline = "no deadline yet";
+        this.description = "";
+        this.deadline = "";
+        //I don't think it should say "no description yet" or "no card yet" because these fields may never be filled
+        //In my opinion it looks cleaner to leave them as empty strings
     }
 
     //constructor if all data members are given
