@@ -1,15 +1,32 @@
 package edu.ithaca.group2;
 
+import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
-public class addCardTest {
+
+class addCardTest {
     //Cards contain the fields String title, String description, and int priority (which decides the order of the list), String deadline
 
     @Test
-    public void fieldsCorrectTest(){
+    void titleCorrect() {
+        //Test that title shows up correctly, and that exception is thrown when title = ""
         Workspace testWorkspace = new Workspace();
 
+        Card testCard1 = new Card("testCard1Title", 0, "", "");
+        Card testCard2 = new Card("", 0, "", "");
+
+        testWorkspace.addCard(testCard1);
+        assertEquals("testCard1Title", testWorkspace.getCard(0).getTitle());
+        testWorkspace.addCard(testCard2);
+        assertEquals("testCard1Title", testWorkspace.getCard(0).getTitle());
+    }
+
+    @Test
+    void fieldsCorrectTest(){
+        Workspace testWorkspace = new Workspace();
+
+        //Test both Card constructors
         Card testCard1 = new Card("testCard1Title", 0, "testCard1Description", "1/1/2020");
         Card testCard2 = new Card("testCard2Title", 1);
         Card testCard3 = new Card("testCard3Title", 1, "testCard3Description", "1/1/2020");
@@ -37,7 +54,7 @@ public class addCardTest {
     }
 
     @Test
-    public void priorityNumberTests() {
+    void priorityNumberTests() {
         Workspace testWorkspace = new Workspace();
 
         //If there are n cards within the workspace, and a priority of <0 or >(n+1) is entered when creating a new card, print error message
@@ -52,7 +69,7 @@ public class addCardTest {
     }
 
     @Test
-    public void stringTitleTest() {
+    void stringTitleTest() {
         Workspace testWorkspace = new Workspace();
 
         //If empty list is entered for String title, return -1, otherwise return 0

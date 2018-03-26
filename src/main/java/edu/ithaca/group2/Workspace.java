@@ -6,7 +6,7 @@ public class Workspace {
     ArrayList<Card> cardList;
     int cardCount;
 
-    public void Workspace(){
+    public Workspace(){
         cardList = new ArrayList<Card>();
         cardCount = 0;
     }
@@ -26,6 +26,11 @@ public class Workspace {
         else{
             cardList.add(priority, toAdd);
             this.cardCount++;
+            //Change priority of cards following new card
+            for (int p = (priority+1); p<cardCount; p++)
+            {
+                this.getCard(p).setPriority(p);
+            }
             return 0;
         }
     }
