@@ -72,11 +72,15 @@ public class Card {
     }
 
     public String viewCard(){
-<<<<<<< HEAD
 
-        return title+"\nID: "+priority+"\n\t"+description+"\nDeadline: "+deadline;
-=======
-        return title + "\nID: " + priority + "\n\t" + description + "\nDeadline: " + deadline;
->>>>>>> master
+        if(description == "" && deadline == ""){
+            return title + "\nID: " + priority;
+        }else if(description == ""){
+            return title + "\nID: " + priority + "\nDeadline: " + deadline;
+        }else if(deadline == ""){
+            return title + "\nID: " + priority + "\n\t" + description;
+        }else {
+            return title + "\nID: " + priority + "\n\t" + description + "\nDeadline: " + deadline;
+        }
     }
 }

@@ -102,7 +102,7 @@ class viewCardTest {
         deadline = "";
         description = "";
         Card card2 = new Card(title, priority);
-        expectedViewCard = title+"\nID: "+priority+"\n\t"+description+"\nDeadline: "+deadline;
+        expectedViewCard = title+"\nID: "+priority;
         Assert.assertEquals(expectedViewCard,card2.viewCard());
 
         title ="Untitled Card";
@@ -110,9 +110,25 @@ class viewCardTest {
         deadline = "";
         description = "";
         Card card3 = new Card();
-        expectedViewCard = title+"\nID: "+priority+"\n\t"+description+"\nDeadline: "+deadline;
+        expectedViewCard = title+"\nID: "+priority;
         Assert.assertEquals(expectedViewCard,card3.viewCard());
 
-        System.out.println(card1.viewCard()+"\n_______\n"+card2.viewCard()+"\n_______\n"+card3.viewCard());
+        title ="title";
+        priority = 1;
+        deadline = "";
+        description = "";
+        Card card4 = new Card(title, priority, description, deadline);
+        expectedViewCard = title+"\nID: "+priority;
+        Assert.assertEquals(expectedViewCard,card4.viewCard());
+
+        title ="title";
+        priority = 1;
+        deadline = "11/28/18";
+        description = "";
+        Card card5 = new Card(title, priority, description, deadline);
+        expectedViewCard = title+"\nID: "+priority+ "\nDeadline: "+deadline;
+        Assert.assertEquals(expectedViewCard,card5.viewCard());
+
+        System.out.println(card1.viewCard()+"\n_______\n"+card2.viewCard()+"\n_______\n"+card3.viewCard()+"\n_______\n"+card4.viewCard()+"\n_______\n"+card5.viewCard());
     }
 }
