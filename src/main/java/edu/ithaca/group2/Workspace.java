@@ -14,19 +14,19 @@ public class Workspace {
     public int addCard(Card toAdd){
         int priority = toAdd.getPriority();
 
-        if (priority>cardCount || priority<0){
+        if ( priority<0){//priority>cardList.size() ||
             return -1;
         }
         else{
-            cardList.add(priority, toAdd);
+            this.cardList.add(priority, toAdd);
             this.cardCount++;
             return 0;
         }
     }
-    public void veiwAllcards(ArrayList<Card> cardList){
+    public void veiwAllcards(){
         System.out.println("Here are your cards");
 
-        for (int i = 0; i <cardList.size(); i++) {
+        for (int i = 0; i <cardCount; i++) {
             System.out.println(cardList.get(i).getPriority());
             System.out.println(cardList.get(i).getTitle());
             System.out.println(cardList.get(i).getDeadline());

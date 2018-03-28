@@ -11,19 +11,19 @@ class veiwAllTest {
     @Test
     void veiwtest(){
         String title ="Do Laundry";
-        int priority = 2;
+        int priority = 0;
         String desciption =" Wash your clothes today";
         String deadline = " Saturday";
         Card testcard= new Card(title,priority,desciption,deadline);
 
         String title2 ="Make Dinner";
-        int priority2 = 3;
+        int priority2 = 1;
         String desciption2 ="Rice and Stew recipe";
         String deadline2 = "Friday";
         Card testcard2= new Card(title2,priority2,desciption2,deadline2);
 
         String title3 ="Club Football back";
-        int priority3= 4;
+        int priority3= 2;
         String desciption3 ="Barca is playing ";
         String deadline3 = "Saturday @ 2:45";
         Card testcard3= new Card(title3,priority3,desciption3,deadline3);
@@ -33,8 +33,9 @@ class veiwAllTest {
         testw.addCard(testcard);
         testw.addCard(testcard2);
         testw.addCard(testcard3);
-        System.out.println(testw.cardList);
-        testw.veiwAllcards(testw.cardList);
+
+        //System.out.println();
+        testw.veiwAllcards();
         assertEquals("Do Laundry",title);
         assertEquals(3, priority2);
         assertEquals("Rice and Stew recipe",desciption2);
