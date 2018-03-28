@@ -70,6 +70,7 @@ public class Card {
     }
 
     public String viewCard(){
+
         return title+"\nID: "+priority+"\n\t"+description+"\nDeadline: "+deadline;
     }
 }
