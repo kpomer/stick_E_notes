@@ -1,4 +1,5 @@
 package edu.ithaca.group2;
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
@@ -46,10 +47,16 @@ public class Workspace {
     }
 
     public Card getCard(String title) throws NoSuchElementException{
+
+
         for(int p = 0; p<cardCount; p++)
         {
-            if (cardList.get(p).getTitle() == title)
+
+            if (cardList.get(p).getTitle().equals(title))
             {
+
+//                System.out.println(cardList.get(p).getTitle());
+//                System.out.println(title);
                 return cardList.get(p);
             }
         }
