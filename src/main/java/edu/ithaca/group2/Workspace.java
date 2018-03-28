@@ -23,4 +23,19 @@ public class Workspace {
             return 0;
         }
     }
+    public void veiwAllcards(ArrayList<Card> cardList){
+        System.out.println("Here are your cards");
+
+        for (int i = 0; i <cardList.size(); i++) {
+            System.out.println(cardList.get(i).getPriority());
+            System.out.println(cardList.get(i).getTitle());
+            System.out.println(cardList.get(i).getDeadline());
+            System.out.println(cardList.get(i).getDescription());
+
+
+
+
+
+        }
+    }
 }
