@@ -2,80 +2,145 @@ package edu.ithaca.group2;
 import java.util.*;
 
 public class userInterface {
+
+    private Scanner reader2 = new Scanner(System.in);
+    private Scanner title = new Scanner(System.in);
+    private Scanner priority = new Scanner(System.in);
+    private Scanner description = new Scanner(System.in);
+    private Scanner deadline = new Scanner(System.in);
     private boolean flag = true;
 
-    private void changeFlag(){
+    private Workspace list = new Workspace();
+
+
+    private void changeFlag() {
         flag = false;
     }
     //user makes selection from the list
-    int Options(int choice){
+
+    private int Options() {
         //implementing scanner
         Scanner reader1 = new Scanner(System.in);
-        Scanner reader2 = new Scanner(System.in);
-        System.out.println("Hello user,");
+
+        System.out.println("\n Hello user,");
         System.out.println("How may I be of assistance to you today?");
         printList();
 
-        while(flag){
-            System.out.println("What task do you want to accomplish? \n");
-
-              //int choice = reader.nextInt();
+        //first instance of the CardList
 
 
-            switch(choice){
-                //calls the addCardFucntion
-                case 1:
-                    System.out.println("Are you sure that you want to ADD a card?(y/n)");
-                    //String confirmation = reader2.next();
-                    String confirmation = "Y";
-                    if(confirmation.toLowerCase().equals("y")){
-                        //call teh function
-                        System.out.println("You have added a card");
-                        changeFlag();
-                        break;
-                    }
-//                    changeFlag();
-//                    break;
-                case 2:
-                    System.out.println("Are you sure that you want to VIEW a card?(y/n)");
-                    confirmation = reader2.next();
-                    if(confirmation.toLowerCase().equals("y")) {
-                        System.out.println("you can view cards now");
-                        break;
-                    }
-                case 3:
+        while (flag) {
+            System.out.println("Which task do you want to accomplish?(1-5) \n");
+
+            int choice = reader1.nextInt();
+
+
+            switch (choice) {
+
+                case 1: //add Card
+                    addCardInterface();
+                    break;
+                case 2: //View a Card
+                    viewCardInterface();
+                    break;
+
+                case 3: //Print all Cards(finish later)
                     System.out.println("Are you sure that you want to VIEW the CARD LIST?(y/n)");
-                    confirmation = reader2.next();
-                    if(confirmation.toLowerCase().equals("y")) {
-                        System.out.println("You can View card list now");
+                    String confirmation = reader2.next();
+                    if (confirmation.toLowerCase().equals("y")) {
+                        System.out.println("Functionality coming Soon");
                         break;
                     }
-                case 4:
+                    break;
+
+                case 4: //Quit
                     System.out.println("Are you sure that you want to QUIT?(y/n)");
                     confirmation = reader2.next();
-                    if(confirmation.toLowerCase().equals("y")) {
-                        System.out.println("You can quit the application");
+                    if (confirmation.toLowerCase().equals("y")) {
+                        System.out.println("Application shutting down");
                         changeFlag();
                         break;
                     }
-                case 5:
+                    break;
+
+                case 5: //Print list of options
                     printList();
                     break;
+                    
                 default:
                     System.out.println("The choice selected is invalid. Try again");
                     System.out.println("If you want a list of possible actions, press 5 when prompted");
                     System.out.println("-------------------------------------------------------------");
-                    return -1;
+
 
             }
 
         }
+        System.out.println("Program is terminating");
+        System.out.println("-------------------------------------------------------------");
 
         return 0;
     }
 
+    //case 1
+    private void addCardInterface() {
+        System.out.println("Are you sure that you want to ADD a card?(y/n)");
+        //String confirmation = reader2.next();
+        String confirmation = reader2.nextLine();
+        if (confirmation.toLowerCase().equals("y")) {
+
+            System.out.println("Enter your Title: \n");
+            String CardTitle = title.nextLine();
+            System.out.println("--------------------");
+
+            System.out.println("Enter the priority for this card:(0-10)");
+            int CardPriority = priority.nextInt();
+            System.out.println("----------------------------------------");
+
+            System.out.println("Provide a description for the card(This is optional)");
+            String CardDescription = description.nextLine();
+            System.out.println("----------------------------------------------------");
+
+            System.out.println("When is your deadline?");
+            String CardDeadline = deadline.nextLine();
+            System.out.println("----------------------------------------------------");
+
+
+            Card newCard = new Card(CardTitle, CardPriority, CardDescription, CardDeadline);
+            list.addCard(newCard);
+
+            //newCard.viewCard();
+
+            System.out.println("You have added a card successfully");
+            Options();
+
+
+        } else {
+            Options();
+        }
+
+    }
+
+    //case2
+    private void viewCardInterface() {
+        System.out.println("Are you sure that you want to VIEW a card?(y/n)");
+        String confirmation = reader2.next();
+        if (confirmation.toLowerCase().equals("y")) {
+            System.out.println("Enter Card Title");
+           String CardTitle = title.nextLine();
+            list.getCard(CardTitle).viewCard();
+
+
+            Options();
+
+
+        } else {
+            Options();
+        }
+    }
+
     //print a list of the options that the user has
-   private  void  printList(){
+    private void printList() {
         System.out.println("-----List of Options-----");
         System.out.println("-Add Card-(1)");
         System.out.println("-View Card-(2)");
@@ -86,5 +151,12 @@ public class userInterface {
 
     }
 
-
+    public static void main(String[] args) {
+       userInterface start = new userInterface();
+       start.Options();
+    }
 }
+
+
+
+
