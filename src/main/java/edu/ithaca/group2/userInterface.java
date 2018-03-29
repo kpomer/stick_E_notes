@@ -18,7 +18,7 @@ public class userInterface {
     }
     //user makes selection from the list
 
-    int Options() {
+    private int Options() {
         //implementing scanner
         Scanner reader1 = new Scanner(System.in);
 
@@ -36,40 +36,42 @@ public class userInterface {
 
 
             switch (choice) {
-                //calls the addCardFucntion
-                case 1:
+
+                case 1: //add Card
                     addCardInterface();
                     break;
-                case 2:
-                    //View a Card
+                case 2: //View a Card
                     viewCardInterface();
                     break;
-                //do this one later
-                case 3:
+
+                case 3: //Print all Cards(finish later)
                     System.out.println("Are you sure that you want to VIEW the CARD LIST?(y/n)");
                     String confirmation = reader2.next();
                     if (confirmation.toLowerCase().equals("y")) {
-                        System.out.println("You can View card list now");
+                        System.out.println("Functionality coming Soon");
                         break;
                     }
-                case 4:
+                    break;
+
+                case 4: //Quit
                     System.out.println("Are you sure that you want to QUIT?(y/n)");
                     confirmation = reader2.next();
                     if (confirmation.toLowerCase().equals("y")) {
-                        System.out.println("You can quit the application");
+                        System.out.println("Application shutting down");
                         changeFlag();
                         break;
                     }
                     break;
-                case 5:
 
+                case 5: //Print list of options
                     printList();
                     break;
+                    
                 default:
                     System.out.println("The choice selected is invalid. Try again");
                     System.out.println("If you want a list of possible actions, press 5 when prompted");
                     System.out.println("-------------------------------------------------------------");
-                    return -1;
+
 
             }
 
@@ -124,7 +126,7 @@ public class userInterface {
         System.out.println("Are you sure that you want to VIEW a card?(y/n)");
         String confirmation = reader2.next();
         if (confirmation.toLowerCase().equals("y")) {
-            System.out.println("Enter Card Priority");
+            System.out.println("Enter Card Title");
            String CardTitle = title.nextLine();
             list.getCard(CardTitle).viewCard();
 
