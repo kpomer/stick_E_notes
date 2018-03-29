@@ -72,6 +72,9 @@ public class Card {
     }
 
     public String viewCard(){
-        return title + "\nID: " + priority + "\n\t" + description + "\nDeadline: " + deadline;
+
+        System.out.println("Title:"+title+"\nID: "+priority+"\n\t"+"Description: "+description+"\nDeadline: "+deadline);
+        return "Title:"+title+"\nID : "+priority+"\n\t"+"Description: "+description+"\nDeadline: "+deadline;
+
     }
 }
