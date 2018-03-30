@@ -18,3 +18,9 @@ https://drive.google.com/file/d/1h-Ec8k0RwtCKnGqOPaZInToiTPzvFQ72/view?usp=shari
 
 State Diagram:  
 https://drive.google.com/file/d/10wUV8q1dP8K7ZXuPbCyZII4E2_YDEFVY/view?usp=sharing
+
+Sprint 1 Review:  
+https://docs.google.com/document/d/1aiHkwvWrXvkkyTsVoyt_dD-BouRiTeQpSPmCRcqpJK8/edit?usp=sharing
+
+Sprint 1 Retrospective Meeting:  
+https://docs.google.com/document/d/1oRtRXKemKTsIlZ8Xs5fe23ZYZsSCwVosgflvmFaY3zw/edit?usp=sharing
