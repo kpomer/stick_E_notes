@@ -94,23 +94,23 @@ class viewCardTest {
         String deadline = "11/12/18 - 7:00 am ECT.";
         Card card1 = new Card(title, priority,description,deadline);
 
-        String expectedViewCard = title+"\nID: "+priority+"\n\t"+description+"\nDeadline: "+deadline;
+        String expectedViewCard = "Title: "+title+"\nID: "+priority+"\n\t"+"Description: "+description+"\nDeadline: "+deadline;
         Assert.assertEquals(expectedViewCard,card1.viewCard());
 
         title ="title";
         priority = 1;
-        deadline = "no deadline yet";
-        description = "no description yet";
+        deadline = "";
+        description = "";
         Card card2 = new Card(title, priority);
-        expectedViewCard = title+"\nID: "+priority+"\n\t"+description+"\nDeadline: "+deadline;
+        expectedViewCard = "Title: "+title+"\nID: "+priority+"\n\t"+"Description: "+description+"\nDeadline: "+deadline;
         Assert.assertEquals(expectedViewCard,card2.viewCard());
 
         title ="Untitled Card";
         priority = 0;
-        deadline = "no deadline yet";
-        description = "no description yet";
+        deadline = "";
+        description = "";
         Card card3 = new Card();
-        expectedViewCard = title+"\nID: "+priority+"\n\t"+description+"\nDeadline: "+deadline;
+        expectedViewCard = "Title: "+title+"\nID: "+priority+"\n\t"+"Description: "+description+"\nDeadline: "+deadline;
         Assert.assertEquals(expectedViewCard,card3.viewCard());
 
         System.out.println(card1.viewCard()+"\n_______\n"+card2.viewCard()+"\n_______\n"+card3.viewCard());
