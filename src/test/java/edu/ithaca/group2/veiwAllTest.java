@@ -37,7 +37,7 @@ class veiwAllTest {
         //System.out.println();
         testw.veiwAllcards();
         assertEquals("Do Laundry",title);
-        assertEquals(3, priority2);
+        assertEquals(1, priority2);
         assertEquals("Rice and Stew recipe",desciption2);
         assertEquals("Saturday @ 2:45",deadline3);
 
