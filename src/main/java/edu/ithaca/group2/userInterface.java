@@ -208,8 +208,8 @@ public class userInterface {
                         System.out.println("Please enter the new priority for this card");
                         int newPriority = reader2.nextInt();
                         System.out.println("----------------------------------------------------");
-                        list.getCard(CardTitle).changePriority(newPriority, list.getCardCount());
-                        list.changePriority(list.getCard(CardTitle), newPriority);
+                        list.getCard(CardTitle).changePriority(newPriority, list.getCardCount());//Change priority in card
+                        list.changePriority(list.getCard(CardTitle), newPriority);//Change priority in workspace
                         break;
 
                     case 3://Description
