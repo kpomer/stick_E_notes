@@ -30,6 +30,11 @@ public class editCardTest {
         testWorkspace.getCard(0).changeDescription("newDescription");
         testWorkspace.getCard(0).changeDeadline("newDeadline");
 
+        assertEquals("newTitle", testWorkspace.getCard(0).getTitle());
+        assertEquals(0, testWorkspace.getCard(0).getPriority());
+        assertEquals("newDescription", testWorkspace.getCard(0).getDescription());
+        assertEquals("newDeadline", testWorkspace.getCard(0).getDeadline());
+
     }
 
 }
