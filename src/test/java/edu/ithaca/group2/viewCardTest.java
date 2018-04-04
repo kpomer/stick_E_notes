@@ -105,7 +105,7 @@ class viewCardTest {
         expectedViewCard = "Title: "+title+"\nID: "+priority+"\n\t"+"Description: "+description+"\nDeadline: "+deadline;
         Assert.assertEquals(expectedViewCard,card2.viewCard());
 
-        title ="Untitled Card";
+        title ="";
         priority = 0;
         deadline = "";
         description = "";
