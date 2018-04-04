@@ -66,6 +66,9 @@ public class userInterface {
                 case 5: //Print list of options
                     printList();
                     break;
+
+                case 6://Edit card that is already in workspace
+                    editCardInterface();
                     
                 default:
                     System.out.println("The choice selected is invalid. Try again");
@@ -128,8 +131,18 @@ public class userInterface {
         if (confirmation.toLowerCase().equals("y")) {
             System.out.println("Enter Card Title");
            String CardTitle = title.nextLine();
-            list.getCard(CardTitle).viewCard();
-
+           boolean inList = false;
+           for (int p=0; p<list.getCardCount(); p++) {
+               if (list.getCard(p).getTitle() == CardTitle) {
+                   inList = true;
+               }
+           }
+           if (inList==true) {
+               list.getCard(CardTitle).viewCard();
+           }
+           else{
+                   System.out.println(CardTitle+" is not found in the Workspace.");
+           }
 
             Options();
 
@@ -149,6 +162,77 @@ public class userInterface {
         System.out.println("-To view list of Options-(5)");
         System.out.println("-------------------------");
 
+    }
+
+    private void editCardInterface(){
+        System.out.println("Are you sure that you want to EDIT a card?(y/n)");
+        String confirmation = reader2.next();
+        if (confirmation.toLowerCase().equals("y")) {
+            System.out.println("Enter Title of Card to Edit");
+            String CardTitle = title.nextLine();
+            boolean inList = false;
+            for (int p=0; p<list.getCardCount(); p++) {
+                if (list.getCard(p).getTitle() == CardTitle) {
+                    inList = true;
+                }
+            }
+            if (inList==true) {
+
+                System.out.println("-----List of Fields-----");
+                System.out.println("-Title-(1)");
+                System.out.println("-Priority-(2)");
+                System.out.println("-Description-(3)");
+                System.out.println("-Deadline-(4)");
+                System.out.println("-------------------------\n");
+                System.out.println("Select Card Field to Change");
+
+                int field = reader2.nextInt();
+
+                switch (field) {
+                    case 1://Title
+                        System.out.println("You selected to change the TITLE of the following card: "+CardTitle);
+                        System.out.println("Please enter the new title for this card");
+                        String newTitle = reader2.nextLine();
+                        list.getCard(CardTitle).changeTitle(newTitle);
+                        break;
+
+                    case 2://Priority
+                        System.out.println("You selected to change the PRIORITY of the following card: "+CardTitle);
+                        System.out.println("The current priority of this card is: "+list.getCard(CardTitle).getPriority());
+                        System.out.println("Please enter the new priority for this card");
+                        int newPriority = reader2.nextInt();
+                        list.getCard(CardTitle).changePriority(newPriority, list.getCardCount());
+                        list.changePriority(list.getCard(CardTitle), newPriority);
+                        break;
+
+                    case 3://Description
+                        System.out.println("You selected to change the DESCRIPTION of the following card: "+CardTitle);
+                        System.out.println("The current description of this card is: "+list.getCard(CardTitle).getDescription());
+                        System.out.println("Please enter the new description for this card");
+                        String newDescription = reader2.nextLine();
+                        list.getCard(CardTitle).changeDescription(newDescription);
+                        break;
+
+                    case 4://Deadline
+                        System.out.println("You selected to change the DEADLINE of the following card: "+CardTitle);
+                        System.out.println("The current deadline of this card is: "+list.getCard(CardTitle).getDeadline());
+                        System.out.println("Please enter the new deadline for this card");
+                        String newDeadline = reader2.nextLine();
+                        list.getCard(CardTitle).changeDeadline(newDeadline);
+
+                    default:
+                        System.out.println("The choice selected is invalid");
+                }
+            }
+
+            else{
+                    System.out.println(CardTitle+" is not found in the Workspace.");
+                }
+
+
+            } else {
+            Options();
+        }
     }
 
     public static void main(String[] args) {
