@@ -31,7 +31,9 @@ class veiwAllTest {
         testWorkspace.addCard(testCard);
         testWorkspace.addCard(testCard2);
 
-        assertEquals(testWorkspace.getCard(0).getTitle(), testWorkspace.viewAllCards());
+        String titleList = testWorkspace.getCard(0).getTitle()+", "+testWorkspace.getCard(1);
+
+        assertEquals(titleList, testWorkspace.viewAllCards());
     }
 
 
