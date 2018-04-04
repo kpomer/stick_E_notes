@@ -39,6 +39,25 @@ public class Card {
         this.deadline = deadline;
     }
 
+    public void changeTitle(String newTitle){
+        setTitle(newTitle);
+    }
+
+    public void changePriority(int priority, int cardCount){
+        if (priority<=(cardCount-1) && priority>=0){
+            setPriority(priority);
+        }
+
+    }
+
+    public void changeDescription(String newDescription){
+        setDescription(newDescription);
+    }
+
+    public void changeDeadline(String newDeadline){
+        setDeadline(newDeadline);
+    }
+
     public void setTitle(String title) {
         this.title = title;
     }

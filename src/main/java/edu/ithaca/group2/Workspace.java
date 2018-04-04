@@ -63,5 +63,18 @@ public class Workspace {
         throw new NoSuchElementException("Could not find Title: " + title);
     }
 
+    public int getCardCount(){
+        return this.cardCount;
+    }
+
+    public void changePriority(Card cardToMove, int newPriority){
+        if (newPriority>(cardCount-1) || newPriority<0) {
+            System.out.println("Sorry, priority number out of bounds.  Try again.");
+        }
+        else{
+            cardList.set(newPriority, cardToMove);
+        }
+    }
+
 
 }

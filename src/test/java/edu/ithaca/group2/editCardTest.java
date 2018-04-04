@@ -25,7 +25,9 @@ public class editCardTest {
         //SHOULD move testCard to 1 priority
         assertEquals("testCard", testWorkspace.getCard(1).getTitle());
 
-        testWorkspace.getCard(1).changePriority(0);
+        //Must call changePriority in Card and Workspace
+        testWorkspace.getCard(1).changePriority(0, testWorkspace.getCardCount());
+        testWorkspace.changePriority(testWorkspace.getCard(0), 1);
         testWorkspace.getCard(0).changeTitle("newTitle");
         testWorkspace.getCard(0).changeDescription("newDescription");
         testWorkspace.getCard(0).changeDeadline("newDeadline");
