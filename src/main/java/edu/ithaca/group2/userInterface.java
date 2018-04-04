@@ -4,6 +4,7 @@ import java.util.*;
 public class userInterface {
 
     private Scanner reader2 = new Scanner(System.in);
+    private Scanner reader3 = new Scanner(System.in);
     private Scanner title = new Scanner(System.in);
     private Scanner priority = new Scanner(System.in);
     private Scanner description = new Scanner(System.in);
@@ -30,7 +31,7 @@ public class userInterface {
 
 
         while (flag) {
-            System.out.println("Which task do you want to accomplish?(1-5) \n");
+            System.out.println("Which task do you want to accomplish?(1-6) \n");
 
             int choice = reader1.nextInt();
 
@@ -69,12 +70,13 @@ public class userInterface {
 
                 case 6://Edit card that is already in workspace
                     editCardInterface();
+                    break;
                     
                 default:
                     System.out.println("The choice selected is invalid. Try again");
                     System.out.println("If you want a list of possible actions, press 5 when prompted");
                     System.out.println("-------------------------------------------------------------");
-
+                    printList();
 
             }
 
@@ -110,11 +112,13 @@ public class userInterface {
 
 
             Card newCard = new Card(CardTitle, CardPriority, CardDescription, CardDeadline);
-            list.addCard(newCard);
+            int isAdded = list.addCard(newCard);
 
             //newCard.viewCard();
 
-            System.out.println("You have added a card successfully");
+            if (isAdded == 0) {
+                System.out.println("You have added a card successfully");
+            }
             Options();
 
 
@@ -133,7 +137,7 @@ public class userInterface {
            String CardTitle = title.nextLine();
            boolean inList = false;
            for (int p=0; p<list.getCardCount(); p++) {
-               if (list.getCard(p).getTitle() == CardTitle) {
+               if (list.getCard(p).getTitle().equals(CardTitle)) {
                    inList = true;
                }
            }
@@ -141,7 +145,7 @@ public class userInterface {
                list.getCard(CardTitle).viewCard();
            }
            else{
-                   System.out.println(CardTitle+" is not found in the Workspace.");
+                   System.out.println(CardTitle+" is not found in the Workspace\n\n");
            }
 
             Options();
@@ -160,6 +164,7 @@ public class userInterface {
         System.out.println("-View Card List-(3)");
         System.out.println("-To Exit Application-(4)");
         System.out.println("-To view list of Options-(5)");
+        System.out.println("-Edit Card-(6)");
         System.out.println("-------------------------");
 
     }
@@ -172,7 +177,7 @@ public class userInterface {
             String CardTitle = title.nextLine();
             boolean inList = false;
             for (int p=0; p<list.getCardCount(); p++) {
-                if (list.getCard(p).getTitle() == CardTitle) {
+                if (list.getCard(p).getTitle().equals(CardTitle)) {
                     inList = true;
                 }
             }
@@ -192,7 +197,8 @@ public class userInterface {
                     case 1://Title
                         System.out.println("You selected to change the TITLE of the following card: "+CardTitle);
                         System.out.println("Please enter the new title for this card");
-                        String newTitle = reader2.nextLine();
+                        String newTitle = reader3.nextLine();
+                        System.out.println("----------------------------------------------------");
                         list.getCard(CardTitle).changeTitle(newTitle);
                         break;
 
@@ -201,6 +207,7 @@ public class userInterface {
                         System.out.println("The current priority of this card is: "+list.getCard(CardTitle).getPriority());
                         System.out.println("Please enter the new priority for this card");
                         int newPriority = reader2.nextInt();
+                        System.out.println("----------------------------------------------------");
                         list.getCard(CardTitle).changePriority(newPriority, list.getCardCount());
                         list.changePriority(list.getCard(CardTitle), newPriority);
                         break;
@@ -209,7 +216,8 @@ public class userInterface {
                         System.out.println("You selected to change the DESCRIPTION of the following card: "+CardTitle);
                         System.out.println("The current description of this card is: "+list.getCard(CardTitle).getDescription());
                         System.out.println("Please enter the new description for this card");
-                        String newDescription = reader2.nextLine();
+                        String newDescription = reader3.nextLine();
+                        System.out.println("----------------------------------------------------");
                         list.getCard(CardTitle).changeDescription(newDescription);
                         break;
 
@@ -217,8 +225,10 @@ public class userInterface {
                         System.out.println("You selected to change the DEADLINE of the following card: "+CardTitle);
                         System.out.println("The current deadline of this card is: "+list.getCard(CardTitle).getDeadline());
                         System.out.println("Please enter the new deadline for this card");
-                        String newDeadline = reader2.nextLine();
+                        String newDeadline = reader3.nextLine();
+                        System.out.println("----------------------------------------------------");
                         list.getCard(CardTitle).changeDeadline(newDeadline);
+                        break;
 
                     default:
                         System.out.println("The choice selected is invalid");
@@ -226,7 +236,7 @@ public class userInterface {
             }
 
             else{
-                    System.out.println(CardTitle+" is not found in the Workspace.");
+                    System.out.println(CardTitle+" is not found in the Workspace.\n\n");
                 }
 
 

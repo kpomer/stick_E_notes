@@ -72,7 +72,19 @@ public class Workspace {
             System.out.println("Sorry, priority number out of bounds.  Try again.");
         }
         else{
-            cardList.set(newPriority, cardToMove);
+            if (cardToMove.getPriority()!=newPriority) {
+                if (newPriority<cardToMove.getPriority()) {
+                    for (int p = (newPriority + 1); p < cardCount; p++) {
+                        this.getCard(p).setPriority(p);
+                    }
+                }
+                else if (newPriority>cardToMove.getPriority()){
+                    for (int p = (cardToMove.getPriority()+1); p <=newPriority; p++) {
+                        this.getCard(p).setPriority(p-1);
+                    }
+                }
+                cardList.set(newPriority, cardToMove);
+            }
         }
     }
 
