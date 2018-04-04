@@ -63,5 +63,30 @@ public class Workspace {
         throw new NoSuchElementException("Could not find Title: " + title);
     }
 
+    public int getCardCount(){
+        return this.cardCount;
+    }
+
+    public void changePriority(Card cardToMove, int newPriority){
+        if (newPriority>(cardCount-1) || newPriority<0) {
+            System.out.println("Sorry, priority number out of bounds.  Try again.");
+        }
+        else{
+            if (cardToMove.getPriority()!=newPriority) {
+                if (newPriority<cardToMove.getPriority()) {
+                    for (int p = (newPriority + 1); p < cardCount; p++) {
+                        this.getCard(p).setPriority(p);
+                    }
+                }
+                else if (newPriority>cardToMove.getPriority()){
+                    for (int p = (cardToMove.getPriority()+1); p <=newPriority; p++) {
+                        this.getCard(p).setPriority(p-1);
+                    }
+                }
+                cardList.set(newPriority, cardToMove);
+            }
+        }
+    }
+
 
 }
