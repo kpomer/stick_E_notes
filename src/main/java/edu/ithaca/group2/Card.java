@@ -12,7 +12,7 @@ public class Card {
     //default constructor
     public Card(){
         //A card only needs a title and a priority, however, it can also have a description and a deadline.
-        this.title = "Untitled Card";
+        this.title = "";
         this.priority = 0;
 
         this.description = "";
