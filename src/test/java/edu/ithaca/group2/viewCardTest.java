@@ -94,7 +94,7 @@ class viewCardTest {
         String deadline = "11/12/18 - 7:00 am ECT.";
         Card card1 = new Card(title, priority,description,deadline);
 
-        String expectedViewCard = "Title: "+title+"\nID: "+priority+"\n\t"+"Description: "+description+"\nDeadline: "+deadline;
+        String expectedViewCard = title+"\nID: "+priority+"\n\t"+description+"\nDeadline: "+deadline;
         Assert.assertEquals(expectedViewCard,card1.viewCard());
 
         title ="title";
@@ -102,17 +102,37 @@ class viewCardTest {
         deadline = "";
         description = "";
         Card card2 = new Card(title, priority);
-        expectedViewCard = "Title: "+title+"\nID: "+priority+"\n\t"+"Description: "+description+"\nDeadline: "+deadline;
+
+        expectedViewCard = title+"\nID: "+priority;
+
         Assert.assertEquals(expectedViewCard,card2.viewCard());
 
-        title ="Untitled Card";
+        title ="";
         priority = 0;
         deadline = "";
         description = "";
         Card card3 = new Card();
-        expectedViewCard = "Title: "+title+"\nID: "+priority+"\n\t"+"Description: "+description+"\nDeadline: "+deadline;
+
+        expectedViewCard = title+"\nID: "+priority;
+
         Assert.assertEquals(expectedViewCard,card3.viewCard());
 
-        System.out.println(card1.viewCard()+"\n_______\n"+card2.viewCard()+"\n_______\n"+card3.viewCard());
+        title ="title";
+        priority = 1;
+        deadline = "";
+        description = "";
+        Card card4 = new Card(title, priority, description, deadline);
+        expectedViewCard = title+"\nID: "+priority;
+        Assert.assertEquals(expectedViewCard,card4.viewCard());
+
+        title ="title";
+        priority = 1;
+        deadline = "11/28/18";
+        description = "";
+        Card card5 = new Card(title, priority, description, deadline);
+        expectedViewCard = title+"\nID: "+priority+ "\nDeadline: "+deadline;
+        Assert.assertEquals(expectedViewCard,card5.viewCard());
+
+        System.out.println(card1.viewCard()+"\n_______\n"+card2.viewCard()+"\n_______\n"+card3.viewCard()+"\n_______\n"+card4.viewCard()+"\n_______\n"+card5.viewCard());
     }
 }
