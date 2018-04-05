@@ -12,7 +12,7 @@ public class Card {
     //default constructor
     public Card(){
         //A card only needs a title and a priority, however, it can also have a description and a deadline.
-        this.title = "Untitled Card";
+        this.title = "";
         this.priority = 0;
 
         this.description = "";
@@ -37,6 +37,25 @@ public class Card {
 
         this.description = description;
         this.deadline = deadline;
+    }
+
+    public void changeTitle(String newTitle){
+        setTitle(newTitle);
+    }
+
+    public void changePriority(int priority, int cardCount){
+        if (priority<=(cardCount-1) && priority>=0){
+            setPriority(priority);
+        }
+
+    }
+
+    public void changeDescription(String newDescription){
+        setDescription(newDescription);
+    }
+
+    public void changeDeadline(String newDeadline){
+        setDeadline(newDeadline);
     }
 
     public void setTitle(String title) {
@@ -73,6 +92,7 @@ public class Card {
 
     public String viewCard(){
 
+
         if(description == "" && deadline == ""){
             return title + "\nID: " + priority;
         }else if(description == ""){
@@ -82,5 +102,6 @@ public class Card {
         }else {
             return title + "\nID: " + priority + "\n\t" + description + "\nDeadline: " + deadline;
         }
+
     }
 }

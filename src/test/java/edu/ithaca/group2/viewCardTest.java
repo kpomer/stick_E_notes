@@ -102,15 +102,19 @@ class viewCardTest {
         deadline = "";
         description = "";
         Card card2 = new Card(title, priority);
+
         expectedViewCard = title+"\nID: "+priority;
+
         Assert.assertEquals(expectedViewCard,card2.viewCard());
 
-        title ="Untitled Card";
+        title ="";
         priority = 0;
         deadline = "";
         description = "";
         Card card3 = new Card();
+
         expectedViewCard = title+"\nID: "+priority;
+
         Assert.assertEquals(expectedViewCard,card3.viewCard());
 
         title ="title";

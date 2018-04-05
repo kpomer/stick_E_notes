@@ -1,4 +1,5 @@
 package edu.ithaca.group2;
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
@@ -46,14 +47,45 @@ public class Workspace {
     }
 
     public Card getCard(String title) throws NoSuchElementException{
+
+
         for(int p = 0; p<cardCount; p++)
         {
-            if (cardList.get(p).getTitle() == title)
+
+            if (cardList.get(p).getTitle().equals(title))
             {
+
+//                System.out.println(cardList.get(p).getTitle());
+//                System.out.println(title);
                 return cardList.get(p);
             }
         }
         throw new NoSuchElementException("Could not find Title: " + title);
+    }
+
+    public int getCardCount(){
+        return this.cardCount;
+    }
+
+    public void changePriority(Card cardToMove, int newPriority){
+        if (newPriority>(cardCount-1) || newPriority<0) {
+            System.out.println("Sorry, priority number out of bounds.  Try again.");
+        }
+        else{
+            if (cardToMove.getPriority()!=newPriority) {
+                if (newPriority<cardToMove.getPriority()) {
+                    for (int p = (newPriority + 1); p < cardCount; p++) {
+                        this.getCard(p).setPriority(p);
+                    }
+                }
+                else if (newPriority>cardToMove.getPriority()){
+                    for (int p = (cardToMove.getPriority()+1); p <=newPriority; p++) {
+                        this.getCard(p).setPriority(p-1);
+                    }
+                }
+                cardList.set(newPriority, cardToMove);
+            }
+        }
     }
 
 
