@@ -1,5 +1,7 @@
 # stick_E_notes
 
+![build status](https://circleci.com/gh/kpomer/stick_E_notes.png?circle-token=circle-token "Master Build Status")
+
 Waffle Board:  
 https://waffle.io/kpomer/stick_E_notes
 
