@@ -63,6 +63,20 @@ public class Workspace {
         throw new NoSuchElementException("Could not find Title: " + title);
     }
 
+
+    public String viewAllCards() {
+        String allCards = "";
+        for (int i = 0; i < this.cardCount; i++) {
+            allCards = allCards + cardList.get(i).getTitle();
+            allCards = allCards + ", " + cardList.get(i).getPriority();
+            ///Tell the code to change allCards using a for loop of the titles and maybe the priority numbers
+            //Make sure to format this string either so that it works with the test (by changing this string or the expected one in the test
+
+
+        }
+        return allCards;
+    }
+
     public int getCardCount(){
         return this.cardCount;
     }
