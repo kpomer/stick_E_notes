@@ -1,4 +1,5 @@
 package edu.ithaca.group2;
+import java.sql.SQLOutput;
 import java.util.*;
 
 public class userInterface {
@@ -9,6 +10,7 @@ public class userInterface {
     private Scanner priority = new Scanner(System.in);
     private Scanner description = new Scanner(System.in);
     private Scanner deadline = new Scanner(System.in);
+    private Scanner color = new Scanner(System.in);
     private boolean flag = true;
 
     private Workspace list = new Workspace();
@@ -110,8 +112,12 @@ public class userInterface {
             String CardDeadline = deadline.nextLine();
             System.out.println("----------------------------------------------------");
 
+            System.out.println("Select a color");
+            String CardColor = color.nextLine();
+            System.out.println("----------------------------------------------------");
 
-            Card newCard = new Card(CardTitle, CardPriority, CardDescription, CardDeadline);
+
+            Card newCard = new Card(CardTitle, CardPriority, CardDescription, CardDeadline,CardColor);
             int isAdded = list.addCard(newCard);
 
             //newCard.viewCard();
@@ -141,8 +147,9 @@ public class userInterface {
                    inList = true;
                }
            }
-           if (inList==true) {
+           if (inList) {
                list.getCard(CardTitle).viewCard();
+               System.out.println(list.getCard(CardTitle).viewCard());
            }
            else{
                    System.out.println(CardTitle+" is not found in the Workspace\n\n");
@@ -229,9 +236,17 @@ public class userInterface {
                         System.out.println("----------------------------------------------------");
                         list.getCard(CardTitle).changeDeadline(newDeadline);
                         break;
-
+                    case 5: //Color Field
+                        System.out.println("You selected to change the COLOR of the following card: "+CardTitle);
+                        System.out.println("The current color of this card is: "+list.getCard(CardTitle).getColor());
+                        System.out.println("Please enter the new deadline for this card");
+                        String newColor = color.nextLine();
+                        System.out.println("----------------------------------------------------");
+                        list.getCard(CardTitle).changeColor(newColor);
+                        break;
                     default:
                         System.out.println("The choice selected is invalid");
+
                 }
             }
 

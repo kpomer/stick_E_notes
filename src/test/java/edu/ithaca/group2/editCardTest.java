@@ -11,7 +11,7 @@ public class editCardTest {
     void changeFields(){
         //Change the fields of a card that has already been created
         Workspace testWorkspace = new Workspace();
-        Card testCard = new Card("title", 0, "description", "deadline");
+        Card testCard = new Card("title", 0, "description", "deadline","red");
 
         assertEquals(0, testWorkspace.addCard(testCard));
         assertEquals("title", testWorkspace.getCard(0).getTitle());
@@ -19,7 +19,7 @@ public class editCardTest {
         assertEquals("description", testWorkspace.getCard(0).getDescription());
         assertEquals("deadline", testWorkspace.getCard(0).getDeadline());
 
-        Card testCard2 = new Card("title2", 0, "description2", "deadline2");
+        Card testCard2 = new Card("title2", 0, "description2", "deadline2", "blue");
         testWorkspace.addCard(testCard2);
         //added testCard2 to 0 priority
         //SHOULD move testCard to 1 priority
