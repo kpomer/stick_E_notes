@@ -20,7 +20,7 @@ class veiwAllTest {
         Card testCard = new Card("title", 0, "description", "Deadline");
         testWorkspace.addCard(testCard);
 
-        String titleList= testWorkspace.getCard(0).getTitle()+", "+testWorkspace.getCard(0).getPriority();
+        String titleList= testWorkspace.getCard(0).getPriority()+"\t"+testWorkspace.getCard(0).getTitle();
 
 
         assertEquals(titleList, testWorkspace.viewAllCards());
@@ -35,8 +35,8 @@ class veiwAllTest {
         testWorkspace.addCard(testCard);
         testWorkspace.addCard(testCard2);
 
-        String titleList = testWorkspace.getCard(0).getTitle()+", "+testWorkspace.getCard(0).getPriority();
-        String titleList2 = testWorkspace.getCard(1).getTitle()+", "+testWorkspace.getCard(1).getPriority();
+        String titleList = testWorkspace.getCard(0).getPriority()+"\t"+testWorkspace.getCard(0).getTitle()+"\n";
+        String titleList2 = testWorkspace.getCard(1).getPriority()+"\t"+testWorkspace.getCard(1).getTitle();
 
         assertEquals(titleList+titleList2, testWorkspace.viewAllCards());
         System.out.println(testWorkspace.viewAllCards());
