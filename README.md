@@ -26,3 +26,7 @@ https://docs.google.com/document/d/1aiHkwvWrXvkkyTsVoyt_dD-BouRiTeQpSPmCRcqpJK8/
 
 Sprint 1 Retrospective Meeting:  
 https://docs.google.com/document/d/1oRtRXKemKTsIlZ8Xs5fe23ZYZsSCwVosgflvmFaY3zw/edit?usp=sharing
+
+
+Sprint 2 Goal: "Develop a variety of card features to create a personalized/customizable user experience"
+
