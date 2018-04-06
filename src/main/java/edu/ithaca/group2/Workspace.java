@@ -26,13 +26,14 @@ public class Workspace {
         }
 
         else{
-            cardList.add(priority, toAdd);
-            this.cardCount++;
             //Change priority of cards following new card
-            for (int p = (priority+1); p<cardCount; p++)
+            for (int p = cardCount; p>priority; p++)
             {
-                this.getCard(p).setPriority(p);
+                cardList.add(p, cardList.get(p-1));
+                cardList.get(p).setPriority(p);
             }
+            cardList.add(priority, toAdd);
+            cardCount++;
             return 0;
         }
     }
