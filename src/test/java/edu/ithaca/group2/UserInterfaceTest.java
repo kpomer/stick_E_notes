@@ -4,12 +4,12 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class userInterfaceTest {
+class UserInterfaceTest {
 
 //    @Test
 //    void OptionsTest(){
 //        int userInput = 1;
-//        userInterface test = new userInterface();
+//        UserInterface test = new UserInterface();
 //        //assertEquals(0,test.Options(userInput), "this should pass");
 //    }
 //    @Test
@@ -20,7 +20,7 @@ class userInterfaceTest {
 //        int priority = 0;
 //        String Description = "I need to read 80 pages";
 //        String DeadLine = "04/21/2018";
-//        userInterface test = new userInterface();
+//        UserInterface test = new UserInterface();
 //
 //        assertEquals(0,test.Options(userInput,yn, title, priority,Description,DeadLine), "this should pass");
 //    }
@@ -33,7 +33,7 @@ class userInterfaceTest {
 //        int priority = 9;
 //        String Description = "I need to read 80 pages";
 //        String DeadLine = "04/21/2018";
-//        userInterface test = new userInterface();
+//        UserInterface test = new UserInterface();
 //
 //        assertEquals(0,test.Options(userInput,yn, title, priority,Description,DeadLine), "this should pass");
 //

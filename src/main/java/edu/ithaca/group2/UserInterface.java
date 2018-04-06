@@ -1,7 +1,7 @@
 package edu.ithaca.group2;
 import java.util.*;
 
-public class userInterface {
+public class UserInterface {
 
     private Scanner reader2 = new Scanner(System.in);
     private Scanner reader3 = new Scanner(System.in);
@@ -246,7 +246,7 @@ public class userInterface {
     }
 
     public static void main(String[] args) {
-       userInterface start = new userInterface();
+       UserInterface start = new UserInterface();
        start.Options();
     }
 }
