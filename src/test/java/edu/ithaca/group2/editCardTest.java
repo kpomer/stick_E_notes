@@ -69,7 +69,7 @@ public class editCardTest {
         assertEquals(3, tws.getCard("testCard3").getPriority());
 
         Card testCard5 = new Card("testCard5", 0, "d", "d");
-        tws.addCard(testCard4);
+        tws.addCard(testCard5);
         assertEquals("0\ttestCard5\n1\ttestCard1\n2\ttestCard4\n3\ttestCard2\n4\ttestCard3", tws.viewAllCards());
         assertEquals(0, tws.getCard("testCard5").getPriority());
         assertEquals(1, tws.getCard("testCard1").getPriority());
@@ -79,6 +79,7 @@ public class editCardTest {
 
         tws.getCard("testCard4").changePriority(1, tws.getCardCount());//Change priority in card
         tws.changePriority(tws.getCard("testCard4"), 1);//Change priority in workspace
+
 
         assertEquals("0\ttestCard5\n1\ttestCard4\n2\ttestCard1\n3\ttestCard2\n4\ttestCard3", tws.viewAllCards());
         assertEquals(0, tws.getCard("testCard5").getPriority());

@@ -27,10 +27,9 @@ public class Workspace {
 
         else{
             //Change priority of cards following new card
-            for (int p = cardCount; p>priority; p++)
+            for (int p = priority; p<cardCount; p++)
             {
-                cardList.add(p, cardList.get(p-1));
-                cardList.get(p).setPriority(p);
+                cardList.get(p).setPriority(p+1);
             }
             cardList.add(priority, toAdd);
             cardCount++;
