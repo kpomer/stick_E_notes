@@ -104,7 +104,6 @@ public class editCardTest {
         assertEquals(3, tws.getCard("testCard5").getPriority());
         assertEquals(4, tws.getCard("testCard3").getPriority());
 
-        System.out.println(tws.viewAllCards());
     }
 
 }
