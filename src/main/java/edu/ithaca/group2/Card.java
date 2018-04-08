@@ -9,7 +9,7 @@ public class Card {
     String description = "";
     String deadline = "";
 
-    String color = "white";
+    String color = "";
 
     //default constructor
     public Card(){

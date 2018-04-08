@@ -99,16 +99,17 @@ class viewCardTest {
         String color = "red";
         Card card1 = new Card(title, priority,description,deadline, color);
 
-        String expectedViewCard = title+"\nID: "+priority+"\n\t"+description+"\nDeadline: "+deadline;
+        String expectedViewCard = title+"\nID: "+priority+"\n\t"+description+"\nDeadline: "+deadline+"\nCard Color:"+ color;
         Assert.assertEquals(expectedViewCard,card1.viewCard());
 
         title ="title";
         priority = 1;
         deadline = "";
         description = "";
+        color = "white";
         Card card2 = new Card(title, priority);
 
-        expectedViewCard = title+"\nID: "+priority;
+        expectedViewCard = title+"\nID: "+priority+"\nCard Color:"+ color;
 
         Assert.assertEquals(expectedViewCard,card2.viewCard());
 
@@ -116,9 +117,10 @@ class viewCardTest {
         priority = 0;
         deadline = "";
         description = "";
-        Card card3 = new Card();
+        color = "red";
+        Card card3 = new Card(title,priority,description, deadline,color);
 
-        expectedViewCard = title+"\nID: "+priority;
+        expectedViewCard = title+"\nID: "+priority+"\nCard Color:"+ color;
 
         Assert.assertEquals(expectedViewCard,card3.viewCard());
 
@@ -126,8 +128,9 @@ class viewCardTest {
         priority = 1;
         deadline = "";
         description = "";
+        color = "blue";
         Card card4 = new Card(title, priority, description, deadline, color);
-        expectedViewCard = title+"\nID: "+priority;
+        expectedViewCard = title+"\nID: "+priority +"\nCard Color:"+ color;
         Assert.assertEquals(expectedViewCard,card4.viewCard());
 
         title ="title";
@@ -135,7 +138,7 @@ class viewCardTest {
         deadline = "11/28/18";
         description = "";
         Card card5 = new Card(title, priority, description, deadline, color);
-        expectedViewCard = title+"\nID: "+priority+ "\nDeadline: "+deadline;
+        expectedViewCard = title+"\nID: "+priority+ "\nDeadline: "+deadline+"\nCard Color:"+ color;
         Assert.assertEquals(expectedViewCard,card5.viewCard());
 
         System.out.println(card1.viewCard()+"\n_______\n"+card2.viewCard()+"\n_______\n"+card3.viewCard()+"\n_______\n"+card4.viewCard()+"\n_______\n"+card5.viewCard());

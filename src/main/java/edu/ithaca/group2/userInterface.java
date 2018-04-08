@@ -240,7 +240,7 @@ public class userInterface {
                         System.out.println("You selected to change the COLOR of the following card: "+CardTitle);
                         System.out.println("The current color of this card is: "+list.getCard(CardTitle).getColor());
                         System.out.println("Please enter the new deadline for this card");
-                        String newColor = color.nextLine();
+                        String newColor = color.nextLine().toLowerCase();
                         System.out.println("----------------------------------------------------");
                         list.getCard(CardTitle).changeColor(newColor);
                         break;
