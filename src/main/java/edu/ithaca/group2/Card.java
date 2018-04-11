@@ -1,6 +1,10 @@
 package edu.ithaca.group2;
 
 
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+
 public class Card {
 
     String title;
@@ -17,6 +21,7 @@ public class Card {
 
         this.description = "";
         this.deadline = "";
+        Calendar cal;
     }
 
     //constructor if only title and priority are given

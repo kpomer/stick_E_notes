@@ -3,6 +3,8 @@ package edu.ithaca.group2;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
+import java.util.Calendar;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class viewCardTest {
@@ -134,5 +136,18 @@ class viewCardTest {
         Assert.assertEquals(expectedViewCard,card5.viewCard());
 
         System.out.println(card1.viewCard()+"\n_______\n"+card2.viewCard()+"\n_______\n"+card3.viewCard()+"\n_______\n"+card4.viewCard()+"\n_______\n"+card5.viewCard());
+    }
+    @Test
+    void QuantDateTest() {
+        Calendar calendar = Calendar.getInstance();
+        Card card1=new Card("Title", 0,"stuff","4/11/2018");
+        System.out.println(calendar.getTime());
+        String deadline = Integer.toString(calendar.get(Calendar.MONTH)+1)+"/";//+1 because Jan is considered 0;
+        String deadline2 = Integer.toString(calendar.get(Calendar.DAY_OF_MONTH))+"/";
+        String deadline3 =Integer.toString(calendar.get(Calendar.YEAR));
+        System.out.println(deadline+deadline2+deadline3);
+        assertEquals(deadline+deadline2+deadline3,card1.deadline);
+
+
     }
 }

@@ -1,6 +1,7 @@
 package edu.ithaca.group2;
 import java.sql.SQLOutput;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.NoSuchElementException;
 
 public class Workspace {
@@ -12,7 +13,6 @@ public class Workspace {
         cardList = new ArrayList<Card>();
         cardCount = 0;
     }
-
     public int addCard(Card toAdd){
         int priority = toAdd.getPriority();
 
@@ -104,6 +104,8 @@ public class Workspace {
             }
         }
     }
+    //Test to see if an entered date is the same as proposed date
+    // Test to see that
 
 
 }
