@@ -49,7 +49,7 @@ public class UserInterface {
                     System.out.println("Are you sure that you want to VIEW the CARD LIST?(y/n)");
                     String confirmation = reader2.next();
                     if (confirmation.toLowerCase().equals("y")) {
-                        System.out.println("Functionality coming Soon");
+                        System.out.println(list.viewAllCards());
                         break;
                     }
                     break;
@@ -210,7 +210,7 @@ public class UserInterface {
                }
            }
            if (inList==true) {
-               list.getCard(CardTitle).viewCard();
+               System.out.println(list.getCard(CardTitle).viewCard());
            }
            else{
                    System.out.println(CardTitle+" is not found in the Workspace\n\n");
