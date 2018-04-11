@@ -26,13 +26,13 @@ public class Workspace {
         }
 
         else{
-            cardList.add(priority, toAdd);
-            this.cardCount++;
             //Change priority of cards following new card
-            for (int p = (priority+1); p<cardCount; p++)
+            for (int p = priority; p<cardCount; p++)
             {
-                this.getCard(p).setPriority(p);
+                cardList.get(p).setPriority(p+1);
             }
+            cardList.add(priority, toAdd);
+            cardCount++;
             return 0;
         }
     }
@@ -91,16 +91,21 @@ public class Workspace {
         else{
             if (cardToMove.getPriority()!=newPriority) {
                 if (newPriority<cardToMove.getPriority()) {
-                    for (int p = (newPriority + 1); p < cardCount; p++) {
-                        this.getCard(p).setPriority(p);
+                    for (int p = (cardToMove.getPriority()-1); p >= newPriority; p--) {
+                        this.getCard(p).setPriority(p+1);
+                        cardList.set(p+1, cardList.get(p));
                     }
+                    cardList.set(newPriority, cardToMove);
+                    cardToMove.setPriority(newPriority);
                 }
                 else if (newPriority>cardToMove.getPriority()){
-                    for (int p = (cardToMove.getPriority()+1); p <=newPriority; p++) {
-                        this.getCard(p).setPriority(p-1);
+                    for (int p = (cardToMove.getPriority()); p <newPriority; p++) {
+                        this.getCard(p+1).setPriority(p);
+                        cardList.set(p, cardList.get(p+1));
                     }
+                    cardList.set(newPriority, cardToMove);
+                    cardToMove.setPriority(newPriority);
                 }
-                cardList.set(newPriority, cardToMove);
             }
         }
     }

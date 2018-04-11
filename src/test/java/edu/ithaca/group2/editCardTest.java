@@ -39,4 +39,71 @@ public class editCardTest {
 
     }
 
+    @Test
+    void editPriority(){
+        UserInterface ui = new UserInterface();
+        Workspace tws = new Workspace();
+        assertEquals("", tws.viewAllCards());
+
+        Card testCard1 = new Card("testCard1", 0, "d", "d");
+        tws.addCard(testCard1);
+        assertEquals("0\ttestCard1", tws.viewAllCards());
+        assertEquals(0, tws.getCard("testCard1").getPriority());
+
+        Card testCard2 = new Card("testCard2", 1, "d", "d");
+        tws.addCard(testCard2);
+        assertEquals("0\ttestCard1\n1\ttestCard2", tws.viewAllCards());
+        assertEquals(1, tws.getCard("testCard2").getPriority());
+
+        Card testCard3 = new Card("testCard3", 2, "d", "d");
+        tws.addCard(testCard3);
+        assertEquals("0\ttestCard1\n1\ttestCard2\n2\ttestCard3", tws.viewAllCards());
+        assertEquals(2, tws.getCard("testCard3").getPriority());
+
+        Card testCard4 = new Card("testCard4", 1, "d", "d");
+        tws.addCard(testCard4);
+        assertEquals("0\ttestCard1\n1\ttestCard4\n2\ttestCard2\n3\ttestCard3", tws.viewAllCards());
+        assertEquals(0, tws.getCard("testCard1").getPriority());
+        assertEquals(1, tws.getCard("testCard4").getPriority());
+        assertEquals(2, tws.getCard("testCard2").getPriority());
+        assertEquals(3, tws.getCard("testCard3").getPriority());
+
+        Card testCard5 = new Card("testCard5", 0, "d", "d");
+        tws.addCard(testCard5);
+        assertEquals("0\ttestCard5\n1\ttestCard1\n2\ttestCard4\n3\ttestCard2\n4\ttestCard3", tws.viewAllCards());
+        assertEquals(0, tws.getCard("testCard5").getPriority());
+        assertEquals(1, tws.getCard("testCard1").getPriority());
+        assertEquals(2, tws.getCard("testCard4").getPriority());
+        assertEquals(3, tws.getCard("testCard2").getPriority());
+        assertEquals(4, tws.getCard("testCard3").getPriority());
+
+        tws.changePriority(tws.getCard("testCard4"), 1);//Change priority in workspace
+
+        assertEquals("0\ttestCard5\n1\ttestCard4\n2\ttestCard1\n3\ttestCard2\n4\ttestCard3", tws.viewAllCards());
+        assertEquals(0, tws.getCard("testCard5").getPriority());
+        assertEquals(1, tws.getCard("testCard4").getPriority());
+        assertEquals(2, tws.getCard("testCard1").getPriority());
+        assertEquals(3, tws.getCard("testCard2").getPriority());
+        assertEquals(4, tws.getCard("testCard3").getPriority());
+
+        tws.changePriority(tws.getCard("testCard5"), 4);//Change priority in workspace
+
+        assertEquals("0\ttestCard4\n1\ttestCard1\n2\ttestCard2\n3\ttestCard3\n4\ttestCard5", tws.viewAllCards());
+        assertEquals(0, tws.getCard("testCard4").getPriority());
+        assertEquals(1, tws.getCard("testCard1").getPriority());
+        assertEquals(2, tws.getCard("testCard2").getPriority());
+        assertEquals(3, tws.getCard("testCard3").getPriority());
+        assertEquals(4, tws.getCard("testCard5").getPriority());
+
+        tws.changePriority(tws.getCard("testCard5"), 3);//Change priority in workspace
+
+        assertEquals("0\ttestCard4\n1\ttestCard1\n2\ttestCard2\n3\ttestCard5\n4\ttestCard3", tws.viewAllCards());
+        assertEquals(0, tws.getCard("testCard4").getPriority());
+        assertEquals(1, tws.getCard("testCard1").getPriority());
+        assertEquals(2, tws.getCard("testCard2").getPriority());
+        assertEquals(3, tws.getCard("testCard5").getPriority());
+        assertEquals(4, tws.getCard("testCard3").getPriority());
+
+    }
+
 }
