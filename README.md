@@ -37,7 +37,7 @@ https://docs.google.com/document/d/1oRtRXKemKTsIlZ8Xs5fe23ZYZsSCwVosgflvmFaY3zw/
 
 <i>Goal: "Develop a variety of card features to create a personalized/customizable user experience"</i>
 
-Class Diagram: 
+Class Diagram:  
 https://drive.google.com/open?id=1yfrOMQvVRlCRIeEMWTSpvou8iZFjKvfW
 
 State Diagram:  
