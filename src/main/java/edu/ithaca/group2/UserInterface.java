@@ -114,6 +114,9 @@ public class UserInterface {
 
             System.out.println("Select a color");
             String CardColor = color.nextLine();
+            if(CardColor.equals("")) {
+                CardColor = "white";
+            }
             System.out.println("----------------------------------------------------");
 
 
@@ -135,7 +138,7 @@ public class UserInterface {
     }
 
     private void addNewCardSimple(){
-        String CardColor = "white";
+        String CardColor = "white"; //default
         String CardDeadline = ""; //Default
         String CardDescription = ""; //Default
         System.out.println("Are you sure that you want to ADD a card?(y/n)");

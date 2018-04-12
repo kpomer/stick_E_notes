@@ -9,7 +9,7 @@ public class Card {
     String description = "";
     String deadline = "";
 
-    String color = "";
+    String color = "white";
 
     //default constructor
     public Card(){
@@ -41,7 +41,7 @@ public class Card {
 
         this.description = description;
         this.deadline = deadline;
-        this.color = color;
+        this.color = color.toLowerCase();
     }
 
     public void changeTitle(String newTitle){
