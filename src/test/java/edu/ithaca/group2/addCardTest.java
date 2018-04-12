@@ -14,8 +14,8 @@ class addCardTest {
         //Test that title shows up correctly, and that card is NOT added when title = ""
         Workspace testWorkspace = new Workspace();
 
-        Card testCardA = new Card("testCardATitle", 0, "", "");
-        Card testCardB = new Card("", 0, "", "");
+        Card testCardA = new Card("testCardATitle", 0, "", "","");
+        Card testCardB = new Card("", 0, "", "","");
 
         assertEquals(0, testWorkspace.addCard(testCardA));
         assertEquals("testCardATitle", testWorkspace.getCard(0).getTitle());
@@ -28,9 +28,9 @@ class addCardTest {
         Workspace testWorkspace = new Workspace();
 
         //Test both Card constructors
-        Card testCard1 = new Card("testCard1Title", 0, "testCard1Description", "1/1/2020");
+        Card testCard1 = new Card("testCard1Title", 0, "testCard1Description", "1/1/2020", "red");
         Card testCard2 = new Card("testCard2Title", 1);
-        Card testCard3 = new Card("testCard3Title", 1, "testCard3Description", "1/1/2020");
+        Card testCard3 = new Card("testCard3Title", 1, "testCard3Description", "1/1/2020","blue");
 
         //test that the card fields are entered correctly, and that priority order is correct
         testWorkspace.addCard(testCard1);
@@ -70,9 +70,9 @@ class addCardTest {
         Workspace testWorkspace = new Workspace();
 
         //If there are n cards within the workspace, and a priority of <0 or >(n+1) is entered when creating a new card, print error message
-        Card testCard4 = new Card("testCard4Title", 5, "testCard4Description", "1/1/2020");
-        Card testCard5 = new Card("testCard5Title", -1, "testCard5Description", "1/1/2020");
-        Card testCard6 = new Card("testCard6Title", 0, "testCard6Description", "1/1/2020");
+        Card testCard4 = new Card("testCard4Title", 5, "testCard4Description", "1/1/2020","pink");
+        Card testCard5 = new Card("testCard5Title", -1, "testCard5Description", "1/1/2020", "pink");
+        Card testCard6 = new Card("testCard6Title", 0, "testCard6Description", "1/1/2020", "pink");
         Card testCard7 = new Card("testCard7Title", 2);
 
         assertEquals(-1, testWorkspace.addCard(testCard4));
@@ -85,9 +85,9 @@ class addCardTest {
     void searchByTitle(){
         Workspace testWorkspace = new Workspace();
 
-        Card testCard8 = new Card("testCard8Title", 0, "testCard8Description", "1/1/2020");
+        Card testCard8 = new Card("testCard8Title", 0, "testCard8Description", "1/1/2020","blue");
         Card testCard9 = new Card("testCard9Title", 1);
-        Card testCard10 = new Card("testCard10Title", 1, "testCard10Description", "1/1/2020");
+        Card testCard10 = new Card("testCard10Title", 1, "testCard10Description", "1/1/2020","purple");
         Card testCard11 = new Card("testCard11Title", 0);
 
         testWorkspace.addCard(testCard8);

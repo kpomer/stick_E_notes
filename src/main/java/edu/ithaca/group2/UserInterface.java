@@ -1,4 +1,5 @@
 package edu.ithaca.group2;
+import java.sql.SQLOutput;
 import java.util.*;
 
 public class UserInterface {
@@ -9,6 +10,7 @@ public class UserInterface {
     private Scanner priority = new Scanner(System.in);
     private Scanner description = new Scanner(System.in);
     private Scanner deadline = new Scanner(System.in);
+    private Scanner color = new Scanner(System.in);
     private boolean flag = true;
 
     private Workspace list = new Workspace();
@@ -110,8 +112,12 @@ public class UserInterface {
             String CardDeadline = deadline.nextLine();
             System.out.println("----------------------------------------------------");
 
+            System.out.println("Select a color");
+            String CardColor = color.nextLine();
+            System.out.println("----------------------------------------------------");
 
-            Card newCard = new Card(CardTitle, CardPriority, CardDescription, CardDeadline);
+
+            Card newCard = new Card(CardTitle, CardPriority, CardDescription, CardDeadline,CardColor);
             int isAdded = list.addCard(newCard);
 
             //newCard.viewCard();
@@ -129,6 +135,7 @@ public class UserInterface {
     }
 
     private void addNewCardSimple(){
+        String CardColor = "white";
         String CardDeadline = ""; //Default
         String CardDescription = ""; //Default
         System.out.println("Are you sure that you want to ADD a card?(y/n)");
@@ -159,6 +166,7 @@ public class UserInterface {
             System.out.println("-EXIT-(0)");
             System.out.println("-Description-(1)");
             System.out.println("-Deadline-(2)");
+            System.out.println("-Card Color-(3)");
             System.out.println("-------------------------\n");
 
             int field = reader2.nextInt();
@@ -175,12 +183,17 @@ public class UserInterface {
                     CardDeadline = deadline.nextLine();
                     System.out.println("----------------------------------------------------");
                     break;
+                case(3):
+                    System.out.println("Select a color for your card");
+                    CardColor = color.nextLine().toLowerCase();
+                    System.out.println("----------------------------------------------------");
+
                 case 0:
                 default:
                     changeFields = false;
             }
         }
-            Card newCard = new Card(CardTitle, CardPriority, CardDescription, CardDeadline);
+            Card newCard = new Card(CardTitle, CardPriority, CardDescription, CardDeadline, CardColor);
             int isAdded = list.addCard(newCard);
 
             //newCard.viewCard();
@@ -209,6 +222,7 @@ public class UserInterface {
                    inList = true;
                }
            }
+
            if (inList==true) {
                System.out.println(list.getCard(CardTitle).viewCard());
            }
@@ -297,9 +311,17 @@ public class UserInterface {
                         System.out.println("----------------------------------------------------");
                         list.getCard(CardTitle).changeDeadline(newDeadline);
                         break;
-
+                    case 5: //Color Field
+                        System.out.println("You selected to change the COLOR of the following card: "+CardTitle);
+                        System.out.println("The current color of this card is: "+list.getCard(CardTitle).getColor());
+                        System.out.println("Please enter the new deadline for this card");
+                        String newColor = color.nextLine().toLowerCase();
+                        System.out.println("----------------------------------------------------");
+                        list.getCard(CardTitle).changeColor(newColor);
+                        break;
                     default:
                         System.out.println("The choice selected is invalid");
+
                 }
             }
 
