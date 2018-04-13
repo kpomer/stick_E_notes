@@ -1,7 +1,8 @@
 package edu.ithaca.group2;
+import java.sql.SQLOutput;
 import java.util.*;
 
-public class userInterface {
+public class UserInterface {
 
     private Scanner reader2 = new Scanner(System.in);
     private Scanner reader3 = new Scanner(System.in);
@@ -9,6 +10,7 @@ public class userInterface {
     private Scanner priority = new Scanner(System.in);
     private Scanner description = new Scanner(System.in);
     private Scanner deadline = new Scanner(System.in);
+    private Scanner color = new Scanner(System.in);
     private boolean flag = true;
 
     private Workspace list = new Workspace();
@@ -39,7 +41,7 @@ public class userInterface {
             switch (choice) {
 
                 case 1: //add Card
-                    addCardInterface();
+                    addNewCardSimple();
                     break;
                 case 2: //View a Card
                     viewCardInterface();
@@ -49,7 +51,7 @@ public class userInterface {
                     System.out.println("Are you sure that you want to VIEW the CARD LIST?(y/n)");
                     String confirmation = reader2.next();
                     if (confirmation.toLowerCase().equals("y")) {
-                        System.out.println("Functionality coming Soon");
+                        System.out.println(list.viewAllCards());
                         break;
                     }
                     break;
@@ -110,8 +112,15 @@ public class userInterface {
             String CardDeadline = deadline.nextLine();
             System.out.println("----------------------------------------------------");
 
+            System.out.println("Select a color");
+            String CardColor = color.nextLine();
+            if(CardColor.equals("")) {
+                CardColor = "white";
+            }
+            System.out.println("----------------------------------------------------");
 
-            Card newCard = new Card(CardTitle, CardPriority, CardDescription, CardDeadline);
+
+            Card newCard = new Card(CardTitle, CardPriority, CardDescription, CardDeadline,CardColor);
             int isAdded = list.addCard(newCard);
 
             //newCard.viewCard();
@@ -128,6 +137,81 @@ public class userInterface {
 
     }
 
+    private void addNewCardSimple(){
+        String CardColor = "white"; //default
+        String CardDeadline = ""; //Default
+        String CardDescription = ""; //Default
+        System.out.println("Are you sure that you want to ADD a card?(y/n)");
+        //String confirmation = reader2.next();
+        String confirmation = reader2.nextLine();
+        if (confirmation.toLowerCase().equals("y")) {
+
+            System.out.println("Enter your Title: \n");
+            String CardTitle = title.nextLine();
+            System.out.println("--------------------");
+
+            System.out.println("Enter the priority for this card:(0-10)");
+            int CardPriority = priority.nextInt();
+            System.out.println("----------------------------------------");
+
+            boolean changeFields = false;
+        System.out.println("Would you like to add more fields? (y/n)");
+        String newConfirmation = reader2.nextLine();
+        if (newConfirmation.toLowerCase().equals("y")){
+            changeFields = true;
+            }
+        while (changeFields) {
+
+            System.out.println("Select Card Field to Add\nOtherwise select '0'\n");
+
+
+            System.out.println("-----List of Fields-----");
+            System.out.println("-EXIT-(0)");
+            System.out.println("-Description-(1)");
+            System.out.println("-Deadline-(2)");
+            System.out.println("-Card Color-(3)");
+            System.out.println("-------------------------\n");
+
+            int field = reader2.nextInt();
+
+            switch(field) {
+
+                case 1:
+                    System.out.println("Provide a description for the card:");
+                    CardDescription = description.nextLine();
+                    System.out.println("----------------------------------------------------");
+                    break;
+                case 2:
+                    System.out.println("Provide a deadline for the card:");
+                    CardDeadline = deadline.nextLine();
+                    System.out.println("----------------------------------------------------");
+                    break;
+                case(3):
+                    System.out.println("Select a color for your card");
+                    CardColor = color.nextLine().toLowerCase();
+                    System.out.println("----------------------------------------------------");
+
+                case 0:
+                default:
+                    changeFields = false;
+            }
+        }
+            Card newCard = new Card(CardTitle, CardPriority, CardDescription, CardDeadline, CardColor);
+            int isAdded = list.addCard(newCard);
+
+            //newCard.viewCard();
+
+            if (isAdded == 0) {
+                System.out.println("You have added a card successfully");
+            }
+            Options();
+
+
+        } else {
+            Options();
+        }
+    }
+
     //case2
     private void viewCardInterface() {
         System.out.println("Are you sure that you want to VIEW a card?(y/n)");
@@ -141,8 +225,9 @@ public class userInterface {
                    inList = true;
                }
            }
+
            if (inList==true) {
-               list.getCard(CardTitle).viewCard();
+               System.out.println(list.getCard(CardTitle).viewCard());
            }
            else{
                    System.out.println(CardTitle+" is not found in the Workspace\n\n");
@@ -229,9 +314,17 @@ public class userInterface {
                         System.out.println("----------------------------------------------------");
                         list.getCard(CardTitle).changeDeadline(newDeadline);
                         break;
-
+                    case 5: //Color Field
+                        System.out.println("You selected to change the COLOR of the following card: "+CardTitle);
+                        System.out.println("The current color of this card is: "+list.getCard(CardTitle).getColor());
+                        System.out.println("Please enter the new deadline for this card");
+                        String newColor = color.nextLine().toLowerCase();
+                        System.out.println("----------------------------------------------------");
+                        list.getCard(CardTitle).changeColor(newColor);
+                        break;
                     default:
                         System.out.println("The choice selected is invalid");
+
                 }
             }
 
@@ -246,7 +339,7 @@ public class userInterface {
     }
 
     public static void main(String[] args) {
-       userInterface start = new userInterface();
+       UserInterface start = new UserInterface();
        start.Options();
     }
 }
