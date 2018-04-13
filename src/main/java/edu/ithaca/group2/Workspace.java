@@ -1,6 +1,7 @@
 package edu.ithaca.group2;
 import java.sql.SQLOutput;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 public class Workspace {
@@ -11,6 +12,11 @@ public class Workspace {
     public Workspace(){
         cardList = new ArrayList<Card>();
         cardCount = 0;
+    }
+
+    public Workspace(ArrayList<Card> cardList, int cardCount){
+        this.cardList = cardList;
+        this.cardCount = cardCount;
     }
 
     public int addCard(Card toAdd){
@@ -100,6 +106,14 @@ public class Workspace {
                 cardList.set(newPriority, cardToMove);
             }
         }
+    }
+
+    public ArrayList<Card> getCardList(){
+        return cardList;
+    }
+
+    public void setCardList(ArrayList<Card> cardList){
+        this.cardList = cardList;
     }
 
 
