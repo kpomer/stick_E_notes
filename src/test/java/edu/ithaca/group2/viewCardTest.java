@@ -3,7 +3,7 @@ package edu.ithaca.group2;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
-import java.util.Calendar;
+import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -15,7 +15,7 @@ class viewCardTest {
         String string = "one";
         int num = 1;
         String description = "This is the description for card titled one, with priority 1, and deadline is tomorrow.";
-        String deadline = "11/22/18 - 9:00 pm";
+        String deadline = "11/22/18";
         Card card1 = new Card(string, num, description, deadline );
         String stringExpected = "one";
         String stringActual = card1.getTitle();
@@ -34,7 +34,7 @@ class viewCardTest {
         String string = "one";
         int num = 1;
         String description = "This is the description for card titled one, with priority 1, and deadline is tomorrow.";
-        String deadline = "11/22/18 - 9:00 pm";
+        String deadline = "11/22/18";
         Card card1 = new Card(string, num, description, deadline );
         int intExpected = 1;
         int intActual = card1.getPriority();
@@ -54,7 +54,7 @@ class viewCardTest {
         String string = "one";
         int num = 1;
         String description = "This is the description for card titled one, with priority 1, and deadline is tomorrow.";
-        String deadline = "11/22/18 - 9:00 pm";
+        String deadline = "11/22/18";
         Card card1 = new Card(string, num, description, deadline );
         String stringExpected = description;
         String stringActual = card1.getDescription();
@@ -73,17 +73,17 @@ class viewCardTest {
         String string = "one";
         int num = 1;
         String description = "This is the description for card titled one, with priority 1, and deadline is tomorrow.";
-        String deadline = "11/22/18 - 9:00 pm";
+        String deadline = "11/22/18";
         Card card1 = new Card(string, num, description, deadline );
         String stringExpected = deadline;
-        String stringActual = card1.getDeadline();
-        Assert.assertEquals(stringExpected, stringActual);
+        Date dateactual = card1.getDeadline();
+        Assert.assertEquals(stringExpected, dateactual);
 
         deadline = "two";
         Card card2 = new Card(string, num, description, deadline );
         stringExpected = deadline;
-        stringActual = card2.getDeadline();
-        Assert.assertEquals(stringExpected, stringActual);
+        dateactual = card2.getDeadline();
+        Assert.assertEquals(stringExpected, dateactual);
 
     }
 
@@ -139,14 +139,14 @@ class viewCardTest {
     }
     @Test
     void QuantDateTest() {
-        Calendar calendar = Calendar.getInstance();
         Card card1=new Card("Title", 0,"stuff","4/11/2018");
-        System.out.println(calendar.getTime());
-        String deadline = Integer.toString(calendar.get(Calendar.MONTH)+1)+"/";//+1 because Jan is considered 0;
-        String deadline2 = Integer.toString(calendar.get(Calendar.DAY_OF_MONTH))+"/";
-        String deadline3 =Integer.toString(calendar.get(Calendar.YEAR));
-        System.out.println(deadline+deadline2+deadline3);
-        assertEquals(deadline+deadline2+deadline3,card1.deadline);
+        Card card2 = new Card("Title", 1,"description","5/31/17");
+        Date deadline = card1.getDeadline();
+        Date deadline2 = card2.getDeadline();
+        System.out.println(deadline);
+        assertEquals(deadline,card1.getDeadline());
+        System.out.println(deadline2);
+        assertEquals(deadline2,card2.getDeadline());
 
 
     }

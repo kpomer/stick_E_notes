@@ -1,9 +1,9 @@
 package edu.ithaca.group2;
 
 
-import java.util.Calendar;
+import java.text.Format;
+import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.GregorianCalendar;
 
 public class Card {
 
@@ -11,7 +11,7 @@ public class Card {
     int priority = 0;
 
     String description = "";
-    String deadline = "";
+    Date deadline;
 
     //default constructor
     public Card(){
@@ -20,8 +20,7 @@ public class Card {
         this.priority = 0;
 
         this.description = "";
-        this.deadline = "";
-        Calendar cal;
+        this.deadline = new Date();
     }
 
     //constructor if only title and priority are given
@@ -30,7 +29,7 @@ public class Card {
         this.priority = priority;
 
         this.description = "";
-        this.deadline = "";
+        this.deadline = new Date();
         //I don't think it should say "no description yet" or "no card yet" because these fields may never be filled
         //In my opinion it looks cleaner to leave them as empty strings
     }
@@ -41,7 +40,15 @@ public class Card {
         this.priority = priority;
 
         this.description = description;
-        this.deadline = deadline;
+        this.deadline = new Date();
+    }
+
+    public Date strTodate(String deadline){
+        Date date = new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+        deadline = formatter.format(date);
+        System.out.println("Date Format with MM/dd/yyyy : "+deadline);
+        return date;
     }
 
     public void changeTitle(String newTitle){
@@ -76,7 +83,8 @@ public class Card {
     }
 
     public void setDeadline(String deadline) {
-        this.deadline = deadline;
+        Date date = strTodate(deadline);
+        this.deadline = date;
     }
 
     public String getTitle() {
@@ -91,22 +99,25 @@ public class Card {
         return description;
     }
 
-    public String getDeadline() {
+    public Date getDeadline() {
         return deadline;
     }
 
     public String viewCard(){
+        Format formatter = new SimpleDateFormat("MM/dd/yyyy");
+        String strdeadline = formatter.format(deadline);
 
 
-        if(description == "" && deadline == ""){
+        if(description == "" && strdeadline == ""){
             return title + "\nID: " + priority;
         }else if(description == ""){
             return title + "\nID: " + priority + "\nDeadline: " + deadline;
-        }else if(deadline == ""){
+        }else if(strdeadline == ""){
             return title + "\nID: " + priority + "\n\t" + description;
         }else {
             return title + "\nID: " + priority + "\n\t" + description + "\nDeadline: " + deadline;
         }
 
     }
+
 }
