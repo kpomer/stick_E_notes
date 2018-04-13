@@ -273,6 +273,7 @@ public class UserInterface {
                 System.out.println("-Priority-(2)");
                 System.out.println("-Description-(3)");
                 System.out.println("-Deadline-(4)");
+                System.out.println("-Color-(5)");
                 System.out.println("-------------------------\n");
                 System.out.println("Select Card Field to Change");
 
