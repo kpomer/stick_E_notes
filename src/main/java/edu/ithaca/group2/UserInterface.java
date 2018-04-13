@@ -4,6 +4,14 @@ import java.util.*;
 
 public class UserInterface {
 
+    //TODO: Change this page to the following format
+
+    //While loop of Options
+    //Options have switch case which calls __Interface() functions
+    //__Interface() functions collect user input
+    //__Interface() functions call __Function(params) functions with params from user input
+
+    //TODO: Do we need all of these scanners or can we simply use one
     private Scanner reader2 = new Scanner(System.in);
     private Scanner reader3 = new Scanner(System.in);
     private Scanner title = new Scanner(System.in);
