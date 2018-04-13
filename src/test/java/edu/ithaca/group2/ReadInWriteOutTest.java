@@ -99,7 +99,7 @@ class ReadInWriteOutTest {
 
         try {
             Workspace toFile = ws1;
-            String fullFilename = "/Users/harrisonkesel/Documents/stick_E_notes/src/test/java/edu/ithaca/group2.json";
+            String fullFilename = "src/test/resources/writeInAndOutTest.json";
             ReadInWriteOut.writeToJson(toFile, fullFilename);
             Workspace fromFile = ReadInWriteOut.buildCardFromJson(fullFilename);
 //            System.out.println(toFile.viewCard());
