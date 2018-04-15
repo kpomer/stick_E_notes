@@ -2,6 +2,7 @@ package edu.ithaca.group2;
 
 
 import java.text.Format;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -20,7 +21,7 @@ public class Card {
         this.priority = 0;
 
         this.description = "";
-        this.deadline = new Date();
+        this.deadline = new Date(0,0,0);
     }
 
     //constructor if only title and priority are given
@@ -29,26 +30,40 @@ public class Card {
         this.priority = priority;
 
         this.description = "";
-        this.deadline = new Date();
+        this.deadline = new Date(0,0,0);
         //I don't think it should say "no description yet" or "no card yet" because these fields may never be filled
         //In my opinion it looks cleaner to leave them as empty strings
     }
 
     //constructor if all data members are given
-    public Card(String title, int priority, String description, String deadline){
-        this.title= title;
+    public Card(String title, int priority, String description, String deadline) {
+        this.title = title;
         this.priority = priority;
 
         this.description = description;
-        this.deadline = new Date();
+        this.deadline = strTodate(deadline);
     }
-
     public Date strTodate(String deadline){
-        Date date = new Date();
+        SimpleDateFormat ft = new SimpleDateFormat ("MM/dd/yyyy");
+        //String input = args.length == 0 ? "1818-11-11" : args[0];
+
+        //System.out.print(deadline + " Parses as ");
+        Date t;
+        try {
+            t = ft.parse(deadline);
+            //System.out.println("From function "+t);
+            SimpleDateFormat dt1 = new SimpleDateFormat("MM/dd/yyyy");
+            //System.out.println(dt1.format(t));
+            return t;
+        } catch (ParseException e) {
+            System.out.println("Unparseable using " + ft);
+        }
+        return null;
+        /*Date date = new Date();
         SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
         deadline = formatter.format(date);
         System.out.println("Date Format with MM/dd/yyyy : "+deadline);
-        return date;
+        return date;*/
     }
 
     public void changeTitle(String newTitle){

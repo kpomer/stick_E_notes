@@ -73,17 +73,17 @@ class viewCardTest {
         String string = "one";
         int num = 1;
         String description = "This is the description for card titled one, with priority 1, and deadline is tomorrow.";
-        String deadline = "11/22/18";
+        String deadline = "11/22/2018";
         Card card1 = new Card(string, num, description, deadline );
-        String stringExpected = deadline;
+        Date dateExpected =new Date(118,10,22);
         Date dateactual = card1.getDeadline();
-        Assert.assertEquals(stringExpected, dateactual);
+        Assert.assertEquals(dateExpected, dateactual);
 
         deadline = "two";
         Card card2 = new Card(string, num, description, deadline );
-        stringExpected = deadline;
+        //String stringExpected2 = deadline2;
         dateactual = card2.getDeadline();
-        Assert.assertEquals(stringExpected, dateactual);
+        Assert.assertEquals(null, dateactual);
 
     }
 
@@ -93,15 +93,16 @@ class viewCardTest {
         String title = "Title one";
         int priority = 1;
         String description = "Description 1.";
-        String deadline = "11/12/18 - 7:00 am ECT.";
+        String deadline = "11/12/2018";
         Card card1 = new Card(title, priority,description,deadline);
+        Date testdate =new Date(118,10,12);
 
-        String expectedViewCard = title+"\nID: "+priority+"\n\t"+description+"\nDeadline: "+deadline;
+        String expectedViewCard = title+"\nID: "+priority+"\n\t"+description+"\nDeadline: "+testdate;
         Assert.assertEquals(expectedViewCard,card1.viewCard());
 
         title ="title";
         priority = 1;
-        deadline = "";
+        String deadline2 = "";
         description = "";
         Card card2 = new Card(title, priority);
 
@@ -140,7 +141,7 @@ class viewCardTest {
     @Test
     void QuantDateTest() {
         Card card1=new Card("Title", 0,"stuff","4/11/2018");
-        Card card2 = new Card("Title", 1,"description","5/31/17");
+        Card card2 = new Card("Title", 1,"description","5/31/2017");
         Date deadline = card1.getDeadline();
         Date deadline2 = card2.getDeadline();
         System.out.println(deadline);

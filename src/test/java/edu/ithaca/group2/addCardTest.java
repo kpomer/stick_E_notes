@@ -2,6 +2,7 @@ package edu.ithaca.group2;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Date;
 import java.util.NoSuchElementException;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -32,6 +33,10 @@ class addCardTest {
         Card testCard2 = new Card("testCard2Title", 1);
         Card testCard3 = new Card("testCard3Title", 1, "testCard3Description", "1/1/2020");
 
+        //test Dates to test against
+        Date test;
+        Date test2;
+        Date test3;
         //test that the card fields are entered correctly, and that priority order is correct
         testWorkspace.addCard(testCard1);
         testWorkspace.addCard(testCard2);
@@ -41,17 +46,17 @@ class addCardTest {
         assertEquals("testCard1Title", testWorkspace.getCard(0).getTitle());
         assertEquals("testCard1Description", testWorkspace.getCard(0).getDescription());
         assertEquals(0, testWorkspace.getCard(0).getPriority());
-        assertEquals("1/1/2020", testWorkspace.getCard(0).getDeadline());
+        assertEquals(test=new Date(120,0,1), testWorkspace.getCard(0).getDeadline());
 
         assertEquals("testCard3Title", testWorkspace.getCard(1).getTitle());
         assertEquals("testCard3Description", testWorkspace.getCard(1).getDescription());
         assertEquals(1, testWorkspace.getCard(1).getPriority());
-        assertEquals("1/1/2020", testWorkspace.getCard(1).getDeadline());
+        assertEquals(test2=new Date(120,0,1), testWorkspace.getCard(1).getDeadline());
 
         assertEquals("testCard2Title", testWorkspace.getCard(2).getTitle());
         assertEquals("", testWorkspace.getCard(2).getDescription());
         assertEquals(2, testWorkspace.getCard(2).getPriority());
-        assertEquals("", testWorkspace.getCard(2).getDeadline());
+        assertEquals(test3=new Date(-1,11,31), testWorkspace.getCard(2).getDeadline());
 
         //Test Exception
         boolean thrown = false;
