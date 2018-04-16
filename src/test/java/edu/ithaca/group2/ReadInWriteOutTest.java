@@ -86,10 +86,10 @@ class ReadInWriteOutTest {
 
     @Test
     void toJsonAndBackWithWorkspaceTest(){
-        Card card1 = new Card("title1",0,"card1 description", "04/09/2018");
+        Card card1 = new Card("title1",0,"card1 description", "04/09/2018", "orange");
         Card card2 = new Card("title2",1);
         Card card3 = new Card("title3",2);
-        Card card4 = new Card("title4",3,"card4 description trying to make this really long... asdfhasdfhasdfhasdfhasdfh hasdfh hasdf hasdf hasdf hasdf hasdf hasdf ijjhsdfgjejejfmfmj", "04/12/2018");
+        Card card4 = new Card("title4",3,"card4 description trying to make this really long... asdfhasdfhasdfhasdfhasdfh hasdfh hasdf hasdf hasdf hasdf hasdf hasdf ijjhsdfgjejejfmfmj", "04/12/2018", "blue");
 
         Workspace ws1 = new Workspace();
         ws1.addCard(card1);
