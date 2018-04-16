@@ -4,7 +4,7 @@
     "priority" : 0,
     "description" : "card1 description",
     "deadline" : "04/09/2018",
-    "color" : "orange"
+    "color" : "red"
   }, {
     "title" : "title2",
     "priority" : 1,
@@ -22,7 +22,7 @@
     "priority" : 3,
     "description" : "card4 description trying to make this really long... asdfhasdfhasdfhasdfhasdfh hasdfh hasdf hasdf hasdf hasdf hasdf hasdf ijjhsdfgjejejfmfmj",
     "deadline" : "04/12/2018",
-    "color" : "blue"
+    "color" : "red"
   } ],
   "cardCount" : 4
 }
