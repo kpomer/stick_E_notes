@@ -42,3 +42,9 @@ https://drive.google.com/open?id=1yfrOMQvVRlCRIeEMWTSpvou8iZFjKvfW
 
 State Diagram:  
 https://drive.google.com/file/d/15bN7yRG4t5hXQdfBpqwZGZo5VIjnvIaW/view?usp=sharing
+
+Review Meeting:  
+https://docs.google.com/document/d/1Mat2ZRKfQhfV73ujx_Jswk073639E6WlQueCm-NxilM/edit?usp=sharing
+
+Retrospective Meeting:  
+https://docs.google.com/document/d/1DuS2feue1cCybRnrbRzyNQ9ZBwH7B0hU1PaU02HzWbA/edit?usp=sharing
