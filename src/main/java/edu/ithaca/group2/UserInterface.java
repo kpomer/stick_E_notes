@@ -75,7 +75,9 @@ public class UserInterface {
                 case 6://Edit card that is already in workspace
                     editCardInterface();
                     break;
-                    
+                case 7://Delete Card
+                    deleteCardInterface();
+                    break;
                 default:
                     System.out.println("The choice selected is invalid. Try again");
                     System.out.println("If you want a list of possible actions, press 5 when prompted");
@@ -250,6 +252,7 @@ public class UserInterface {
         System.out.println("-To Exit Application-(4)");
         System.out.println("-To view list of Options-(5)");
         System.out.println("-Edit Card-(6)");
+        System.out.println("-Delete Card-(7)");
         System.out.println("-------------------------");
 
     }
@@ -337,10 +340,30 @@ public class UserInterface {
         }
     }
 
+    private void deleteCardInterface(){
+        System.out.println("Which card would you like to delete: ");
+        String titleToDelete = reader2.nextLine();
+        int priorityToDelete = -1;
+        for (int i = 0; i<list.cardCount; i++){
+            if (list.getCard(i).getTitle().equals(titleToDelete))
+            {
+                priorityToDelete = i;
+            }
+        }
+        if (priorityToDelete == -1){
+            System.out.println("\nSorry, this card could not be found\n");
+        }
+        else{
+            Card toDelete = list.getCard(priorityToDelete);
+            list.deleteCard(toDelete);
+            System.out.println("Card: "+titleToDelete+" has been deleted\n");
+        }
+    }
+
     public static void main(String[] args) {
        UserInterface start = new UserInterface();
        start.Options();
-       System.out.println("Program is terminating");
+       System.out.println("\nProgram is terminating");
        System.out.println("-------------------------------------------------------------");
     }
 }

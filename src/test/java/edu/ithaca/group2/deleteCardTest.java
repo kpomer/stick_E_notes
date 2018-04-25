@@ -25,26 +25,27 @@ class deleteCardTest {
 
     }
 
+    @Test
     void deleteFirstCard() {
         Workspace testWorkspace = new Workspace();
 
         Card title1 = new Card("title1", 0, "", "", "");
-        Card title2 = new Card("title2", 0, "", "", "");
-        Card title3 = new Card("title3", 0, "", "", "");
-        Card title4 = new Card("title4", 0, "", "", "");
+        Card title2 = new Card("title2", 1, "", "", "");
+        Card title3 = new Card("title3", 2, "", "", "");
+        Card title4 = new Card("title4", 3, "", "", "");
 
         testWorkspace.addCard(title1);
         testWorkspace.addCard(title2);
         testWorkspace.addCard(title3);
         testWorkspace.addCard(title4);
 
-        assertEquals("0\ttitle1\n1\ttitle2\n2\ttitle3\n3\ttitle4\n", testWorkspace.viewAllCards());
+        assertEquals("0\ttitle1\n1\ttitle2\n2\ttitle3\n3\ttitle4", testWorkspace.viewAllCards());
         assertEquals(4, testWorkspace.getCardCount());
 
         testWorkspace.deleteCard(title1);
 
         //Priority numbers should change
-        assertEquals("0\ttitle2\n1\ttitle3\n2\ttitle4\n", testWorkspace.viewAllCards());
+        assertEquals("0\ttitle2\n1\ttitle3\n2\ttitle4", testWorkspace.viewAllCards());
         assertEquals(3, testWorkspace.getCardCount());
 
         assertEquals(0, testWorkspace.getCard("title2").getPriority());
@@ -53,26 +54,27 @@ class deleteCardTest {
 
     }
 
+    @Test
     void deleteLastCard() {
         Workspace testWorkspace = new Workspace();
 
         Card title1 = new Card("title1", 0, "", "", "");
-        Card title2 = new Card("title2", 0, "", "", "");
-        Card title3 = new Card("title3", 0, "", "", "");
-        Card title4 = new Card("title4", 0, "", "", "");
+        Card title2 = new Card("title2", 1, "", "", "");
+        Card title3 = new Card("title3", 2, "", "", "");
+        Card title4 = new Card("title4", 3, "", "", "");
 
         testWorkspace.addCard(title1);
         testWorkspace.addCard(title2);
         testWorkspace.addCard(title3);
         testWorkspace.addCard(title4);
 
-        assertEquals("0\ttitle1\n1\ttitle2\n2\ttitle3\n3\ttitle4\n", testWorkspace.viewAllCards());
+        assertEquals("0\ttitle1\n1\ttitle2\n2\ttitle3\n3\ttitle4", testWorkspace.viewAllCards());
         assertEquals(4, testWorkspace.getCardCount());
 
         testWorkspace.deleteCard(title4);
 
         //Priority numbers NOT should change
-        assertEquals("0\ttitle1\n1\ttitle2\n2\ttitle3\n", testWorkspace.viewAllCards());
+        assertEquals("0\ttitle1\n1\ttitle2\n2\ttitle3", testWorkspace.viewAllCards());
         assertEquals(3, testWorkspace.getCardCount());
 
         assertEquals(0, testWorkspace.getCard("title1").getPriority());
@@ -81,26 +83,27 @@ class deleteCardTest {
 
     }
 
+    @Test
     void deleteMiddleCard() {
         Workspace testWorkspace = new Workspace();
 
         Card title1 = new Card("title1", 0, "", "", "");
-        Card title2 = new Card("title2", 0, "", "", "");
-        Card title3 = new Card("title3", 0, "", "", "");
-        Card title4 = new Card("title4", 0, "", "", "");
+        Card title2 = new Card("title2", 1, "", "", "");
+        Card title3 = new Card("title3", 2, "", "", "");
+        Card title4 = new Card("title4", 3, "", "", "");
 
         testWorkspace.addCard(title1);
         testWorkspace.addCard(title2);
         testWorkspace.addCard(title3);
         testWorkspace.addCard(title4);
 
-        assertEquals("0\ttitle1\n1\ttitle2\n2\ttitle3\n3\ttitle4\n", testWorkspace.viewAllCards());
+        assertEquals("0\ttitle1\n1\ttitle2\n2\ttitle3\n3\ttitle4", testWorkspace.viewAllCards());
         assertEquals(4, testWorkspace.getCardCount());
 
         testWorkspace.deleteCard(title2);
 
         //Some priority numbers should change
-        assertEquals("0\ttitle1\n1\ttitle3\n2\ttitle4\n", testWorkspace.viewAllCards());
+        assertEquals("0\ttitle1\n1\ttitle3\n2\ttitle4", testWorkspace.viewAllCards());
         assertEquals(3, testWorkspace.getCardCount());
 
         assertEquals(0, testWorkspace.getCard("title1").getPriority());
@@ -110,7 +113,7 @@ class deleteCardTest {
         testWorkspace.deleteCard(title3);
 
         //Some priority numbers should change
-        assertEquals("0\ttitle1\n\t1\ttitle4\n", testWorkspace.viewAllCards());
+        assertEquals("0\ttitle1\n1\ttitle4", testWorkspace.viewAllCards());
         assertEquals(2, testWorkspace.getCardCount());
 
         assertEquals(0, testWorkspace.getCard("title1").getPriority());

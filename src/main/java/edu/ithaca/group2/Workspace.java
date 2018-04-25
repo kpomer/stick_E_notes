@@ -45,7 +45,12 @@ public class Workspace {
 
     public void deleteCard(Card cardToDelete){
         int priorityToDelete = cardToDelete.getPriority();
-        cardList.remove(priorityToDelete);
+        for (int i=priorityToDelete; i<(cardCount-1); i++)
+        {
+            cardList.set(i, cardList.get(i+1));
+            this.getCard(i).setPriority(i);
+        }
+        this.getCard(cardCount-1).setPriority(cardCount-2);
         cardCount--;
     }
 
