@@ -43,6 +43,12 @@ public class Workspace {
         }
     }
 
+    public void deleteCard(Card cardToDelete){
+        int priorityToDelete = cardToDelete.getPriority();
+        cardList.remove(priorityToDelete);
+        cardCount--;
+    }
+
     public Card getCard(int priority) throws IndexOutOfBoundsException{
         if ((0<= priority) && (priority < cardCount))
         return cardList.get(priority);
