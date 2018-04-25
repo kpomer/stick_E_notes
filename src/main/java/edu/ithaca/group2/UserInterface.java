@@ -341,7 +341,7 @@ public class UserInterface {
     }
 
     private void deleteCardInterface(){
-        System.out.println("Which card would you like to delete: ");
+        System.out.println("Which card would you like to delete: \n");
         String titleToDelete = reader2.nextLine();
         int priorityToDelete = -1;
         for (int i = 0; i<list.cardCount; i++){
