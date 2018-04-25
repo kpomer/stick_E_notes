@@ -51,7 +51,9 @@ public class UserInterface {
                     System.out.println("Are you sure that you want to VIEW the CARD LIST?(y/n)");
                     String confirmation = reader2.next();
                     if (confirmation.toLowerCase().equals("y")) {
+                        System.out.println("\nCard List:");
                         System.out.println(list.viewAllCards());
+                        System.out.println("\n\n");
                         break;
                     }
                     break;
@@ -83,13 +85,11 @@ public class UserInterface {
             }
 
         }
-        System.out.println("Program is terminating");
-        System.out.println("-------------------------------------------------------------");
 
         return 0;
     }
 
-    //case 1
+    //case 1 NOT USED
     private void addCardInterface() {
         System.out.println("Are you sure that you want to ADD a card?(y/n)");
         //String confirmation = reader2.next();
@@ -141,7 +141,7 @@ public class UserInterface {
         String CardColor = "white"; //default
         String CardDeadline = ""; //Default
         String CardDescription = ""; //Default
-        System.out.println("Are you sure that you want to ADD a card?(y/n)");
+        System.out.println("Are you sure that you want to ADD a card?(y/n)\n");
         //String confirmation = reader2.next();
         String confirmation = reader2.nextLine();
         if (confirmation.toLowerCase().equals("y")) {
@@ -150,7 +150,7 @@ public class UserInterface {
             String CardTitle = title.nextLine();
             System.out.println("--------------------");
 
-            System.out.println("Enter the priority for this card:(0-10)");
+            System.out.println("Enter the priority for this card:");
             int CardPriority = priority.nextInt();
             System.out.println("----------------------------------------");
 
@@ -190,7 +190,7 @@ public class UserInterface {
                     System.out.println("Select a color for your card");
                     CardColor = color.nextLine().toLowerCase();
                     System.out.println("----------------------------------------------------");
-
+                    break;
                 case 0:
                 default:
                     changeFields = false;
@@ -340,6 +340,8 @@ public class UserInterface {
     public static void main(String[] args) {
        UserInterface start = new UserInterface();
        start.Options();
+       System.out.println("Program is terminating");
+       System.out.println("-------------------------------------------------------------");
     }
 }
 

@@ -81,7 +81,6 @@ public class Workspace {
             ///Tell the code to change allCards using a for loop of the titles and maybe the priority numbers
             //Make sure to format this string either so that it works with the test (by changing this string or the expected one in the test
 
-
         }
         return allCards;
     }
