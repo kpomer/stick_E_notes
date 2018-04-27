@@ -33,7 +33,7 @@ public class UserInterface {
 
 
         while (flag) {
-            System.out.println("Which task do you want to accomplish?(1-6) \n");
+            System.out.println("Which task do you want to accomplish?(1-7) \n");
 
             int choice = reader1.nextInt();
 
