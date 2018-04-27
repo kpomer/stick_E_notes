@@ -43,6 +43,17 @@ public class Workspace {
         }
     }
 
+    public void deleteCard(Card cardToDelete){
+        int priorityToDelete = cardToDelete.getPriority();
+        for (int i=priorityToDelete; i<(cardCount-1); i++)
+        {
+            cardList.set(i, cardList.get(i+1));
+            this.getCard(i).setPriority(i);
+        }
+        this.getCard(cardCount-1).setPriority(cardCount-2);
+        cardCount--;
+    }
+
     public Card getCard(int priority) throws IndexOutOfBoundsException{
         if ((0<= priority) && (priority < cardCount))
         return cardList.get(priority);
@@ -80,7 +91,6 @@ public class Workspace {
             }
             ///Tell the code to change allCards using a for loop of the titles and maybe the priority numbers
             //Make sure to format this string either so that it works with the test (by changing this string or the expected one in the test
-
 
         }
         return allCards;
