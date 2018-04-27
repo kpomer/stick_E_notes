@@ -82,8 +82,9 @@ class viewCardTest {
         deadline = "two";
         Card card2 = new Card(string, num, description, deadline );
         //String stringExpected2 = deadline2;
+        Date test =new Date(0,0,0);
         dateactual = card2.getDeadline();
-        Assert.assertEquals(null, dateactual);
+        Assert.assertEquals(test, dateactual);
 
     }
 
@@ -130,10 +131,11 @@ class viewCardTest {
 
         title ="title";
         priority = 1;
-        deadline = "11/28/18";
+        deadline = "11/28/2018";
         description = "";
+        Date deadlinea=new Date(118,10,28);
         Card card5 = new Card(title, priority, description, deadline);
-        expectedViewCard = title+"\nID: "+priority+ "\nDeadline: "+deadline;
+        expectedViewCard = title+"\nID: "+priority+ "\nDeadline: "+deadlinea;
         Assert.assertEquals(expectedViewCard,card5.viewCard());
 
         System.out.println(card1.viewCard()+"\n_______\n"+card2.viewCard()+"\n_______\n"+card3.viewCard()+"\n_______\n"+card4.viewCard()+"\n_______\n"+card5.viewCard());

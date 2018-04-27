@@ -1,9 +1,11 @@
 package edu.ithaca.group2;
 
 
+import java.text.DateFormat;
 import java.text.Format;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public class Card {
@@ -46,8 +48,8 @@ public class Card {
     public Date strTodate(String deadline){
         SimpleDateFormat ft = new SimpleDateFormat ("MM/dd/yyyy");
         //String input = args.length == 0 ? "1818-11-11" : args[0];
-
         //System.out.print(deadline + " Parses as ");
+        Date blank= new Date(0,0,0);
         Date t;
         try {
             t = ft.parse(deadline);
@@ -57,14 +59,30 @@ public class Card {
             return t;
         } catch (ParseException e) {
             System.out.println("Unparseable using " + ft);
+            return blank;
         }
-        return null;
+        //return null;
         /*Date date = new Date();
         SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
         deadline = formatter.format(date);
         System.out.println("Date Format with MM/dd/yyyy : "+deadline);
         return date;*/
     }
+     public String dateTostr(Date deadline){
+         // Create an instance of SimpleDateFormat used for formatting
+        // the string representation of date (month/day/year)
+         DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
+
+        // Get the date today using Calendar object.
+         Date today = deadline;
+        // Using DateFormat format method we can create a string
+        // representation of a date with the defined format.
+         String reportDate = df.format(today);
+
+        // Print what date is today!
+         //System.out.println("Report Date: " + reportDate);
+         return reportDate;
+     }
 
     public void changeTitle(String newTitle){
         setTitle(newTitle);
@@ -121,18 +139,25 @@ public class Card {
     public String viewCard(){
         Format formatter = new SimpleDateFormat("MM/dd/yyyy");
         String strdeadline = formatter.format(deadline);
+        //String blank="";
 
+        // if Date shws up as default date
+        // turn into a blank string
+        //Make another function that turns string that cant be turned into Dtaes into Blank dates abd returns them
+                    if(strdeadline.equals("12/31/1899"))
+                        strdeadline = "";
+                    if (description == "" && strdeadline == "") {
+                        return title + "\nID: " + priority;
+                    } else if (description == "") {
+                        return title + "\nID: " + priority + "\nDeadline: " + deadline;
+                    } else if (strdeadline == "") {
+                        return title + "\nID: " + priority + "\n\t" + description;
+                    } else {
+                        return title + "\nID: " + priority + "\n\t" + description + "\nDeadline: " + deadline;
+                    }
 
-        if(description == "" && strdeadline == ""){
-            return title + "\nID: " + priority;
-        }else if(description == ""){
-            return title + "\nID: " + priority + "\nDeadline: " + deadline;
-        }else if(strdeadline == ""){
-            return title + "\nID: " + priority + "\n\t" + description;
-        }else {
-            return title + "\nID: " + priority + "\n\t" + description + "\nDeadline: " + deadline;
-        }
 
     }
+
 
 }

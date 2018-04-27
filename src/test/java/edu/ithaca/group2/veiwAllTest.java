@@ -17,7 +17,7 @@ class veiwAllTest {
     @Test
     void testOneCard(){
         Workspace testWorkspace = new Workspace();
-        Card testCard = new Card("title", 0, "description", "Deadline");
+        Card testCard = new Card("title", 0, "description", "");
         testWorkspace.addCard(testCard);
 
         String titleList= testWorkspace.getCard(0).getPriority()+"\t"+testWorkspace.getCard(0).getTitle();
@@ -30,8 +30,8 @@ class veiwAllTest {
     @Test
     void testMultipleCards(){
         Workspace testWorkspace = new Workspace();
-        Card testCard = new Card("title", 0, "description", "Deadline");
-        Card testCard2 = new Card("title2", 1, "description2", "Deadline2");
+        Card testCard = new Card("title", 0, "description", "deadline");
+        Card testCard2 = new Card("title2", 1, "description2", "deadline");
         testWorkspace.addCard(testCard);
         testWorkspace.addCard(testCard2);
 
@@ -44,7 +44,7 @@ class veiwAllTest {
     @Test
     void testMutipleCardsandPriorityChange(){
         Workspace tmc =new Workspace();
-        Card testCard = new Card("title",0,"description","deadline");
+        Card testCard = new Card("title",0,"description","Deadline");
         tmc.addCard(testCard);
         for (int i = 0; i <4 ; i++) {
             Card testcard2= new Card("title"+i,0);
