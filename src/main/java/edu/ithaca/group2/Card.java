@@ -58,7 +58,8 @@ public class Card {
             //System.out.println(dt1.format(t));
             return t;
         } catch (ParseException e) {
-            System.out.println("Unparseable using " + ft);
+            System.out.println("You've entered an improper String, " + ft);
+            System.out.println("Your Date is 12/31/1899");
             return blank;
         }
         //return null;
