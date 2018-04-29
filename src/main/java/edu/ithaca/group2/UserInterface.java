@@ -15,6 +15,8 @@ public class UserInterface {
 
     private Workspace list = new Workspace();
 
+   private String[] colorArray = {"red","green","blue","white"}; //********************************************************************************************************************
+
 
     private void changeFlag() {
         flag = false;
@@ -78,6 +80,11 @@ public class UserInterface {
                 case 7://Delete Card
                     deleteCardInterface();
                     break;
+
+                case 8://Filter Cards
+                    filterCardColorInterface();  //*************************************************************************************************************************************************
+                    break;
+
                 default:
                     System.out.println("The choice selected is invalid. Try again");
                     System.out.println("If you want a list of possible actions, press 5 when prompted");
@@ -89,6 +96,54 @@ public class UserInterface {
         }
 
         return 0;
+    }
+
+    private void filterCardColorInterface(){ //****************************************************************************************************************************************************
+
+        //Makes sure that there is an item in the list
+        if(list.cardList.isEmpty()){
+            System.out.println("You currently have no cards to filter by");
+            Options();
+        }
+        //Atleast one item in the list
+        System.out.println("Are you sure that you want to FILTER your cards?(y/n)");
+        String confirmation = reader2.nextLine();
+        if (confirmation.toLowerCase().equals("y")) {
+            System.out.println("What COLOR do you want to filter by?");
+            listOfColors();
+            int choice = reader2.nextInt();
+
+            switch(choice){
+
+                case 0:
+                    list.filterByColor("red");
+
+                    break;
+                case 1:
+                    list.filterByColor("green");
+                    break;
+                case 2:
+                    list.filterByColor("blue");
+                    break;
+                case 3:
+                    list.filterByColor("white");
+                    break;
+                default:
+                    System.out.println("The color selected does not Exist in this application");
+            }
+
+
+        }
+        Options();
+    }
+
+    private void listOfColors(){    //************************************************************************************************************************************************************
+        System.out.println("-----List of Colors-----");
+        System.out.println("-Red-(0)");
+        System.out.println("-Green-(1)");
+        System.out.println("-Blue-(2)");
+        System.out.println("-White-(3)");
+        System.out.println("-------------------------");
     }
 
     //case 1 NOT USED
@@ -117,7 +172,7 @@ public class UserInterface {
             System.out.println("Select a color");
             String CardColor = color.nextLine();
             if(CardColor.equals("")) {
-                CardColor = "white";
+                CardColor = colorArray[3]; //***************************************************************************************************************************************************
             }
             System.out.println("----------------------------------------------------");
 
@@ -188,10 +243,14 @@ public class UserInterface {
                     CardDeadline = deadline.nextLine();
                     System.out.println("----------------------------------------------------");
                     break;
-                case(3):
+                case(3): //redid the color field a little to make it more precise *****************************************************************************************************************
                     System.out.println("Select a color for your card");
-                    CardColor = color.nextLine().toLowerCase();
-                    System.out.println("----------------------------------------------------");
+                    listOfColors();
+                    int potentialColor = color.nextInt();
+                    if( potentialColor < 0 || potentialColor > 3) {
+                        System.out.println("Invalid selection: Value is out of choice range");
+                    }
+                    CardColor = colorArray[potentialColor];
                     break;
                 case 0:
                 default:
@@ -253,6 +312,7 @@ public class UserInterface {
         System.out.println("-To view list of Options-(5)");
         System.out.println("-Edit Card-(6)");
         System.out.println("-Delete Card-(7)");
+        System.out.println("-Filter Cards-(8)");
         System.out.println("-------------------------");
 
     }
@@ -316,11 +376,12 @@ public class UserInterface {
                         System.out.println("----------------------------------------------------");
                         list.getCard(CardTitle).changeDeadline(newDeadline);
                         break;
-                    case 5: //Color Field
+                    case 5: //Color Field //*******************************************************************************************************************************************************
                         System.out.println("You selected to change the COLOR of the following card: "+CardTitle);
                         System.out.println("The current color of this card is: "+list.getCard(CardTitle).getColor());
-                        System.out.println("Please enter the new deadline for this card");
-                        String newColor = color.nextLine().toLowerCase();
+                        System.out.println("Please enter the new color for this card");
+                        listOfColors();
+                        int newColor = color.nextInt();
                         System.out.println("----------------------------------------------------");
                         list.getCard(CardTitle).changeColor(newColor);
                         break;
