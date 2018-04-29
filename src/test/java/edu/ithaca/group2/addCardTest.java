@@ -70,9 +70,9 @@ class addCardTest {
         Workspace testWorkspace = new Workspace();
 
         //If there are n cards within the workspace, and a priority of <0 or >(n+1) is entered when creating a new card, print error message
-        Card testCard4 = new Card("testCard4Title", 5, "testCard4Description", "1/1/2020","pink");
-        Card testCard5 = new Card("testCard5Title", -1, "testCard5Description", "1/1/2020", "pink");
-        Card testCard6 = new Card("testCard6Title", 0, "testCard6Description", "1/1/2020", "pink");
+        Card testCard4 = new Card("testCard4Title", 5, "testCard4Description", "1/1/2020","red");
+        Card testCard5 = new Card("testCard5Title", -1, "testCard5Description", "1/1/2020", "red");
+        Card testCard6 = new Card("testCard6Title", 0, "testCard6Description", "1/1/2020", "red");
         Card testCard7 = new Card("testCard7Title", 2);
 
         assertEquals(-1, testWorkspace.addCard(testCard4));
@@ -87,7 +87,7 @@ class addCardTest {
 
         Card testCard8 = new Card("testCard8Title", 0, "testCard8Description", "1/1/2020","blue");
         Card testCard9 = new Card("testCard9Title", 1);
-        Card testCard10 = new Card("testCard10Title", 1, "testCard10Description", "1/1/2020","purple");
+        Card testCard10 = new Card("testCard10Title", 1, "testCard10Description", "1/1/2020","white");
         Card testCard11 = new Card("testCard11Title", 0);
 
         testWorkspace.addCard(testCard8);
