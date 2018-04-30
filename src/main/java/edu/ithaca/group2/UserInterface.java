@@ -23,12 +23,16 @@ public class UserInterface {
 
     private Workspace list = new Workspace();
 
-
     private void changeFlag() {
         flag = false;
     }
     //user makes selection from the list
 
+    /**
+     * Contains while loop which runs until the program is terminated
+     * @param NONE
+     * @return 0 when program ends
+     */
     private int Options() {
         //implementing scanner
         Scanner reader1 = new Scanner(System.in);
@@ -41,7 +45,7 @@ public class UserInterface {
 
 
         while (flag) {
-            System.out.println("Which task do you want to accomplish?(1-6) \n");
+            System.out.println("Which task do you want to accomplish?(1-7) \n");
 
             int choice = reader1.nextInt();
 
@@ -59,7 +63,9 @@ public class UserInterface {
                     System.out.println("Are you sure that you want to VIEW the CARD LIST?(y/n)");
                     String confirmation = reader2.next();
                     if (confirmation.toLowerCase().equals("y")) {
+                        System.out.println("\nCard List:");
                         System.out.println(list.viewAllCards());
+                        System.out.println("\n\n");
                         break;
                     }
                     break;
@@ -81,7 +87,9 @@ public class UserInterface {
                 case 6://Edit card that is already in workspace
                     editCardInterface();
                     break;
-                    
+                case 7://Delete Card
+                    deleteCardInterface();
+                    break;
                 default:
                     System.out.println("The choice selected is invalid. Try again");
                     System.out.println("If you want a list of possible actions, press 5 when prompted");
@@ -91,13 +99,11 @@ public class UserInterface {
             }
 
         }
-        System.out.println("Program is terminating");
-        System.out.println("-------------------------------------------------------------");
 
         return 0;
     }
 
-    //case 1
+    //case 1 NOT USED
     private void addCardInterface() {
         System.out.println("Are you sure that you want to ADD a card?(y/n)");
         //String confirmation = reader2.next();
@@ -145,11 +151,17 @@ public class UserInterface {
 
     }
 
+    /**
+     * Collects info for adding a card
+     * Calls addCard() to add card to workspace
+     * @param NONE
+     * @return void
+     */
     private void addNewCardSimple(){
         String CardColor = "white"; //default
         String CardDeadline = ""; //Default
         String CardDescription = ""; //Default
-        System.out.println("Are you sure that you want to ADD a card?(y/n)");
+        System.out.println("Are you sure that you want to ADD a card?(y/n)\n");
         //String confirmation = reader2.next();
         String confirmation = reader2.nextLine();
         if (confirmation.toLowerCase().equals("y")) {
@@ -158,7 +170,7 @@ public class UserInterface {
             String CardTitle = title.nextLine();
             System.out.println("--------------------");
 
-            System.out.println("Enter the priority for this card:(0-10)");
+            System.out.println("Enter the priority for this card:");
             int CardPriority = priority.nextInt();
             System.out.println("----------------------------------------");
 
@@ -198,7 +210,7 @@ public class UserInterface {
                     System.out.println("Select a color for your card");
                     CardColor = color.nextLine().toLowerCase();
                     System.out.println("----------------------------------------------------");
-
+                    break;
                 case 0:
                 default:
                     changeFields = false;
@@ -220,6 +232,12 @@ public class UserInterface {
         }
     }
 
+    /**
+     * Collects info about which card is being viewed
+     * calls viewCard() to view the chosen card
+     * @param NONE
+     * @return void
+     */
     //case2
     private void viewCardInterface() {
         System.out.println("Are you sure that you want to VIEW a card?(y/n)");
@@ -249,6 +267,11 @@ public class UserInterface {
         }
     }
 
+    /**
+     * Prints commandLine options
+     * @param NONE
+     * @return void
+     */
     //print a list of the options that the user has
     private void printList() {
         System.out.println("-----List of Options-----");
@@ -258,10 +281,18 @@ public class UserInterface {
         System.out.println("-To Exit Application-(4)");
         System.out.println("-To view list of Options-(5)");
         System.out.println("-Edit Card-(6)");
+        System.out.println("-Delete Card-(7)");
         System.out.println("-------------------------");
 
     }
 
+    /**
+     * Collects info about which card is being edited
+     * collects info about which fields to edit
+     * changes field(s) in card
+     * @param NONE
+     * @return void
+     */
     private void editCardInterface(){
         System.out.println("Are you sure that you want to EDIT a card?(y/n)");
         String confirmation = reader2.next();
@@ -302,7 +333,6 @@ public class UserInterface {
                         System.out.println("Please enter the new priority for this card");
                         int newPriority = reader2.nextInt();
                         System.out.println("----------------------------------------------------");
-                        list.getCard(CardTitle).changePriority(newPriority, list.getCardCount());//Change priority in card
                         list.changePriority(list.getCard(CardTitle), newPriority);//Change priority in workspace
                         break;
 
@@ -347,9 +377,37 @@ public class UserInterface {
         }
     }
 
+    /**
+     * Collects info about which card is being deleted
+     * calls deleteCard() to delete card
+     * @param NONE
+     * @return void
+     */
+    private void deleteCardInterface(){
+        System.out.println("Which card would you like to delete: \n");
+        String titleToDelete = reader2.nextLine();
+        int priorityToDelete = -1;
+        for (int i = 0; i<list.cardCount; i++){
+            if (list.getCard(i).getTitle().equals(titleToDelete))
+            {
+                priorityToDelete = i;
+            }
+        }
+        if (priorityToDelete == -1){
+            System.out.println("\nSorry, this card could not be found\n");
+        }
+        else{
+            Card toDelete = list.getCard(priorityToDelete);
+            list.deleteCard(toDelete);
+            System.out.println("Card: "+titleToDelete+" has been deleted\n");
+        }
+    }
+
     public static void main(String[] args) {
        UserInterface start = new UserInterface();
        start.Options();
+       System.out.println("\nProgram is terminating");
+       System.out.println("-------------------------------------------------------------");
     }
 }
 

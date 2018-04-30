@@ -1,6 +1,7 @@
 package edu.ithaca.group2;
 import java.sql.SQLOutput;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 public class Workspace {
@@ -13,6 +14,19 @@ public class Workspace {
         cardCount = 0;
     }
 
+    public Workspace(ArrayList<Card> cardList, int cardCount){
+        this.cardList = cardList;
+        this.cardCount = cardCount;
+    }
+
+    /**
+     * Takes in a Card which should be added to the workspace
+     * checks the priority to know where to add it
+     * makes sure priority is valid and fits in the workspace
+     * It moves the other cards priorities around to place it correctly
+     * @param Card toAdd
+     * @return int (-1 if card cannot be added, 0 otherwise)
+     */
     public int addCard(Card toAdd){
         int priority = toAdd.getPriority();
 
@@ -37,6 +51,31 @@ public class Workspace {
         }
     }
 
+    /**
+     * Takes in a Card which should be removed from the workspace
+     * checks the priority to know where it will be deleted
+     * It moves the other cards priorities around to avoid having an empty space
+     * @param Card cardToDelete
+     * @return void
+     */
+    public void deleteCard(Card cardToDelete){
+        int priorityToDelete = cardToDelete.getPriority();
+        for (int i=priorityToDelete; i<(cardCount-1); i++)
+        {
+            cardList.set(i, cardList.get(i+1));
+            this.getCard(i).setPriority(i);
+        }
+        this.getCard(cardCount-1).setPriority(cardCount-2);
+        cardCount--;
+    }
+
+    /**
+     * Takes in a priority number
+     * Checks that there is a card with this priority
+     * Returns this card
+     * @param int priority
+     * @return card at priority
+     */
     public Card getCard(int priority) throws IndexOutOfBoundsException{
         if ((0<= priority) && (priority < cardCount))
         return cardList.get(priority);
@@ -46,6 +85,13 @@ public class Workspace {
         }
     }
 
+    /**
+     * Takes in a String of card title
+     * Checks that there is a card with this title
+     * Returns this card
+     * @param String title
+     * @return card with that title
+     */
     public Card getCard(String title) throws NoSuchElementException{
 
 
@@ -64,6 +110,12 @@ public class Workspace {
     }
 
 
+    /**
+     * Iterates through all cards in workspce
+     * Returns priority number and card title
+     * @param NONE
+     * @return String of cards and priorities
+     */
     public String viewAllCards() {
         String allCards = "";
         for (int i = 0; i < this.cardCount; i++) {
@@ -75,7 +127,6 @@ public class Workspace {
             ///Tell the code to change allCards using a for loop of the titles and maybe the priority numbers
             //Make sure to format this string either so that it works with the test (by changing this string or the expected one in the test
 
-
         }
         return allCards;
     }
@@ -84,6 +135,13 @@ public class Workspace {
         return this.cardCount;
     }
 
+    /**
+     * Takes in a Card to change priority and int of newPriority
+     * Changes priority of other cards to allow cardToMove to have its new priority
+     * Changes cardToMove to newPriority
+     * @param Card cardToMove, int newPriority
+     * @return NONE
+     */
     public void changePriority(Card cardToMove, int newPriority){
         if (newPriority>(cardCount-1) || newPriority<0) {
             System.out.println("Sorry, priority number out of bounds.  Try again.");
@@ -108,6 +166,14 @@ public class Workspace {
                 }
             }
         }
+    }
+
+    public ArrayList<Card> getCardList(){
+        return cardList;
+    }
+
+    public void setCardList(ArrayList<Card> cardList){
+        this.cardList = cardList;
     }
 
 
