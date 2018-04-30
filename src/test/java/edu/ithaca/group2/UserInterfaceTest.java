@@ -6,11 +6,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class UserInterfaceTest {
 
-    //UserInterface
-    //Options() While loop
-    //  -switch cases call __Interface() for user input info
-    //  -__Interface() calls __Function(--,--...) which DOES something and should be tested
-    //Returns 0 for no issues, returns -1 if there is an issue (like adding a card at an illegal priority)
+    /*
+    UserInterface
+    Options() While loop
+    -switch cases call __Interface() for user input info
+    -__Interface() calls __Function(--,--...) which DOES something and should be tested
+    Returns 0 for no issues, returns -1 if there is an issue (like adding a card at an illegal priority)
+
 
     @Test
     void testAddCardFunction(){
@@ -60,5 +62,5 @@ class UserInterfaceTest {
         assertEquals(testCard0.viewCard(), "testCard0\nID: 0\n\tnewDescription\nDeadline: newDeadline\nCard Color:black");
 
     }
-
+*/
 }
