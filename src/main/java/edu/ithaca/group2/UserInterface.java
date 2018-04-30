@@ -15,12 +15,16 @@ public class UserInterface {
 
     private Workspace list = new Workspace();
 
-
     private void changeFlag() {
         flag = false;
     }
     //user makes selection from the list
 
+    /**
+     * Contains while loop which runs until the program is terminated
+     * @param NONE
+     * @return 0 when program ends
+     */
     private int Options() {
         //implementing scanner
         Scanner reader1 = new Scanner(System.in);
@@ -139,6 +143,12 @@ public class UserInterface {
 
     }
 
+    /**
+     * Collects info for adding a card
+     * Calls addCard() to add card to workspace
+     * @param NONE
+     * @return void
+     */
     private void addNewCardSimple(){
         String CardColor = "white"; //default
         String CardDeadline = ""; //Default
@@ -214,6 +224,12 @@ public class UserInterface {
         }
     }
 
+    /**
+     * Collects info about which card is being viewed
+     * calls viewCard() to view the chosen card
+     * @param NONE
+     * @return void
+     */
     //case2
     private void viewCardInterface() {
         System.out.println("Are you sure that you want to VIEW a card?(y/n)");
@@ -243,6 +259,11 @@ public class UserInterface {
         }
     }
 
+    /**
+     * Prints commandLine options
+     * @param NONE
+     * @return void
+     */
     //print a list of the options that the user has
     private void printList() {
         System.out.println("-----List of Options-----");
@@ -257,6 +278,13 @@ public class UserInterface {
 
     }
 
+    /**
+     * Collects info about which card is being edited
+     * collects info about which fields to edit
+     * changes field(s) in card
+     * @param NONE
+     * @return void
+     */
     private void editCardInterface(){
         System.out.println("Are you sure that you want to EDIT a card?(y/n)");
         String confirmation = reader2.next();
@@ -340,6 +368,12 @@ public class UserInterface {
         }
     }
 
+    /**
+     * Collects info about which card is being deleted
+     * calls deleteCard() to delete card
+     * @param NONE
+     * @return void
+     */
     private void deleteCardInterface(){
         System.out.println("Which card would you like to delete: \n");
         String titleToDelete = reader2.nextLine();
