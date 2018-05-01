@@ -38,7 +38,7 @@ public class UserInterface {
 
 
         while (flag) {
-            System.out.println("Which task do you want to accomplish?(1-8) \n");
+            System.out.println("Which task do you want to accomplish?(1-9) \n");
 
             int choice = reader1.nextInt();
 
@@ -85,6 +85,9 @@ public class UserInterface {
                     break;
                 case 8://Save Workspace to file
                     saveWorkspaceToFile();
+                    break;
+                case 9:
+                    readInWorkspace();
                     break;
                 default:
                     System.out.println("The choice selected is invalid. Try again");
@@ -278,6 +281,8 @@ public class UserInterface {
         System.out.println("-To view list of Options-(5)");
         System.out.println("-Edit Card-(6)");
         System.out.println("-Delete Card-(7)");
+        System.out.println("-Write-out/ Save workspace-(8)");
+        System.out.println("-Read-in / open a saved workspace-(9)");
         System.out.println("-------------------------");
 
     }
@@ -400,7 +405,6 @@ public class UserInterface {
 
     private String saveWorkspaceToFile(){
         String fileName = "src/test/resources/writeInAndOutTest.json";
-        Workspace toFile = list;
         try{
             ReadInWriteOut.writeToJson(list, fileName);
             System.out.println("It should work if this prints.");
@@ -408,6 +412,16 @@ public class UserInterface {
         }
         catch(IOException e){
             return "Either nothing is in the workspace, or you have a corrupted filepath.";
+        }
+    }
+
+    private void readInWorkspace(){
+        String fileName = "src/test/resources/writeInAndOutTest.json";
+        try {
+            ReadInWriteOut.buildCardFromJson(fileName);
+        }
+        catch(IOException e){
+            System.out.println("404: File Not Found");
         }
     }
 
