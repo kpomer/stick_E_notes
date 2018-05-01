@@ -4,13 +4,15 @@ import java.util.*;
 
 public class UserInterface {
 
-    private Scanner reader2 = new Scanner(System.in);
-    private Scanner reader3 = new Scanner(System.in);
-    private Scanner title = new Scanner(System.in);
-    private Scanner priority = new Scanner(System.in);
-    private Scanner description = new Scanner(System.in);
-    private Scanner deadline = new Scanner(System.in);
-    private Scanner color = new Scanner(System.in);
+    //TODO: Change this page to the following format
+
+    //While loop of Options
+    //Options have switch case which calls __Interface() functions
+    //__Interface() functions collect user input
+    //__Interface() functions call __Function(params) functions with params from user input
+
+    private Scanner reader = new Scanner(System.in);
+
     private boolean flag = true;
 
     private Workspace list = new Workspace();
@@ -53,7 +55,7 @@ public class UserInterface {
 
                 case 3: //Print all Cards(finish later)
                     System.out.println("Are you sure that you want to VIEW the CARD LIST?(y/n)");
-                    String confirmation = reader2.next();
+                    String confirmation = reader.next();
                     if (confirmation.toLowerCase().equals("y")) {
                         System.out.println("\nCard List:");
                         System.out.println(list.viewAllCards());
@@ -64,7 +66,7 @@ public class UserInterface {
 
                 case 4: //Quit
                     System.out.println("Are you sure that you want to QUIT?(y/n)");
-                    confirmation = reader2.next();
+                    confirmation = reader.next();
                     if (confirmation.toLowerCase().equals("y")) {
                         System.out.println("Application shutting down");
                         changeFlag();
@@ -98,28 +100,28 @@ public class UserInterface {
     //case 1 NOT USED
     private void addCardInterface() {
         System.out.println("Are you sure that you want to ADD a card?(y/n)");
-        //String confirmation = reader2.next();
-        String confirmation = reader2.nextLine();
+        //String confirmation = reader.next();
+        String confirmation = reader.nextLine();
         if (confirmation.toLowerCase().equals("y")) {
 
             System.out.println("Enter your Title: \n");
-            String CardTitle = title.nextLine();
+            String CardTitle = reader.nextLine();
             System.out.println("--------------------");
 
             System.out.println("Enter the priority for this card:(0-10)");
-            int CardPriority = priority.nextInt();
+            int CardPriority = reader.nextInt();
             System.out.println("----------------------------------------");
 
             System.out.println("Provide a description for the card(This is optional)");
-            String CardDescription = description.nextLine();
+            String CardDescription = reader.nextLine();
             System.out.println("----------------------------------------------------");
 
             System.out.println("When is your deadline?");
-            String CardDeadline = deadline.nextLine();
+            String CardDeadline = reader.nextLine();
             System.out.println("----------------------------------------------------");
 
             System.out.println("Select a color");
-            String CardColor = color.nextLine();
+            String CardColor = reader.nextLine();
             if(CardColor.equals("")) {
                 CardColor = "white";
             }
@@ -154,21 +156,21 @@ public class UserInterface {
         String CardDeadline = ""; //Default
         String CardDescription = ""; //Default
         System.out.println("Are you sure that you want to ADD a card?(y/n)\n");
-        //String confirmation = reader2.next();
-        String confirmation = reader2.nextLine();
+        //String confirmation = reader.next();
+        String confirmation = reader.nextLine();
         if (confirmation.toLowerCase().equals("y")) {
 
             System.out.println("Enter your Title: \n");
-            String CardTitle = title.nextLine();
+            String CardTitle = reader.nextLine();
             System.out.println("--------------------");
 
             System.out.println("Enter the priority for this card:");
-            int CardPriority = priority.nextInt();
+            int CardPriority = reader.nextInt();
             System.out.println("----------------------------------------");
 
             boolean changeFields = false;
         System.out.println("Would you like to add more fields? (y/n)");
-        String newConfirmation = reader2.nextLine();
+        String newConfirmation = reader.nextLine();
         if (newConfirmation.toLowerCase().equals("y")){
             changeFields = true;
             }
@@ -184,23 +186,23 @@ public class UserInterface {
             System.out.println("-Card Color-(3)");
             System.out.println("-------------------------\n");
 
-            int field = reader2.nextInt();
+            int field = reader.nextInt();
 
             switch(field) {
 
                 case 1:
                     System.out.println("Provide a description for the card:");
-                    CardDescription = description.nextLine();
+                    CardDescription = reader.nextLine();
                     System.out.println("----------------------------------------------------");
                     break;
                 case 2:
                     System.out.println("Provide a deadline for the card:");
-                    CardDeadline = deadline.nextLine();
+                    CardDeadline = reader.nextLine();
                     System.out.println("----------------------------------------------------");
                     break;
                 case(3):
                     System.out.println("Select a color for your card");
-                    CardColor = color.nextLine().toLowerCase();
+                    CardColor = reader.nextLine().toLowerCase();
                     System.out.println("----------------------------------------------------");
                     break;
                 case 0:
@@ -233,10 +235,10 @@ public class UserInterface {
     //case2
     private void viewCardInterface() {
         System.out.println("Are you sure that you want to VIEW a card?(y/n)");
-        String confirmation = reader2.next();
+        String confirmation = reader.next();
         if (confirmation.toLowerCase().equals("y")) {
             System.out.println("Enter Card Title");
-           String CardTitle = title.nextLine();
+           String CardTitle = reader.nextLine();
            boolean inList = false;
            for (int p=0; p<list.getCardCount(); p++) {
                if (list.getCard(p).getTitle().equals(CardTitle)) {
@@ -287,10 +289,10 @@ public class UserInterface {
      */
     private void editCardInterface(){
         System.out.println("Are you sure that you want to EDIT a card?(y/n)");
-        String confirmation = reader2.next();
+        String confirmation = reader.next();
         if (confirmation.toLowerCase().equals("y")) {
             System.out.println("Enter Title of Card to Edit");
-            String CardTitle = title.nextLine();
+            String CardTitle = reader.nextLine();
             boolean inList = false;
             for (int p=0; p<list.getCardCount(); p++) {
                 if (list.getCard(p).getTitle().equals(CardTitle)) {
@@ -304,16 +306,17 @@ public class UserInterface {
                 System.out.println("-Priority-(2)");
                 System.out.println("-Description-(3)");
                 System.out.println("-Deadline-(4)");
+                System.out.println("-Color-(5)");
                 System.out.println("-------------------------\n");
                 System.out.println("Select Card Field to Change");
 
-                int field = reader2.nextInt();
+                int field = reader.nextInt();
 
                 switch (field) {
                     case 1://Title
                         System.out.println("You selected to change the TITLE of the following card: "+CardTitle);
                         System.out.println("Please enter the new title for this card");
-                        String newTitle = reader3.nextLine();
+                        String newTitle = reader.nextLine();
                         System.out.println("----------------------------------------------------");
                         list.getCard(CardTitle).changeTitle(newTitle);
                         break;
@@ -322,7 +325,7 @@ public class UserInterface {
                         System.out.println("You selected to change the PRIORITY of the following card: "+CardTitle);
                         System.out.println("The current priority of this card is: "+list.getCard(CardTitle).getPriority());
                         System.out.println("Please enter the new priority for this card");
-                        int newPriority = reader2.nextInt();
+                        int newPriority = reader.nextInt();
                         System.out.println("----------------------------------------------------");
                         list.changePriority(list.getCard(CardTitle), newPriority);//Change priority in workspace
                         break;
@@ -331,7 +334,7 @@ public class UserInterface {
                         System.out.println("You selected to change the DESCRIPTION of the following card: "+CardTitle);
                         System.out.println("The current description of this card is: "+list.getCard(CardTitle).getDescription());
                         System.out.println("Please enter the new description for this card");
-                        String newDescription = reader3.nextLine();
+                        String newDescription = reader.nextLine();
                         System.out.println("----------------------------------------------------");
                         list.getCard(CardTitle).changeDescription(newDescription);
                         break;
@@ -340,7 +343,7 @@ public class UserInterface {
                         System.out.println("You selected to change the DEADLINE of the following card: "+CardTitle);
                         System.out.println("The current deadline of this card is: "+list.getCard(CardTitle).getDeadline());
                         System.out.println("Please enter the new deadline for this card");
-                        String newDeadline = reader3.nextLine();
+                        String newDeadline = reader.nextLine();
                         System.out.println("----------------------------------------------------");
                         list.getCard(CardTitle).changeDeadline(newDeadline);
                         break;
@@ -348,7 +351,7 @@ public class UserInterface {
                         System.out.println("You selected to change the COLOR of the following card: "+CardTitle);
                         System.out.println("The current color of this card is: "+list.getCard(CardTitle).getColor());
                         System.out.println("Please enter the new deadline for this card");
-                        String newColor = color.nextLine().toLowerCase();
+                        String newColor = reader.nextLine().toLowerCase();
                         System.out.println("----------------------------------------------------");
                         list.getCard(CardTitle).changeColor(newColor);
                         break;
@@ -376,7 +379,7 @@ public class UserInterface {
      */
     private void deleteCardInterface(){
         System.out.println("Which card would you like to delete: \n");
-        String titleToDelete = reader2.nextLine();
+        String titleToDelete = reader.nextLine();
         int priorityToDelete = -1;
         for (int i = 0; i<list.cardCount; i++){
             if (list.getCard(i).getTitle().equals(titleToDelete))
