@@ -15,6 +15,7 @@ public class Card {
 
     String description = "";
     Date deadline;
+    String color = "white";
 
     //default constructor
     public Card(){
@@ -24,6 +25,7 @@ public class Card {
 
         this.description = "";
         this.deadline = new Date(0,0,0);
+        this.color = "white";
     }
 
     //constructor if only title and priority are given
@@ -33,17 +35,20 @@ public class Card {
 
         this.description = "";
         this.deadline = new Date(0,0,0);
+
+        this.color = "white";
         //I don't think it should say "no description yet" or "no card yet" because these fields may never be filled
         //In my opinion it looks cleaner to leave them as empty strings
     }
 
     //constructor if all data members are given
-    public Card(String title, int priority, String description, String deadline) {
-        this.title = title;
+    public Card(String title, int priority, String description, String deadline, String color){
+        this.title= title;
         this.priority = priority;
 
         this.description = description;
         this.deadline = strTodate(deadline);
+        this.color = color.toLowerCase();
     }
     public Date strTodate(String deadline){
         SimpleDateFormat ft = new SimpleDateFormat ("MM/dd/yyyy");
@@ -96,6 +101,8 @@ public class Card {
 
     }
 
+    //changers
+
     public void changeDescription(String newDescription){
         setDescription(newDescription);
     }
@@ -103,6 +110,12 @@ public class Card {
     public void changeDeadline(String newDeadline){
         setDeadline(newDeadline);
     }
+
+    public void changeColor( String newColor){ setColor(newColor);}
+
+    //setting
+
+    public void setColor(String color){this.color = color;}
 
     public void setTitle(String title) {
         this.title = title;
@@ -121,6 +134,8 @@ public class Card {
         this.deadline = date;
     }
 
+    //getters
+
     public String getTitle() {
         return title;
     }
@@ -137,25 +152,27 @@ public class Card {
         return deadline;
     }
 
+    public String getColor(){return color;}
+
     public String viewCard(){
         Format formatter = new SimpleDateFormat("MM/dd/yyyy");
         String strdeadline = formatter.format(deadline);
         //String blank="";
 
+        if(strdeadline.equals("12/31/1899"))
+            strdeadline = "";
+        if(description.equals("") && deadline.equals("")){
+            return title + "\nID: " + priority + "\nCard Color:"+ color;
+        }else if(description.equals("")){
+            return title + "\nID: " + priority + "\nDeadline: " + deadline  + "\nCard Color:"+ color;
+        }else if(deadline.equals("")){
+            return title + "\nID: " + priority + "\n\t" + description  + "\nCard Color:"+ color;
+        }else {
+            return title + "\nID: " + priority + "\n\t" + description + "\nDeadline: " + deadline + "\nCard Color:"+ color;
+        }
         // if Date shws up as default date
         // turn into a blank string
         //Make another function that turns string that cant be turned into Dtaes into Blank dates abd returns them
-                    if(strdeadline.equals("12/31/1899"))
-                        strdeadline = "";
-                    if (description == "" && strdeadline == "") {
-                        return title + "\nID: " + priority;
-                    } else if (description == "") {
-                        return title + "\nID: " + priority + "\nDeadline: " + deadline;
-                    } else if (strdeadline == "") {
-                        return title + "\nID: " + priority + "\n\t" + description;
-                    } else {
-                        return title + "\nID: " + priority + "\n\t" + description + "\nDeadline: " + deadline;
-                    }
 
 
     }

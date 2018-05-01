@@ -2,6 +2,7 @@ package edu.ithaca.group2;
 import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 public class Workspace {
@@ -13,6 +14,12 @@ public class Workspace {
         cardList = new ArrayList<Card>();
         cardCount = 0;
     }
+
+    public Workspace(ArrayList<Card> cardList, int cardCount){
+        this.cardList = cardList;
+        this.cardCount = cardCount;
+    }
+
     public int addCard(Card toAdd){
         int priority = toAdd.getPriority();
 
@@ -26,15 +33,26 @@ public class Workspace {
         }
 
         else{
-            cardList.add(priority, toAdd);
-            this.cardCount++;
             //Change priority of cards following new card
-            for (int p = (priority+1); p<cardCount; p++)
+            for (int p = priority; p<cardCount; p++)
             {
-                this.getCard(p).setPriority(p);
+                cardList.get(p).setPriority(p+1);
             }
+            cardList.add(priority, toAdd);
+            cardCount++;
             return 0;
         }
+    }
+
+    public void deleteCard(Card cardToDelete){
+        int priorityToDelete = cardToDelete.getPriority();
+        for (int i=priorityToDelete; i<(cardCount-1); i++)
+        {
+            cardList.set(i, cardList.get(i+1));
+            this.getCard(i).setPriority(i);
+        }
+        this.getCard(cardCount-1).setPriority(cardCount-2);
+        cardCount--;
     }
 
     public Card getCard(int priority) throws IndexOutOfBoundsException{
@@ -75,7 +93,6 @@ public class Workspace {
             ///Tell the code to change allCards using a for loop of the titles and maybe the priority numbers
             //Make sure to format this string either so that it works with the test (by changing this string or the expected one in the test
 
-
         }
         return allCards;
     }
@@ -91,18 +108,31 @@ public class Workspace {
         else{
             if (cardToMove.getPriority()!=newPriority) {
                 if (newPriority<cardToMove.getPriority()) {
-                    for (int p = (newPriority + 1); p < cardCount; p++) {
-                        this.getCard(p).setPriority(p);
+                    for (int p = (cardToMove.getPriority()-1); p >= newPriority; p--) {
+                        this.getCard(p).setPriority(p+1);
+                        cardList.set(p+1, cardList.get(p));
                     }
+                    cardList.set(newPriority, cardToMove);
+                    cardToMove.setPriority(newPriority);
                 }
                 else if (newPriority>cardToMove.getPriority()){
-                    for (int p = (cardToMove.getPriority()+1); p <=newPriority; p++) {
-                        this.getCard(p).setPriority(p-1);
+                    for (int p = (cardToMove.getPriority()); p <newPriority; p++) {
+                        this.getCard(p+1).setPriority(p);
+                        cardList.set(p, cardList.get(p+1));
                     }
+                    cardList.set(newPriority, cardToMove);
+                    cardToMove.setPriority(newPriority);
                 }
-                cardList.set(newPriority, cardToMove);
             }
         }
+    }
+
+    public ArrayList<Card> getCardList(){
+        return cardList;
+    }
+
+    public void setCardList(ArrayList<Card> cardList){
+        this.cardList = cardList;
     }
     //Test to see if an entered date is the same as proposed date
     // Test to see that
