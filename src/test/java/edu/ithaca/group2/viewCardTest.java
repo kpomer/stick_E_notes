@@ -171,6 +171,8 @@ class viewCardTest {
         Card test1 =new Card("title1",0,"things","5/15/2018","green");
         Card test2 =new Card("title2",1,"things","5/13/2018","green");
         Card test3 =new Card("title3",2,"things","5/12/2018","green");
+        Card test3a =new Card("title3",2,"things","5/12/2018","green");
+        Card test3b =new Card("title3",2,"things","5/12/2018","green");
         Card test4 =new Card("title4",3,"things","5/05/2018","green");
         Card test5 =new Card("title5",4,"things","5/04/2018","green");
         Workspace testw=new Workspace();
@@ -180,9 +182,21 @@ class viewCardTest {
         testw.addCard(test3);
         testw.addCard(test4);
         testw.addCard(test5);
+        testw.addCard(test3a);
+        testw.addCard(test3b);
+
         Date testd =new Date(118,4,12);
-        String message= "Your "+test1.getTitle()+test2.getTitle()+test3.getTitle()+" cards are upcoming";
+        Date testd2 =new Date(118,4,24);
+        String message= "Your "+test1.getTitle()+" "+test2.getTitle()+" "+test3.getTitle()+" "+test3a.getTitle()+" "+test3b.getTitle()+" "+"cards are upcoming";
+        String message2= "Your "+test3.getTitle()+" "+test3a.getTitle()+" "+test3b.getTitle()+" "+"cards are upcoming";
+        String message3= "No Cards are upcoming";
+        System.out.println(message);
+        //Test for regular use
         assertEquals(message,testw.dateNotifiation(5,testd));
+        //Test for if the notification is on the same day
+        assertEquals(message2,testw.dateNotifiation(0,testd));
+        //Test if No Cards fi the notification
+        assertEquals(message3,testw.dateNotifiation(9,testd2));
 
     }
 }

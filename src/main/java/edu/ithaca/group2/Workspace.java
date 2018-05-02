@@ -127,18 +127,19 @@ public class Workspace {
         long diff =inlist.getTime()-tocompare.getTime();
         diff=(diff / (1000 * 60 * 60 * 24));
         int daystill = (int) diff;
+        //System.out.println(daystill);
         return daystill;
 
     }
     public boolean dateCompare(Date inlist, Date tocompare) {
         if (inlist.after(tocompare)) {
-            System.out.println("Date1 is after Date2");
+            //System.out.println("Date1 is after Date2");
             return true;
         } else if (inlist.before(tocompare)) {
-            System.out.println("Date1 is before Date2");
+            //System.out.println("Date1 is before Date2");
             return false;
         } else if (inlist.equals(tocompare)) {
-            System.out.println("Date1 is equal to Date2");
+            //System.out.println("Date1 is equal to Date2");
             return true;
         }
         return false;
@@ -150,7 +151,8 @@ public class Workspace {
             Date current =cardList.get(i).getDeadline();
             if(dateCompare(current,datein)==true) {
                 if(dateDifference(current,datein)<=tilldate) {
-                    titles += cardList.get(i).getTitle();
+                    titles +=cardList.get(i).getTitle()+" ";
+
                 }
 
             }
@@ -160,7 +162,7 @@ public class Workspace {
             return"No Cards are upcoming";
         }else{
             System.out.println(titles);
-            return "Your "+ titles+ " cards are upcoming";
+            return "Your "+ titles+ "cards are upcoming";
         }
 
     }
