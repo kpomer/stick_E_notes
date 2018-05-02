@@ -1,9 +1,6 @@
 package edu.ithaca.group2;
 import java.sql.SQLOutput;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
-import java.util.NoSuchElementException;
+import java.util.*;
 
 public class Workspace {
 
@@ -125,6 +122,47 @@ public class Workspace {
                 }
             }
         }
+    }
+    public int dateDifference(Date inlist, Date tocompare) {
+        long diff =inlist.getTime()-tocompare.getTime();
+        diff=(diff / (1000 * 60 * 60 * 24));
+        int daystill = (int) diff;
+        return daystill;
+
+    }
+    public boolean dateCompare(Date inlist, Date tocompare) {
+        if (inlist.after(tocompare)) {
+            System.out.println("Date1 is after Date2");
+            return true;
+        } else if (inlist.before(tocompare)) {
+            System.out.println("Date1 is before Date2");
+            return false;
+        } else if (inlist.equals(tocompare)) {
+            System.out.println("Date1 is equal to Date2");
+            return true;
+        }
+        return false;
+    }
+
+    public String dateNotifiation(int tilldate, Date datein ) {
+        String titles="";
+        for (int i = 0; i <cardCount ; i++) {
+            Date current =cardList.get(i).getDeadline();
+            if(dateCompare(current,datein)==true) {
+                if(dateDifference(current,datein)<=tilldate) {
+                    titles += cardList.get(i).getTitle();
+                }
+
+            }
+
+        }
+        if(titles==""){
+            return"No Cards are upcoming";
+        }else{
+            System.out.println(titles);
+            return "Your "+ titles+ " cards are upcoming";
+        }
+
     }
 
     public ArrayList<Card> getCardList(){
