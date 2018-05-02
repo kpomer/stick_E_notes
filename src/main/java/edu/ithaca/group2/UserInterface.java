@@ -410,7 +410,7 @@ public class UserInterface {
         String fileName = "src/test/resources/writeInAndOutTest.json";
         try{
             ReadInWriteOut.writeToJson(list, fileName);
-            System.out.println("It should work if this prints.");
+            System.out.println("Success!");
             return fileName;
         }
         catch(IOException e){
@@ -421,7 +421,8 @@ public class UserInterface {
     private void readInWorkspace(){
         String fileName = "src/test/resources/writeInAndOutTest.json";
         try {
-            ReadInWriteOut.buildCardFromJson(fileName);
+            list = ReadInWriteOut.buildCardFromJson(fileName);
+            System.out.println("Success");
         }
         catch(IOException e){
             System.out.println("404: File Not Found");
