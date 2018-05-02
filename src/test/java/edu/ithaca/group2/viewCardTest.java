@@ -166,4 +166,21 @@ class viewCardTest {
 
 
     }
+    void NotifTest(){
+        Card test1 =new Card("title1",0,"things","5/15/2018","green");
+        Card test2 =new Card("title2",1,"things","5/10/2018","green");
+        Card test3 =new Card("title3",2,"things","5/12/2018","green");
+        Card test4 =new Card("title4",3,"things","5/05/2018","green");
+        Card test5 =new Card("title5",4,"things","5/04/2018","green");
+        Workspace testw=new Workspace();
+
+        testw.addCard(test1);
+        testw.addCard(test2);
+        testw.addCard(test3);
+        testw.addCard(test4);
+        testw.addCard(test5);
+        String message= "Your "+test1.getTitle()+test2.getTitle()+test3.getTitle()+"is coming soon";
+        assertEquals(message,Workspace.dateNotification());
+
+    }
 }
