@@ -3,13 +3,24 @@ import java.util.*;
 
 public class UserInterface {
 
+
+    //TODO: Change this page to the following format
+
+    //While loop of Options
+    //Options have switch case which calls __Interface() functions
+    //__Interface() functions collect user input
+    //__Interface() functions call __Function(params) functions with params from user input
+
+
     private Scanner reader = new Scanner(System.in);
 
     private boolean flag = true;
 
     private Workspace list = new Workspace();
 
+
    private String[] colorArray = {"red","green","blue","white"}; //********************************************************************************************************************
+
 
 
     private void changeFlag() {
@@ -17,6 +28,11 @@ public class UserInterface {
     }
     //user makes selection from the list
 
+    /**
+     * Contains while loop which runs until the program is terminated
+     * @param
+     * @return 0 when program ends
+     */
     private int Options() {
         //implementing scanner
         Scanner reader1 = new Scanner(System.in);
@@ -189,6 +205,12 @@ public class UserInterface {
 
     }
 
+    /**
+     * Collects info for adding a card
+     * Calls addCard() to add card to workspace
+     * @param
+     * @return void
+     */
     private void addNewCardSimple(){
         String CardColor = "white"; //default
         String CardDeadline = ""; //Default
@@ -240,12 +262,16 @@ public class UserInterface {
                     break;
                 case(3): //redid the color field a little to make it more precise *****************************************************************************************************************
                     System.out.println("Select a color for your card");
+
                     listOfColors();
                     int potentialColor = reader.nextInt();
                     if( potentialColor < 0 || potentialColor > 3) {
                         System.out.println("Invalid selection: Value is out of choice range");
                     }
                     CardColor = colorArray[potentialColor];
+
+                    System.out.println("----------------------------------------------------");
+
                     break;
                 case 0:
                 default:
@@ -267,6 +293,12 @@ public class UserInterface {
 
     }
 
+    /**
+     * Collects info about which card is being viewed
+     * calls viewCard() to view the chosen card
+     * @param
+     * @return void
+     */
     //case2
     private void viewCardInterface() {
         System.out.println("Are you sure that you want to VIEW a card?(y/n)");
@@ -292,6 +324,11 @@ public class UserInterface {
 
     }
 
+    /**
+     * Prints commandLine options
+     * @param
+     * @return void
+     */
     //print a list of the options that the user has
     private void printList() {
         System.out.println("-----List of Options-----");
@@ -307,6 +344,13 @@ public class UserInterface {
 
     }
 
+    /**
+     * Collects info about which card is being edited
+     * collects info about which fields to edit
+     * changes field(s) in card
+     * @param
+     * @return void
+     */
     private void editCardInterface(){
         System.out.println("Are you sure that you want to EDIT a card?(y/n)");
         String confirmation = reader.next();
@@ -326,6 +370,7 @@ public class UserInterface {
                 System.out.println("-Priority-(2)");
                 System.out.println("-Description-(3)");
                 System.out.println("-Deadline-(4)");
+                System.out.println("-Color-(5)");
                 System.out.println("-------------------------\n");
                 System.out.println("Select Card Field to Change");
 
@@ -369,9 +414,11 @@ public class UserInterface {
                     case 5: //Color Field //*******************************************************************************************************************************************************
                         System.out.println("You selected to change the COLOR of the following card: "+CardTitle);
                         System.out.println("The current color of this card is: "+list.getCard(CardTitle).getColor());
+
                         System.out.println("Please enter the new color for this card");
                         listOfColors();
                         int newColor = reader.nextInt();
+
                         System.out.println("----------------------------------------------------");
                         list.getCard(CardTitle).changeColor(newColor);
                         break;
@@ -389,6 +436,12 @@ public class UserInterface {
             }
     }
 
+    /**
+     * Collects info about which card is being deleted
+     * calls deleteCard() to delete card
+     * @param
+     * @return void
+     */
     private void deleteCardInterface(){
         System.out.println("Which card would you like to delete: \n");
         String titleToDelete = reader.nextLine();
