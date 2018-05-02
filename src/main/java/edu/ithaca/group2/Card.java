@@ -63,7 +63,7 @@ public class Card {
             //System.out.println(dt1.format(t));
             return t;
         } catch (ParseException e) {
-            System.out.println("You've entered an improper String, " + ft);
+            //System.out.println("You've entered an improper String, " + ft);
             System.out.println("Your Date is 12/31/1899");
             return blank;
         }
@@ -74,7 +74,7 @@ public class Card {
         System.out.println("Date Format with MM/dd/yyyy : "+deadline);
         return date;*/
     }
-     public String dateTostr(Date deadline){
+   /*  public String dateTostr(Date deadline){
          // Create an instance of SimpleDateFormat used for formatting
         // the string representation of date (month/day/year)
          DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
@@ -88,7 +88,7 @@ public class Card {
         // Print what date is today!
          //System.out.println("Report Date: " + reportDate);
          return reportDate;
-     }
+     }*/
 
     public void changeTitle(String newTitle){
         setTitle(newTitle);

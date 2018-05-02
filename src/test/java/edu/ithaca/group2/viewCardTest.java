@@ -187,15 +187,16 @@ class viewCardTest {
 
         Date testd =new Date(118,4,12);
         Date testd2 =new Date(118,4,24);
+
         String message= "Your "+test1.getTitle()+" "+test2.getTitle()+" "+test3.getTitle()+" "+test3a.getTitle()+" "+test3b.getTitle()+" "+"cards are upcoming";
         String message2= "Your "+test3.getTitle()+" "+test3a.getTitle()+" "+test3b.getTitle()+" "+"cards are upcoming";
         String message3= "No Cards are upcoming";
-        System.out.println(message);
+        
         //Test for regular use
         assertEquals(message,testw.dateNotifiation(5,testd));
         //Test for if the notification is on the same day
         assertEquals(message2,testw.dateNotifiation(0,testd));
-        //Test if No Cards fi the notification
+        //Test if No Cards for the notification
         assertEquals(message3,testw.dateNotifiation(9,testd2));
 
     }
