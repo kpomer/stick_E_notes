@@ -176,5 +176,18 @@ public class Workspace {
         this.cardList = cardList;
     }
 
+    //Recently added to test color
+    public void filterByColor(String colorFilter){
+
+        for (int i = 0; i < cardList.size(); i++) {
+            if(cardList.get(i).getColor().equals(colorFilter)){
+
+                System.out.println(cardList.get(i).viewCard());
+
+            }
+
+        }
+    }
+
 
 }

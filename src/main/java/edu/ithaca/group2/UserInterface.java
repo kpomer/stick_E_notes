@@ -1,8 +1,8 @@
 package edu.ithaca.group2;
-import java.sql.SQLOutput;
 import java.util.*;
 
 public class UserInterface {
+
 
     //TODO: Change this page to the following format
 
@@ -11,11 +11,17 @@ public class UserInterface {
     //__Interface() functions collect user input
     //__Interface() functions call __Function(params) functions with params from user input
 
+
     private Scanner reader = new Scanner(System.in);
 
     private boolean flag = true;
 
     private Workspace list = new Workspace();
+
+
+   private String[] colorArray = {"red","green","blue","white"}; //********************************************************************************************************************
+
+
 
     private void changeFlag() {
         flag = false;
@@ -24,7 +30,7 @@ public class UserInterface {
 
     /**
      * Contains while loop which runs until the program is terminated
-     * @param NONE
+     * @param
      * @return 0 when program ends
      */
     private int Options() {
@@ -39,7 +45,9 @@ public class UserInterface {
 
 
         while (flag) {
-            System.out.println("Which task do you want to accomplish?(1-7) \n");
+            System.out.println("-------------------------------------------------------------");
+            System.out.println("Which task do you want to accomplish?(1-8) \n");
+            System.out.println("Press (5) to see a list of options \n");
 
             int choice = reader1.nextInt();
 
@@ -84,6 +92,11 @@ public class UserInterface {
                 case 7://Delete Card
                     deleteCardInterface();
                     break;
+
+                case 8://Filter Cards
+                    filterCardColorInterface();  //*************************************************************************************************************************************************
+                    break;
+
                 default:
                     System.out.println("The choice selected is invalid. Try again");
                     System.out.println("If you want a list of possible actions, press 5 when prompted");
@@ -95,6 +108,53 @@ public class UserInterface {
         }
 
         return 0;
+    }
+
+    private void filterCardColorInterface(){ //****************************************************************************************************************************************************
+
+        //Makes sure that there is an item in the list
+        if(list.cardList.isEmpty()){
+            System.out.println("You currently have no cards to filter by");
+            Options();
+        }
+        //Atleast one item in the list
+        System.out.println("Are you sure that you want to FILTER your cards?(y/n)");
+        String confirmation = reader.nextLine();
+        if (confirmation.toLowerCase().equals("y")) {
+            System.out.println("What COLOR do you want to filter by(0-3)?");
+            listOfColors();
+            int choice = reader.nextInt();
+
+            switch(choice){
+
+                case 0:
+                    list.filterByColor("red");
+                    break;
+                case 1:
+                    list.filterByColor("green");
+                    break;
+                case 2:
+                    list.filterByColor("blue");
+                    break;
+                case 3:
+                    list.filterByColor("white");
+                    break;
+                default:
+                    System.out.println("The color selected does not Exist in this application");
+            }
+
+
+        }
+
+    }
+
+    private void listOfColors(){    //************************************************************************************************************************************************************
+        System.out.println("-----List of Colors-----");
+        System.out.println("-Red-(0)");
+        System.out.println("-Green-(1)");
+        System.out.println("-Blue-(2)");
+        System.out.println("-White-(3)");
+        System.out.println("-------------------------");
     }
 
     //case 1 NOT USED
@@ -123,7 +183,7 @@ public class UserInterface {
             System.out.println("Select a color");
             String CardColor = reader.nextLine();
             if(CardColor.equals("")) {
-                CardColor = "white";
+                CardColor = colorArray[3]; //***************************************************************************************************************************************************
             }
             System.out.println("----------------------------------------------------");
 
@@ -148,7 +208,7 @@ public class UserInterface {
     /**
      * Collects info for adding a card
      * Calls addCard() to add card to workspace
-     * @param NONE
+     * @param
      * @return void
      */
     private void addNewCardSimple(){
@@ -200,10 +260,18 @@ public class UserInterface {
                     CardDeadline = reader.nextLine();
                     System.out.println("----------------------------------------------------");
                     break;
-                case(3):
+                case(3): //redid the color field a little to make it more precise *****************************************************************************************************************
                     System.out.println("Select a color for your card");
-                    CardColor = reader.nextLine().toLowerCase();
+
+                    listOfColors();
+                    int potentialColor = reader.nextInt();
+                    if( potentialColor < 0 || potentialColor > 3) {
+                        System.out.println("Invalid selection: Value is out of choice range");
+                    }
+                    CardColor = colorArray[potentialColor];
+
                     System.out.println("----------------------------------------------------");
+
                     break;
                 case 0:
                 default:
@@ -218,18 +286,17 @@ public class UserInterface {
             if (isAdded == 0) {
                 System.out.println("You have added a card successfully");
             }
-            Options();
 
 
-        } else {
-            Options();
+
         }
+
     }
 
     /**
      * Collects info about which card is being viewed
      * calls viewCard() to view the chosen card
-     * @param NONE
+     * @param
      * @return void
      */
     //case2
@@ -253,17 +320,13 @@ public class UserInterface {
                    System.out.println(CardTitle+" is not found in the Workspace\n\n");
            }
 
-            Options();
-
-
-        } else {
-            Options();
         }
+
     }
 
     /**
      * Prints commandLine options
-     * @param NONE
+     * @param
      * @return void
      */
     //print a list of the options that the user has
@@ -276,6 +339,7 @@ public class UserInterface {
         System.out.println("-To view list of Options-(5)");
         System.out.println("-Edit Card-(6)");
         System.out.println("-Delete Card-(7)");
+        System.out.println("-Filter Cards-(8)");
         System.out.println("-------------------------");
 
     }
@@ -284,7 +348,7 @@ public class UserInterface {
      * Collects info about which card is being edited
      * collects info about which fields to edit
      * changes field(s) in card
-     * @param NONE
+     * @param
      * @return void
      */
     private void editCardInterface(){
@@ -347,11 +411,14 @@ public class UserInterface {
                         System.out.println("----------------------------------------------------");
                         list.getCard(CardTitle).changeDeadline(newDeadline);
                         break;
-                    case 5: //Color Field
+                    case 5: //Color Field //*******************************************************************************************************************************************************
                         System.out.println("You selected to change the COLOR of the following card: "+CardTitle);
                         System.out.println("The current color of this card is: "+list.getCard(CardTitle).getColor());
-                        System.out.println("Please enter the new deadline for this card");
-                        String newColor = reader.nextLine().toLowerCase();
+
+                        System.out.println("Please enter the new color for this card");
+                        listOfColors();
+                        int newColor = reader.nextInt();
+
                         System.out.println("----------------------------------------------------");
                         list.getCard(CardTitle).changeColor(newColor);
                         break;
@@ -366,15 +433,13 @@ public class UserInterface {
                 }
 
 
-            } else {
-            Options();
-        }
+            }
     }
 
     /**
      * Collects info about which card is being deleted
      * calls deleteCard() to delete card
-     * @param NONE
+     * @param
      * @return void
      */
     private void deleteCardInterface(){

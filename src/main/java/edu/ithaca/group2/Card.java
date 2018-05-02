@@ -8,9 +8,10 @@ public class Card {
 
     String description = "";
     String deadline = "";
+    String color = "";
 
-    String color = "white";
 
+    private String[] colorArray = {"red","green","blue","white"};
     //default constructor
     public Card(){
         //A card only needs a title and a priority, however, it can also have a description and a deadline.
@@ -19,7 +20,7 @@ public class Card {
 
         this.description = "";
         this.deadline = "";
-        this.color = "white";
+        this.color = colorArray[3]; //*****************************************************************************************************************************
     }
 
     //constructor if only title and priority are given
@@ -29,7 +30,7 @@ public class Card {
 
         this.description = "";
         this.deadline = "";
-        this.color = "white";
+        this.color = colorArray[3];  //******************************************************************************************************************************
         //I don't think it should say "no description yet" or "no card yet" because these fields may never be filled
         //In my opinion it looks cleaner to leave them as empty strings
     }
@@ -41,7 +42,7 @@ public class Card {
 
         this.description = description;
         this.deadline = deadline;
-        this.color = color.toLowerCase();
+        this.color = color;  //*****************************************************************************************************************************************************
     }
 
     public void changeTitle(String newTitle){
@@ -65,11 +66,11 @@ public class Card {
         setDeadline(newDeadline);
     }
 
-    public void changeColor( String newColor){ setColor(newColor);}
+    public void changeColor( int newColor){ setColor(newColor);} //******************************************************************************************************************************
 
     //setting
 
-    public void setColor(String color){this.color = color;}
+    public void setColor(int color){this.color = colorArray[color];} //***************************************************************************************************************************
 
     public void setTitle(String title) {
         this.title = title;
