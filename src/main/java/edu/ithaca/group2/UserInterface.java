@@ -1,4 +1,5 @@
 package edu.ithaca.group2;
+import java.io.IOException;
 import java.sql.SQLOutput;
 import java.util.*;
 
@@ -24,7 +25,7 @@ public class UserInterface {
 
     /**
      * Contains while loop which runs until the program is terminated
-     * @param NONE
+     *
      * @return 0 when program ends
      */
     private int Options() {
@@ -39,7 +40,7 @@ public class UserInterface {
 
 
         while (flag) {
-            System.out.println("Which task do you want to accomplish?(1-7) \n");
+            System.out.println("Which task do you want to accomplish?(1-9) \n");
 
             int choice = reader1.nextInt();
 
@@ -83,6 +84,12 @@ public class UserInterface {
                     break;
                 case 7://Delete Card
                     deleteCardInterface();
+                    break;
+                case 8://Save Workspace to file
+                    saveWorkspaceToFile();
+                    break;
+                case 9:
+                    readInWorkspace();
                     break;
                 default:
                     System.out.println("The choice selected is invalid. Try again");
@@ -148,7 +155,7 @@ public class UserInterface {
     /**
      * Collects info for adding a card
      * Calls addCard() to add card to workspace
-     * @param NONE
+     *
      * @return void
      */
     private void addNewCardSimple(){
@@ -229,7 +236,7 @@ public class UserInterface {
     /**
      * Collects info about which card is being viewed
      * calls viewCard() to view the chosen card
-     * @param NONE
+     *
      * @return void
      */
     //case2
@@ -263,7 +270,7 @@ public class UserInterface {
 
     /**
      * Prints commandLine options
-     * @param NONE
+     *
      * @return void
      */
     //print a list of the options that the user has
@@ -276,6 +283,8 @@ public class UserInterface {
         System.out.println("-To view list of Options-(5)");
         System.out.println("-Edit Card-(6)");
         System.out.println("-Delete Card-(7)");
+        System.out.println("-Write-out/ Save workspace-(8)");
+        System.out.println("-Read-in / open a saved workspace-(9)");
         System.out.println("-------------------------");
 
     }
@@ -284,7 +293,7 @@ public class UserInterface {
      * Collects info about which card is being edited
      * collects info about which fields to edit
      * changes field(s) in card
-     * @param NONE
+     *
      * @return void
      */
     private void editCardInterface(){
@@ -374,7 +383,7 @@ public class UserInterface {
     /**
      * Collects info about which card is being deleted
      * calls deleteCard() to delete card
-     * @param NONE
+     *
      * @return void
      */
     private void deleteCardInterface(){
@@ -394,6 +403,29 @@ public class UserInterface {
             Card toDelete = list.getCard(priorityToDelete);
             list.deleteCard(toDelete);
             System.out.println("Card: "+titleToDelete+" has been deleted\n");
+        }
+    }
+
+    private String saveWorkspaceToFile(){
+        String fileName = "src/test/resources/writeInAndOutTest.json";
+        try{
+            ReadInWriteOut.writeToJson(list, fileName);
+            System.out.println("Success!");
+            return fileName;
+        }
+        catch(IOException e){
+            return "Either nothing is in the workspace, or you have a corrupted filepath.";
+        }
+    }
+
+    private void readInWorkspace(){
+        String fileName = "src/test/resources/writeInAndOutTest.json";
+        try {
+            list = ReadInWriteOut.buildCardFromJson(fileName);
+            System.out.println("Success");
+        }
+        catch(IOException e){
+            System.out.println("404: File Not Found");
         }
     }
 
