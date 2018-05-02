@@ -52,3 +52,12 @@ https://docs.google.com/document/d/1DuS2feue1cCybRnrbRzyNQ9ZBwH7B0hU1PaU02HzWbA/
 <h5><b>Sprint 3</b></h5>
 
 <i>Goal: "Enhance user experience through quality of life features.  This includes implementing filtering, improving command line visually, and making the date field more functional to the user."</i>
+
+Class Diagram:
+https://drive.google.com/file/d/1ILJK8imkZ10TKo5ZFko5rjgMOTHHCpos/view?usp=sharing
+
+State Diagram:
+ 
+Review Meeting:
+
+Retrospective Meeting:  
