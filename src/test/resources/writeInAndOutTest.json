@@ -1,10 +1,22 @@
 {
   "cardList" : [ {
-    "title" : "title",
+    "title" : "title3",
     "priority" : 0,
-    "description" : "",
+    "description" : "d",
     "deadline" : "",
-    "color" : "white"
+    "color" : "green"
+  }, {
+    "title" : "title",
+    "priority" : 1,
+    "description" : "testDesc2",
+    "deadline" : "tomorrow",
+    "color" : "blue"
+  }, {
+    "title" : "title",
+    "priority" : 1,
+    "description" : "testDesc2",
+    "deadline" : "tomorrow",
+    "color" : "blue"
   } ],
-  "cardCount" : 1
+  "cardCount" : 2
 }

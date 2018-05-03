@@ -43,6 +43,7 @@ public class UserInterface {
             System.out.println("Which task do you want to accomplish?(1-9) \n");
 
             int choice = reader1.nextInt();
+            reader1.nextLine();
 
 
             switch (choice) {
@@ -56,7 +57,7 @@ public class UserInterface {
 
                 case 3: //Print all Cards(finish later)
                     System.out.println("Are you sure that you want to VIEW the CARD LIST?(y/n)");
-                    String confirmation = reader.next();
+                    String confirmation = reader.nextLine();
                     if (confirmation.toLowerCase().equals("y")) {
                         System.out.println("\nCard List:");
                         System.out.println(list.viewAllCards());
@@ -67,7 +68,7 @@ public class UserInterface {
 
                 case 4: //Quit
                     System.out.println("Are you sure that you want to QUIT?(y/n)");
-                    confirmation = reader.next();
+                    confirmation = reader.nextLine();
                     if (confirmation.toLowerCase().equals("y")) {
                         System.out.println("Application shutting down");
                         changeFlag();
@@ -117,6 +118,7 @@ public class UserInterface {
 
             System.out.println("Enter the priority for this card:(0-10)");
             int CardPriority = reader.nextInt();
+            reader.nextLine();
             System.out.println("----------------------------------------");
 
             System.out.println("Provide a description for the card(This is optional)");
@@ -173,10 +175,11 @@ public class UserInterface {
 
             System.out.println("Enter the priority for this card:");
             int CardPriority = reader.nextInt();
+            reader.nextLine();
             System.out.println("----------------------------------------");
 
             boolean changeFields = false;
-        System.out.println("Would you like to add more fields? (y/n)");
+        System.out.println("Would you like to add more fields? (y/n)\n");
         String newConfirmation = reader.nextLine();
         if (newConfirmation.toLowerCase().equals("y")){
             changeFields = true;
@@ -192,8 +195,8 @@ public class UserInterface {
             System.out.println("-Deadline-(2)");
             System.out.println("-Card Color-(3)");
             System.out.println("-------------------------\n");
-
             int field = reader.nextInt();
+            reader.nextLine();
 
             switch(field) {
 
@@ -242,7 +245,7 @@ public class UserInterface {
     //case2
     private void viewCardInterface() {
         System.out.println("Are you sure that you want to VIEW a card?(y/n)");
-        String confirmation = reader.next();
+        String confirmation = reader.nextLine();
         if (confirmation.toLowerCase().equals("y")) {
             System.out.println("Enter Card Title");
            String CardTitle = reader.nextLine();
@@ -298,7 +301,7 @@ public class UserInterface {
      */
     private void editCardInterface(){
         System.out.println("Are you sure that you want to EDIT a card?(y/n)");
-        String confirmation = reader.next();
+        String confirmation = reader.nextLine();
         if (confirmation.toLowerCase().equals("y")) {
             System.out.println("Enter Title of Card to Edit");
             String CardTitle = reader.nextLine();
@@ -318,8 +321,8 @@ public class UserInterface {
                 System.out.println("-Color-(5)");
                 System.out.println("-------------------------\n");
                 System.out.println("Select Card Field to Change");
-
                 int field = reader.nextInt();
+                reader.nextLine();
 
                 switch (field) {
                     case 1://Title
@@ -335,6 +338,7 @@ public class UserInterface {
                         System.out.println("The current priority of this card is: "+list.getCard(CardTitle).getPriority());
                         System.out.println("Please enter the new priority for this card");
                         int newPriority = reader.nextInt();
+                        reader.nextLine();
                         System.out.println("----------------------------------------------------");
                         list.changePriority(list.getCard(CardTitle), newPriority);//Change priority in workspace
                         break;
