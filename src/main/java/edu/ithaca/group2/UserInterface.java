@@ -1,4 +1,7 @@
 package edu.ithaca.group2;
+import java.io.IOException;
+import java.sql.SQLOutput;
+
 import java.util.*;
 
 public class UserInterface {
@@ -30,7 +33,11 @@ public class UserInterface {
 
     /**
      * Contains while loop which runs until the program is terminated
+<<<<<<< HEAD
      * @param
+=======
+     *
+>>>>>>> c6053b11280a364774d2e9b5dc001791455453d1
      * @return 0 when program ends
      */
     private int Options() {
@@ -45,11 +52,14 @@ public class UserInterface {
 
 
         while (flag) {
+
             System.out.println("-------------------------------------------------------------");
-            System.out.println("Which task do you want to accomplish?(1-8) \n");
+            System.out.println("Which task do you want to accomplish?(1-10) \n");
             System.out.println("Press (5) to see a list of options \n");
 
+
             int choice = reader1.nextInt();
+            reader1.nextLine();
 
 
             switch (choice) {
@@ -63,7 +73,7 @@ public class UserInterface {
 
                 case 3: //Print all Cards(finish later)
                     System.out.println("Are you sure that you want to VIEW the CARD LIST?(y/n)");
-                    String confirmation = reader.next();
+                    String confirmation = reader.nextLine();
                     if (confirmation.toLowerCase().equals("y")) {
                         System.out.println("\nCard List:");
                         System.out.println(list.viewAllCards());
@@ -74,7 +84,7 @@ public class UserInterface {
 
                 case 4: //Quit
                     System.out.println("Are you sure that you want to QUIT?(y/n)");
-                    confirmation = reader.next();
+                    confirmation = reader.nextLine();
                     if (confirmation.toLowerCase().equals("y")) {
                         System.out.println("Application shutting down");
                         changeFlag();
@@ -95,6 +105,14 @@ public class UserInterface {
 
                 case 8://Filter Cards
                     filterCardColorInterface();  //*************************************************************************************************************************************************
+                    break;
+
+
+                case 9://Save Workspace to file
+                    saveWorkspaceToFile();
+                    break;
+                case 10:
+                    readInWorkspace();
                     break;
 
                 default:
@@ -170,6 +188,7 @@ public class UserInterface {
 
             System.out.println("Enter the priority for this card:(0-10)");
             int CardPriority = reader.nextInt();
+            reader.nextLine();
             System.out.println("----------------------------------------");
 
             System.out.println("Provide a description for the card(This is optional)");
@@ -208,7 +227,11 @@ public class UserInterface {
     /**
      * Collects info for adding a card
      * Calls addCard() to add card to workspace
+<<<<<<< HEAD
      * @param
+=======
+     *
+>>>>>>> c6053b11280a364774d2e9b5dc001791455453d1
      * @return void
      */
     private void addNewCardSimple(){
@@ -226,10 +249,11 @@ public class UserInterface {
 
             System.out.println("Enter the priority for this card:");
             int CardPriority = reader.nextInt();
+            reader.nextLine();
             System.out.println("----------------------------------------");
 
             boolean changeFields = false;
-        System.out.println("Would you like to add more fields? (y/n)");
+        System.out.println("Would you like to add more fields? (y/n)\n");
         String newConfirmation = reader.nextLine();
         if (newConfirmation.toLowerCase().equals("y")){
             changeFields = true;
@@ -245,8 +269,8 @@ public class UserInterface {
             System.out.println("-Deadline-(2)");
             System.out.println("-Card Color-(3)");
             System.out.println("-------------------------\n");
-
             int field = reader.nextInt();
+            reader.nextLine();
 
             switch(field) {
 
@@ -296,13 +320,17 @@ public class UserInterface {
     /**
      * Collects info about which card is being viewed
      * calls viewCard() to view the chosen card
+<<<<<<< HEAD
      * @param
+=======
+     *
+>>>>>>> c6053b11280a364774d2e9b5dc001791455453d1
      * @return void
      */
     //case2
     private void viewCardInterface() {
         System.out.println("Are you sure that you want to VIEW a card?(y/n)");
-        String confirmation = reader.next();
+        String confirmation = reader.nextLine();
         if (confirmation.toLowerCase().equals("y")) {
             System.out.println("Enter Card Title");
            String CardTitle = reader.nextLine();
@@ -326,7 +354,11 @@ public class UserInterface {
 
     /**
      * Prints commandLine options
+<<<<<<< HEAD
      * @param
+=======
+     *
+>>>>>>> c6053b11280a364774d2e9b5dc001791455453d1
      * @return void
      */
     //print a list of the options that the user has
@@ -340,6 +372,9 @@ public class UserInterface {
         System.out.println("-Edit Card-(6)");
         System.out.println("-Delete Card-(7)");
         System.out.println("-Filter Cards-(8)");
+        System.out.println("-Write-out/ Save workspace-(9)");
+        System.out.println("-Read-in / open a saved workspace-(10)");
+
         System.out.println("-------------------------");
 
     }
@@ -348,12 +383,16 @@ public class UserInterface {
      * Collects info about which card is being edited
      * collects info about which fields to edit
      * changes field(s) in card
+
      * @param
+
+     *
+
      * @return void
      */
     private void editCardInterface(){
         System.out.println("Are you sure that you want to EDIT a card?(y/n)");
-        String confirmation = reader.next();
+        String confirmation = reader.nextLine();
         if (confirmation.toLowerCase().equals("y")) {
             System.out.println("Enter Title of Card to Edit");
             String CardTitle = reader.nextLine();
@@ -373,8 +412,8 @@ public class UserInterface {
                 System.out.println("-Color-(5)");
                 System.out.println("-------------------------\n");
                 System.out.println("Select Card Field to Change");
-
                 int field = reader.nextInt();
+                reader.nextLine();
 
                 switch (field) {
                     case 1://Title
@@ -390,6 +429,7 @@ public class UserInterface {
                         System.out.println("The current priority of this card is: "+list.getCard(CardTitle).getPriority());
                         System.out.println("Please enter the new priority for this card");
                         int newPriority = reader.nextInt();
+                        reader.nextLine();
                         System.out.println("----------------------------------------------------");
                         list.changePriority(list.getCard(CardTitle), newPriority);//Change priority in workspace
                         break;
@@ -439,7 +479,11 @@ public class UserInterface {
     /**
      * Collects info about which card is being deleted
      * calls deleteCard() to delete card
+
      * @param
+
+     *
+
      * @return void
      */
     private void deleteCardInterface(){
@@ -459,6 +503,29 @@ public class UserInterface {
             Card toDelete = list.getCard(priorityToDelete);
             list.deleteCard(toDelete);
             System.out.println("Card: "+titleToDelete+" has been deleted\n");
+        }
+    }
+
+    private String saveWorkspaceToFile(){
+        String fileName = "src/test/resources/writeInAndOutTest.json";
+        try{
+            ReadInWriteOut.writeToJson(list, fileName);
+            System.out.println("Success!");
+            return fileName;
+        }
+        catch(IOException e){
+            return "Either nothing is in the workspace, or you have a corrupted filepath.";
+        }
+    }
+
+    private void readInWorkspace(){
+        String fileName = "src/test/resources/writeInAndOutTest.json";
+        try {
+            list = ReadInWriteOut.buildCardFromJson(fileName);
+            System.out.println("Success");
+        }
+        catch(IOException e){
+            System.out.println("404: File Not Found");
         }
     }
 

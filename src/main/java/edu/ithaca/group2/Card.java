@@ -108,8 +108,12 @@ public class Card {
 
     public String getColor(){return color;}
 
+    /**
+     * Returns String of a card in printout format
+     * @param
+     * @return String of formated Card info
+     */
     public String viewCard(){
-
 
         if(description.equals("") && deadline.equals("")){
             return title + "\nID: " + priority + "\nCard Color:"+ color;
