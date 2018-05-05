@@ -90,6 +90,7 @@ public class Card {
          return reportDate;
      }*/
 
+
     public void changeTitle(String newTitle){
         setTitle(newTitle);
     }
@@ -154,6 +155,11 @@ public class Card {
 
     public String getColor(){return color;}
 
+    /**
+     * Returns String of a card in printout format
+     * @param
+     * @return String of formated Card info
+     */
     public String viewCard(){
         Format formatter = new SimpleDateFormat("MM/dd/yyyy");
         String strdeadline = formatter.format(deadline);
