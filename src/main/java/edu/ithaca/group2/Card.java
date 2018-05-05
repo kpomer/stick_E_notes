@@ -14,7 +14,7 @@ public class Card {
     int priority = 0;
 
     String description = "";
-    Date deadline;
+    String deadline;
     String color = "white";
 
     //default constructor
@@ -24,7 +24,7 @@ public class Card {
         this.priority = 0;
 
         this.description = "";
-        this.deadline = new Date(0,0,0);
+        this.deadline = "";
         this.color = "white";
     }
 
@@ -34,7 +34,7 @@ public class Card {
         this.priority = priority;
 
         this.description = "";
-        this.deadline = new Date(0,0,0);
+        this.deadline = "";
 
         this.color = "white";
         //I don't think it should say "no description yet" or "no card yet" because these fields may never be filled
@@ -47,7 +47,7 @@ public class Card {
         this.priority = priority;
 
         this.description = description;
-        this.deadline = strTodate(deadline);
+        this.deadline = deadline;
         this.color = color.toLowerCase();
     }
     public Date strTodate(String deadline){
@@ -131,8 +131,8 @@ public class Card {
     }
 
     public void setDeadline(String deadline) {
-        Date date = strTodate(deadline);
-        this.deadline = date;
+        //Date date = strTodate(deadline);
+        this.deadline = deadline;
     }
 
     //getters
@@ -149,7 +149,7 @@ public class Card {
         return description;
     }
 
-    public Date getDeadline() {
+    public String getDeadline() {
         return deadline;
     }
 

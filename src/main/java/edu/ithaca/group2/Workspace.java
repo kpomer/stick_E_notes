@@ -165,32 +165,38 @@ public class Workspace {
             }
         }
     }
-    public int dateDifference(Date inlist, Date tocompare) {
-        long diff =inlist.getTime()-tocompare.getTime();
+    public int dateDifference(String inlist, String tocompare) {
+        Card convert= new Card();
+        Date inList = convert.strTodate(inlist);
+        Date toCompare = convert.strTodate(tocompare);
+        long diff =inList.getTime()-toCompare.getTime();
         diff=(diff / (1000 * 60 * 60 * 24));
         int daystill = (int) diff;
         //System.out.println(daystill);
         return daystill;
 
     }
-    public boolean dateCompare(Date inlist, Date tocompare) {
-        if (inlist.after(tocompare)) {
+    public boolean dateCompare(String inlist, String tocompare) {
+        Card convert= new Card();
+        Date inList = convert.strTodate(inlist);
+        Date toCompare = convert.strTodate(tocompare);
+        if (inList.after(toCompare)) {
             //System.out.println("Date1 is after Date2");
             return true;
-        } else if (inlist.before(tocompare)) {
+        } else if (inList.before(toCompare)) {
             //System.out.println("Date1 is before Date2");
             return false;
-        } else if (inlist.equals(tocompare)) {
+        } else if (inList.equals(toCompare)) {
             //System.out.println("Date1 is equal to Date2");
             return true;
         }
         return false;
     }
 
-    public String dateNotifiation(int tilldate, Date datein ) {
+    public String dateNotifiation(int tilldate, String datein ) {
         String titles="";
         for (int i = 0; i <cardCount ; i++) {
-            Date current =cardList.get(i).getDeadline();
+            String current =cardList.get(i).getDeadline();
             if(dateCompare(current,datein)==true) {
                 if(dateDifference(current,datein)<=tilldate) {
                     titles +=cardList.get(i).getTitle()+" ";

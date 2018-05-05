@@ -79,19 +79,14 @@ class viewCardTest {
         String deadline = "11/22/2018";
         String color = "red";
         Card card1 = new Card(string, num, description, deadline, color );
-        Date dateExpected =new Date(118,10,22);
-        Date dateactual = card1.getDeadline();
-        Assert.assertEquals(dateExpected, dateactual);
+        //Date dateExpected =new Date(118,10,22);
+        String dateactual = card1.getDeadline();
+        Assert.assertEquals("11/22/2018", dateactual);
 
         deadline = "two";
         Card card2 = new Card(string, num, description, deadline, color );
-        //stringExpected = deadline;
-        //Assert.assertEquals(stringExpected, stringActual);
-        //Card card2 = new Card(string, num, description, deadline );
-        //String stringExpected2 = deadline2;
-        Date test =new Date(0,0,0);
-        dateactual = card2.getDeadline();
-        Assert.assertEquals(test, dateactual);
+        String stringActual= card2.getDeadline();
+        Assert.assertEquals("two", stringActual);
 
     }
 
@@ -157,8 +152,8 @@ class viewCardTest {
     void QuantDateTest() {
         Card card1=new Card("Title", 0,"stuff","4/11/2018","pink");
         Card card2 = new Card("Title", 1,"description","5/31/2017","green");
-        Date deadline = card1.getDeadline();
-        Date deadline2 = card2.getDeadline();
+        String deadline = card1.getDeadline();
+        String deadline2 = card2.getDeadline();
         System.out.println(deadline);
         assertEquals(deadline,card1.getDeadline());
         System.out.println(deadline2);
@@ -185,8 +180,8 @@ class viewCardTest {
         testw.addCard(test3a);
         testw.addCard(test3b);
 
-        Date testd =new Date(118,4,12);
-        Date testd2 =new Date(118,4,24);
+        String testd = "5/12/18";
+        String testd2 ="5/24/18";
 
         String message= "Your "+test1.getTitle()+" "+test2.getTitle()+" "+test3.getTitle()+" "+test3a.getTitle()+" "+test3b.getTitle()+" "+"cards are upcoming";
         String message2= "Your "+test3.getTitle()+" "+test3a.getTitle()+" "+test3b.getTitle()+" "+"cards are upcoming";
