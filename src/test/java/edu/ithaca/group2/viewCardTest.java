@@ -101,7 +101,7 @@ class viewCardTest {
         Card card1 = new Card(title, priority,description,deadline, color);
         Date testdate =new Date(118,10,12);
 
-        String expectedViewCard = title+"\nID: "+priority+"\n\t"+description+"\nDeadline: "+testdate+"\nCard Color:"+ color;
+        String expectedViewCard = title+"\nID: "+priority+"\n\t"+description+"\nDeadline: "+"11/12/2018"+"\nCard Color:"+ color;
         Assert.assertEquals(expectedViewCard,card1.viewCard());
 
         title ="title";
@@ -110,9 +110,9 @@ class viewCardTest {
         description = "";
         color = "white";
         Card card2 = new Card(title, priority,deadline2,description,color);
-        Date testdate2 =new Date(0,0,0);
+        //Date testdate2 =new Date(0,0,0);
 
-        expectedViewCard = title+"\nID: "+priority+"\nDeadline: " + testdate2  + "\nCard Color:"+ color;
+        expectedViewCard = title+"\nID: "+priority + "" + "\nCard Color:"+ color;
         //title + "\nID: " + priority + "\nDeadline: " + deadline  + "\nCard Color:"+ color;
 
         Assert.assertEquals(expectedViewCard,card2.viewCard());
@@ -124,7 +124,7 @@ class viewCardTest {
         color = "red";
         Card card3 = new Card(title,priority,description, deadline,color);
 
-        expectedViewCard = title+"\nID: "+priority+"\nDeadline: " + testdate2  +"\nCard Color:"+ color;
+        expectedViewCard = title+"\nID: "+priority+ ""  +"\nCard Color:"+ color;
 
         Assert.assertEquals(expectedViewCard,card3.viewCard());
 
@@ -134,7 +134,7 @@ class viewCardTest {
         description = "";
         color = "blue";
         Card card4 = new Card(title, priority, description, deadline, color);
-        expectedViewCard = title+"\nID: "+priority+"\nDeadline: " + testdate2 +"\nCard Color:"+ color;
+        expectedViewCard = title+"\nID: "+priority+ "" +"\nCard Color:"+ color;
         Assert.assertEquals(expectedViewCard,card4.viewCard());
 
         title ="title";
@@ -143,8 +143,8 @@ class viewCardTest {
         description = "";
 
         Card card5 = new Card(title, priority, description, deadline, color);
-        Date deadlinea=new Date(118,10,28);
-        expectedViewCard = title+"\nID: "+priority+ "\nDeadline: "+deadlinea+"\nCard Color:"+ color;
+        //Date deadlinea=new Date(118,10,28);
+        expectedViewCard = title+"\nID: "+priority+ "\nDeadline: "+"11/28/2018"+"\nCard Color:"+ color;
         Assert.assertEquals(expectedViewCard,card5.viewCard());
         System.out.println(card1.viewCard()+"\n_______\n"+card2.viewCard()+"\n_______\n"+card3.viewCard()+"\n_______\n"+card4.viewCard()+"\n_______\n"+card5.viewCard());
     }
@@ -180,8 +180,8 @@ class viewCardTest {
         testw.addCard(test3a);
         testw.addCard(test3b);
 
-        String testd = "5/12/18";
-        String testd2 ="5/24/18";
+        String testd = "5/12/2018";
+        String testd2 ="5/24/2018";
 
         String message= "Your "+test1.getTitle()+" "+test2.getTitle()+" "+test3.getTitle()+" "+test3a.getTitle()+" "+test3b.getTitle()+" "+"cards are upcoming";
         String message2= "Your "+test3.getTitle()+" "+test3a.getTitle()+" "+test3b.getTitle()+" "+"cards are upcoming";

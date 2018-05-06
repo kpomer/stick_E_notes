@@ -162,11 +162,11 @@ public class Card {
      */
     public String viewCard(){
         Format formatter = new SimpleDateFormat("MM/dd/yyyy");
-        String strdeadline = formatter.format(deadline);
+        //String strdeadline = formatter.format(deadline);
         //String blank="";
 
-        if(strdeadline.equals("12/31/1899"))
-            strdeadline = "";
+        //if(strdeadline.equals("12/31/1899"))
+            //strdeadline = "";
         if(description.equals("") && deadline.equals("")){
             return title + "\nID: " + priority + "\nCard Color:"+ color;
         }else if(description.equals("")){
