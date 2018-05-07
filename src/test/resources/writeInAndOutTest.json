@@ -6,23 +6,29 @@
     "deadline" : "04/09/2018",
     "color" : "red"
   }, {
-    "title" : "title2",
-    "priority" : 1,
-    "description" : "",
-    "deadline" : "",
-    "color" : "white"
-  }, {
     "title" : "title3",
-    "priority" : 2,
+    "priority" : -1,
     "description" : "",
     "deadline" : "",
     "color" : "white"
   }, {
-    "title" : "title4",
-    "priority" : 3,
-    "description" : "card4 description trying to make this really long... asdfhasdfhasdfhasdfhasdfh hasdfh hasdf hasdf hasdf hasdf hasdf hasdf ijjhsdfgjejejfmfmj",
-    "deadline" : "04/12/2018",
-    "color" : "red"
+    "title" : "title1",
+    "priority" : 1,
+    "description" : "description2",
+    "deadline" : "",
+    "color" : "green"
+  }, {
+    "title" : "title1",
+    "priority" : 1,
+    "description" : "description2",
+    "deadline" : "",
+    "color" : "green"
+  }, {
+    "title" : "title1",
+    "priority" : 2,
+    "description" : "description2",
+    "deadline" : "",
+    "color" : "green"
   } ],
-  "cardCount" : 4
+  "cardCount" : 5
 }
