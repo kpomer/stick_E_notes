@@ -59,6 +59,8 @@ https://drive.google.com/file/d/1ILJK8imkZ10TKo5ZFko5rjgMOTHHCpos/view?usp=shari
 State Diagram:  
 https://drive.google.com/file/d/15bN7yRG4t5hXQdfBpqwZGZo5VIjnvIaW/view?usp=sharing
  
-Review Meeting:
+Review Meeting:  
+https://docs.google.com/document/d/1YvaZpS5CtTm6yNPwR-wbzuApes8CsUI15iYIevbOcP8/edit?usp=sharing
 
 Retrospective Meeting:  
+https://docs.google.com/document/d/1RfS2OoU4a9pkxM45ahjqMjLcdEoHugRfDziR99yz9eI/edit?usp=sharing
