@@ -1,28 +1,22 @@
 {
   "cardList" : [ {
-    "title" : "title1",
-    "priority" : 0,
-    "description" : "card1 description",
-    "deadline" : "04/09/2018",
-    "color" : "red"
-  }, {
-    "title" : "title2",
-    "priority" : 1,
-    "description" : "",
-    "deadline" : "",
-    "color" : "white"
-  }, {
     "title" : "title3",
-    "priority" : 2,
-    "description" : "",
+    "priority" : 0,
+    "description" : "d",
     "deadline" : "",
-    "color" : "white"
+    "color" : "green"
   }, {
-    "title" : "title4",
-    "priority" : 3,
-    "description" : "card4 description trying to make this really long... asdfhasdfhasdfhasdfhasdfh hasdfh hasdf hasdf hasdf hasdf hasdf hasdf ijjhsdfgjejejfmfmj",
-    "deadline" : "04/12/2018",
-    "color" : "red"
+    "title" : "title",
+    "priority" : 1,
+    "description" : "testDesc2",
+    "deadline" : "tomorrow",
+    "color" : "blue"
+  }, {
+    "title" : "title",
+    "priority" : 1,
+    "description" : "testDesc2",
+    "deadline" : "tomorrow",
+    "color" : "blue"
   } ],
-  "cardCount" : 4
+  "cardCount" : 2
 }
