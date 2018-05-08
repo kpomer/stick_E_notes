@@ -415,6 +415,12 @@ public class UserInterface {
         }
     }
 
+    /**
+     * Takes the information from the list workspace and saves it to a text file
+     *
+     * @return fileName or a Print statement
+     *
+     */
     private String saveWorkspaceToFile(){
         String fileName = "src/test/resources/writeInAndOutTest.json";
         try{
@@ -427,6 +433,12 @@ public class UserInterface {
         }
     }
 
+    /**
+     *
+     * Takes the information from a text file and places it into the Workspace list
+     * @return void
+     *
+     */
     private void readInWorkspace(){
         String fileName = "src/test/resources/writeInAndOutTest.json";
         try {
