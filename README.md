@@ -3,7 +3,7 @@
 ![build status](https://circleci.com/gh/kpomer/stick_E_notes.png?circle-token=circle-token "Master Build Status")
 
 Quick Start Guide:  
-LINK HERE
+https://docs.google.com/document/d/1SnpL7RblWsIPW0R4TbHOBp2ICXJYO1lyZyPxAiU3f6s/edit?usp=sharing
 
 JavaDoc HTML:  
 LINK HERE
