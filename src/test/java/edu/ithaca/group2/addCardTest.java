@@ -2,6 +2,7 @@ package edu.ithaca.group2;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Date;
 import java.util.NoSuchElementException;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -32,6 +33,10 @@ class addCardTest {
         Card testCard2 = new Card("testCard2Title", 1);
         Card testCard3 = new Card("testCard3Title", 1, "testCard3Description", "1/1/2020","blue");
 
+        //test Dates to test against
+        //Date test;
+        //Date test2;
+        //Date test3;
         //test that the card fields are entered correctly, and that priority order is correct
         testWorkspace.addCard(testCard1);
         testWorkspace.addCard(testCard2);

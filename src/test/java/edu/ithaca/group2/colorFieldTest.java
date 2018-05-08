@@ -2,6 +2,7 @@ package edu.ithaca.group2;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Date;
 import java.util.NoSuchElementException;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -14,6 +15,7 @@ public class colorFieldTest {
 
         Workspace testWorkspace = new Workspace();
         Card testCard = new Card("title", 0, "description", "deadline", "red");
+
         assertEquals(0, testWorkspace.addCard(testCard));
         assertEquals("title", testWorkspace.getCard(0).getTitle());
         assertEquals(0, testWorkspace.getCard(0).getPriority());
@@ -24,6 +26,7 @@ public class colorFieldTest {
     @Test
     void capitalizationCatch(){
         Workspace testWorkspace = new Workspace();
+        //String testdate = "deadline";
         Card testCard = new Card("title", 0, "description", "deadline", "RED");
         assertEquals(0, testWorkspace.addCard(testCard));
         assertEquals("title", testWorkspace.getCard(0).getTitle());

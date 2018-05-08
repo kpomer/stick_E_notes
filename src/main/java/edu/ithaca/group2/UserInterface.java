@@ -25,7 +25,7 @@ public class UserInterface {
 
     /**
      * Contains while loop which runs until the program is terminated
-     *
+     * @param
      * @return 0 when program ends
      */
     private int Options() {
@@ -157,7 +157,7 @@ public class UserInterface {
     /**
      * Collects info for adding a card
      * Calls addCard() to add card to workspace
-     *
+     * @param
      * @return void
      */
     private void addNewCardSimple(){
@@ -239,7 +239,7 @@ public class UserInterface {
     /**
      * Collects info about which card is being viewed
      * calls viewCard() to view the chosen card
-     *
+     * @param
      * @return void
      */
     //case2
@@ -273,7 +273,7 @@ public class UserInterface {
 
     /**
      * Prints commandLine options
-     *
+     * @param
      * @return void
      */
     //print a list of the options that the user has
@@ -296,7 +296,7 @@ public class UserInterface {
      * Collects info about which card is being edited
      * collects info about which fields to edit
      * changes field(s) in card
-     *
+     * @param
      * @return void
      */
     private void editCardInterface(){
@@ -387,7 +387,7 @@ public class UserInterface {
     /**
      * Collects info about which card is being deleted
      * calls deleteCard() to delete card
-     *
+     * @param
      * @return void
      */
     private void deleteCardInterface(){
