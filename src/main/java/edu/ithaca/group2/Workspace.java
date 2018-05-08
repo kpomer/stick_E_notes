@@ -1,9 +1,6 @@
 package edu.ithaca.group2;
 import java.sql.SQLOutput;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
-import java.util.NoSuchElementException;
+import java.util.*;
 
 public class Workspace {
 
@@ -167,6 +164,55 @@ public class Workspace {
                 }
             }
         }
+    }
+    public int dateDifference(String inlist, String tocompare) {
+        Card convert= new Card();
+        Date inList = convert.strTodate(inlist);
+        Date toCompare = convert.strTodate(tocompare);
+        long diff =inList.getTime()-toCompare.getTime();
+        diff=(diff / (1000 * 60 * 60 * 24));
+        int daystill = (int) diff;
+        //System.out.println(daystill);
+        return daystill;
+
+    }
+    public boolean dateCompare(String inlist, String tocompare) {
+        Card convert= new Card();
+        Date inList = convert.strTodate(inlist);
+        Date toCompare = convert.strTodate(tocompare);
+        if (inList.after(toCompare)) {
+            //System.out.println("Date1 is after Date2");
+            return true;
+        } else if (inList.before(toCompare)) {
+            //System.out.println("Date1 is before Date2");
+            return false;
+        } else if (inList.equals(toCompare)) {
+            //System.out.println("Date1 is equal to Date2");
+            return true;
+        }
+        return false;
+    }
+
+    public String dateNotifiation(int tilldate, String datein ) {
+        String titles="";
+        for (int i = 0; i <cardCount ; i++) {
+            String current =cardList.get(i).getDeadline();
+            if(dateCompare(current,datein)==true) {
+                if(dateDifference(current,datein)<=tilldate) {
+                    titles +=cardList.get(i).getTitle()+" ";
+
+                }
+
+            }
+
+        }
+        if(titles==""){
+            return"No Cards are upcoming";
+        }else{
+            System.out.println(titles);
+            return "Your "+ titles+ "cards are upcoming";
+        }
+
     }
 
     public ArrayList<Card> getCardList(){

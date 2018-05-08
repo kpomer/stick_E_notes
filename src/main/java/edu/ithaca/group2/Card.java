@@ -14,7 +14,7 @@ public class Card {
     int priority = 0;
 
     String description = "";
-    Date deadline;
+    String deadline;
     String color = "white";
 
     //default constructor
@@ -24,7 +24,7 @@ public class Card {
         this.priority = 0;
 
         this.description = "";
-        this.deadline = new Date(0,0,0);
+        this.deadline = "";
         this.color = "white";
     }
 
@@ -34,7 +34,7 @@ public class Card {
         this.priority = priority;
 
         this.description = "";
-        this.deadline = new Date(0,0,0);
+        this.deadline = "";
 
         this.color = "white";
         //I don't think it should say "no description yet" or "no card yet" because these fields may never be filled
@@ -47,7 +47,7 @@ public class Card {
         this.priority = priority;
 
         this.description = description;
-        this.deadline = strTodate(deadline);
+        this.deadline = deadline;
         this.color = color.toLowerCase();
     }
     public Date strTodate(String deadline){
@@ -63,7 +63,7 @@ public class Card {
             //System.out.println(dt1.format(t));
             return t;
         } catch (ParseException e) {
-            System.out.println("You've entered an improper String, " + ft);
+            //System.out.println("You've entered an improper String, " + ft);
             System.out.println("Your Date is 12/31/1899");
             return blank;
         }
@@ -74,7 +74,7 @@ public class Card {
         System.out.println("Date Format with MM/dd/yyyy : "+deadline);
         return date;*/
     }
-     public String dateTostr(Date deadline){
+   /*  public String dateTostr(Date deadline){
          // Create an instance of SimpleDateFormat used for formatting
         // the string representation of date (month/day/year)
          DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
@@ -88,7 +88,8 @@ public class Card {
         // Print what date is today!
          //System.out.println("Report Date: " + reportDate);
          return reportDate;
-     }
+     }*/
+
 
     public void changeTitle(String newTitle){
         setTitle(newTitle);
@@ -130,8 +131,8 @@ public class Card {
     }
 
     public void setDeadline(String deadline) {
-        Date date = strTodate(deadline);
-        this.deadline = date;
+        //Date date = strTodate(deadline);
+        this.deadline = deadline;
     }
 
     //getters
@@ -148,19 +149,24 @@ public class Card {
         return description;
     }
 
-    public Date getDeadline() {
+    public String getDeadline() {
         return deadline;
     }
 
     public String getColor(){return color;}
 
+    /**
+     * Returns String of a card in printout format
+     * @param
+     * @return String of formated Card info
+     */
     public String viewCard(){
         Format formatter = new SimpleDateFormat("MM/dd/yyyy");
-        String strdeadline = formatter.format(deadline);
+        //String strdeadline = formatter.format(deadline);
         //String blank="";
 
-        if(strdeadline.equals("12/31/1899"))
-            strdeadline = "";
+        //if(strdeadline.equals("12/31/1899"))
+            //strdeadline = "";
         if(description.equals("") && deadline.equals("")){
             return title + "\nID: " + priority + "\nCard Color:"+ color;
         }else if(description.equals("")){
