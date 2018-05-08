@@ -2,6 +2,16 @@
 
 ![build status](https://circleci.com/gh/kpomer/stick_E_notes.png?circle-token=circle-token "Master Build Status")
 
+Quick Start Guide:  
+LINK HERE
+
+JavaDoc HTML:  
+LINK HERE
+
+Acceptance Testing Plan:  
+https://docs.google.com/document/d/1Yp6xodhxxn8EvM4QZpYZY6SN5u372jlycRa5gPH1iww/edit?usp=sharing
+
+
 <h3><b><u>Project Links</u></b></h3>
 
 Waffle Board:  
