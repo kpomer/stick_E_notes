@@ -1,34 +1,28 @@
 {
   "cardList" : [ {
-    "title" : "title3",
-    "priority" : -1,
+    "title" : "title2",
+    "priority" : 0,
     "description" : "",
     "deadline" : "",
     "color" : "white"
   }, {
     "title" : "title3",
-    "priority" : -1,
+    "priority" : 1,
     "description" : "",
     "deadline" : "",
     "color" : "white"
   }, {
-    "title" : "title1",
-    "priority" : 1,
-    "description" : "description2",
-    "deadline" : "",
-    "color" : "green"
-  }, {
-    "title" : "title1",
-    "priority" : 1,
-    "description" : "description2",
-    "deadline" : "",
-    "color" : "green"
-  }, {
-    "title" : "title1",
+    "title" : "title4",
     "priority" : 2,
-    "description" : "description2",
-    "deadline" : "",
-    "color" : "green"
+    "description" : "card4 description trying to make this really long... asdfhasdfhasdfhasdfhasdfh hasdfh hasdf hasdf hasdf hasdf hasdf hasdf ijjhsdfgjejejfmfmj",
+    "deadline" : "04/12/2018",
+    "color" : "red"
+  }, {
+    "title" : "title4",
+    "priority" : 2,
+    "description" : "card4 description trying to make this really long... asdfhasdfhasdfhasdfhasdfh hasdfh hasdf hasdf hasdf hasdf hasdf hasdf ijjhsdfgjejejfmfmj",
+    "deadline" : "04/12/2018",
+    "color" : "red"
   } ],
-  "cardCount" : 0
+  "cardCount" : 3
 }

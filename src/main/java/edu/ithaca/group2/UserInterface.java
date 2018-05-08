@@ -40,7 +40,7 @@ public class UserInterface {
 
 
         while (flag) {
-            System.out.println("Which task do you want to accomplish?(1-9) \n");
+            System.out.println("Which task do you want to accomplish?(0-8) \n");
 
             int choice = reader1.nextInt();
             reader1.nextLine();
@@ -48,14 +48,33 @@ public class UserInterface {
 
             switch (choice) {
 
+                case 0: //Quit
+                    System.out.println("Are you sure that you want to QUIT?(y/n)");
+                    String confirm = reader.nextLine();
+                    if (confirm.toLowerCase().equals("y")) {
+                        System.out.println("Application shutting down");
+                        changeFlag();
+                        break;
+                    }
+                    break;
+
                 case 1: //add Card
                     addNewCardSimple();
                     break;
-                case 2: //View a Card
+
+                case 2://Edit card that is already in workspace
+                    editCardInterface();
+                    break;
+
+                case 3://Delete Card
+                    deleteCardInterface();
+                    break;
+
+                case 4: //View a Card
                     viewCardInterface();
                     break;
 
-                case 3: //Print all Cards(finish later)
+                case 5: //Print all Cards(finish later)
                     System.out.println("Are you sure that you want to VIEW the CARD LIST?(y/n)");
                     String confirmation = reader.nextLine();
                     if (confirmation.toLowerCase().equals("y")) {
@@ -66,35 +85,21 @@ public class UserInterface {
                     }
                     break;
 
-                case 4: //Quit
-                    System.out.println("Are you sure that you want to QUIT?(y/n)");
-                    confirmation = reader.nextLine();
-                    if (confirmation.toLowerCase().equals("y")) {
-                        System.out.println("Application shutting down");
-                        changeFlag();
-                        break;
-                    }
-                    break;
-
-                case 5: //Print list of options
+                case 6: //Print list of options
                     printList();
                     break;
 
-                case 6://Edit card that is already in workspace
-                    editCardInterface();
+                case 7:
+                    readInWorkspace();
                     break;
-                case 7://Delete Card
-                    deleteCardInterface();
-                    break;
+
                 case 8://Save Workspace to file
                     saveWorkspaceToFile();
                     break;
-                case 9:
-                    readInWorkspace();
-                    break;
+
                 default:
                     System.out.println("The choice selected is invalid. Try again");
-                    System.out.println("If you want a list of possible actions, press 5 when prompted");
+                    System.out.println("If you want a list of possible actions, press 6 when prompted");
                     System.out.println("-------------------------------------------------------------");
                     printList();
 
@@ -279,15 +284,15 @@ public class UserInterface {
     //print a list of the options that the user has
     private void printList() {
         System.out.println("-----List of Options-----");
+        System.out.println("-To Exit Application-(0)");
         System.out.println("-Add Card-(1)");
-        System.out.println("-View Card-(2)");
-        System.out.println("-View Card List-(3)");
-        System.out.println("-To Exit Application-(4)");
-        System.out.println("-To view list of Options-(5)");
-        System.out.println("-Edit Card-(6)");
-        System.out.println("-Delete Card-(7)");
+        System.out.println("-Edit Card-(2)");
+        System.out.println("-Delete Card-(3)");
+        System.out.println("-View Card-(4)");
+        System.out.println("-View Card List-(5)");
+        System.out.println("-To view list of Options-(6)");
+        System.out.println("-Read-in / open a saved workspace-(7)");
         System.out.println("-Write-out/ Save workspace-(8)");
-        System.out.println("-Read-in / open a saved workspace-(9)");
         System.out.println("-------------------------");
 
     }
