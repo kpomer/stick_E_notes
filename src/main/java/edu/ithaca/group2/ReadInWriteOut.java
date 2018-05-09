@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
 
+
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Array;
@@ -11,7 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ReadInWriteOut {
-
 //    /**
 //     *
 //     * @param card to write to the file
@@ -40,7 +40,6 @@ public class ReadInWriteOut {
      *
      * @param ws to write to the file
      * @param filename including the (full or relative) path to the file
-     * @post workspace.cardList is written in json to file located at filename
      * @throws IOException if the file cannot be written (e.g. path is not found)
      */
     public static void writeToJson(Workspace ws, String filename) throws IOException {

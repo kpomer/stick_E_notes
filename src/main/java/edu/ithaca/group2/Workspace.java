@@ -24,7 +24,7 @@ public class Workspace {
      * checks the priority to know where to add it
      * makes sure priority is valid and fits in the workspace
      * It moves the other cards priorities around to place it correctly
-     * @param Card toAdd
+     * @param toAdd card
      * @return int (-1 if card cannot be added, 0 otherwise)
      */
     public int addCard(Card toAdd){
@@ -55,8 +55,7 @@ public class Workspace {
      * Takes in a Card which should be removed from the workspace
      * checks the priority to know where it will be deleted
      * It moves the other cards priorities around to avoid having an empty space
-     * @param Card cardToDelete
-     * @return void
+     * @param cardToDelete Card
      */
     public void deleteCard(Card cardToDelete){
         int priorityToDelete = cardToDelete.getPriority();
@@ -73,7 +72,7 @@ public class Workspace {
      * Takes in a priority number
      * Checks that there is a card with this priority
      * Returns this card
-     * @param int priority
+     * @param priority int
      * @return card at priority
      */
     public Card getCard(int priority) throws IndexOutOfBoundsException{
@@ -89,7 +88,7 @@ public class Workspace {
      * Takes in a String of card title
      * Checks that there is a card with this title
      * Returns this card
-     * @param String title
+     * @param title String
      * @return card with that title
      */
     public Card getCard(String title) throws NoSuchElementException{
@@ -113,7 +112,6 @@ public class Workspace {
     /**
      * Iterates through all cards in workspce
      * Returns priority number and card title
-     * @param NONE
      * @return String of cards and priorities
      */
     public String viewAllCards() {
@@ -139,8 +137,8 @@ public class Workspace {
      * Takes in a Card to change priority and int of newPriority
      * Changes priority of other cards to allow cardToMove to have its new priority
      * Changes cardToMove to newPriority
-     * @param Card cardToMove, int newPriority
-     * @return NONE
+     * @param cardToMove card
+     * @param newPriority int
      */
     public void changePriority(Card cardToMove, int newPriority){
         if (newPriority>(cardCount-1) || newPriority<0) {
