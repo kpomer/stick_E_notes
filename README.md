@@ -6,7 +6,7 @@ Quick Start Guide:
 https://docs.google.com/document/d/1SnpL7RblWsIPW0R4TbHOBp2ICXJYO1lyZyPxAiU3f6s/edit?usp=sharing
 
 JavaDoc HTML:  
-LINK HERE
+https://kpomer.github.io/stick_E_notes/
 
 Acceptance Testing Plan:  
 https://docs.google.com/document/d/1Yp6xodhxxn8EvM4QZpYZY6SN5u372jlycRa5gPH1iww/edit?usp=sharing
